@@ -1,6 +1,15 @@
 #!/bin/zsh
 
 sudo NEEDRESTART_MODE=a apt install -y mc
+
+if [ ! -d "~/GitHub/config" ]; then
+    mkdir -p ~/GitHub && cd $_
+    gh repo clone barabasz/config
+else
+    cd ~/GitHub/config
+    gh repo sync
+fi
+
 mkdir -p ~/.config/mc
 ln -sf ~/GitHub/config/mc/ini ~/.config/mc/ini
 ln -sf ~/GitHub/config/mc/panels.ini ~/.config/mc/panels.ini
