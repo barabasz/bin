@@ -1,0 +1,229 @@
+#!/bin/zsh
+source ~/bin/colors
+
+# CONFIG
+timeout=2
+trimurl=70
+default_protocol="https://"
+usersystem="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+userplatform="AppleWebKit/537.36 (KHTML, like Gecko)"
+userbrowser="Chrome/110.0.0.0 Safari/537.36"
+useragent="$usersystem $userplatform $useragent"
+userplatform="macOS"
+
+# FUNCTIONS
+function printUsage() {
+cat <<EOF
+ Usage: sitespeed URL
+
+Arguments:
+  URL     url to request, could be with or without "http(s)://" prefix
+ 
+EOF
+}
+
+function checkRequirements() {
+    for var in "$@"; do
+        if ! type $var &> /dev/null; then
+            echo "This script requires $var!"
+            exit 1
+        fi
+    done
+}
+
+function parseUrl {
+    uri="$1"
+    protocol=$(echo "$uri" | grep "://" | sed -e's,^\(.*://\).*,\1,g')
+    url_no_protocol=$(echo "${1/$protocol/}")
+    protocol=$(echo "$protocol" | tr '[:upper:]' '[:lower:]')
+    if [ -z $protocol ]; then
+        protocol=$default_protocol
+    fi
+    userpass=$(echo "$url_no_protocol" | grep "@" | cut -d"/" -f1 | rev | cut -d"@" -f2- | rev)
+    pass=$(echo "$userpass" | grep ":" | cut -d":" -f2)
+    if [ -n "$pass" ]; then
+        user=$(echo "$userpass" | grep ":" | cut -d":" -f1)
+    else
+        user="$userpass"
+    fi
+    hostport=$(echo "${url_no_protocol/$userpass@/}" | cut -d"/" -f1)
+    host=$(echo "$hostport" | cut -d":" -f1)
+    port=$(echo "$hostport" | grep ":" | cut -d":" -f2)
+    uripath=$(echo "$url_no_protocol" | grep "/" | cut -d"/" -f2-)
+    url_no_port="$protocol$host/$uripath"
+    if [ -z $port ]; then
+        url_with_port=$url_no_port
+    else
+        url_with_port="$protocol$host:$port/$uripath"
+    fi   
+}
+
+function checkInput {
+    if [[ "$#" -lt 1 ]]; then
+        printUsage
+        exit 0
+    elif [[ "$#" -gt 1 ]]; then
+        echo "This script accepts only one argument."
+        exit 1
+    else
+        parseUrl $1
+        if [[ ! $protocol =~ '^((http|https)://)' ]]; then
+            echo "\nIncorrect protocol (only http and https allowed).\n"
+            exit 1
+        fi
+    fi
+}
+
+function round() {
+    echo $(printf %.$2f $(echo "scale=$2;(((10^$2)*$1)+0.5)/(10^$2)" | bc))
+}
+
+function formatBytes() {
+    local output=""
+    if [[ $1 -gt 1048575 ]]; then
+        output=$(echo "$1/1048576" | bc -l | sed 's/^\./0./')
+        output=$(round $output 1)
+        output="$output MB ($1 B)"
+    elif [[ $1 -gt 1023 ]]; then
+        output=$(echo "$1/1024" | bc -l | sed 's/^\./0./')
+        output=$(round $output 2)
+        output="$output kB ($1 B)"
+    else
+        output="$1 B"
+    fi
+    echo $output
+}
+
+function checkCert() {
+    sslinfo=$(echo | openssl s_client -servername $1 -connect $1:443 2>/dev/null)
+    #echo $sslinfo
+    subject=$(echo $sslinfo | openssl x509 -noout -subject | sed "s/.*CN=//g")
+    issuer=$(echo $sslinfo | openssl x509 -noout -issuer | sed "s/.*CN=//g")
+    expiry=$(echo $sslinfo | openssl x509 -noout -enddate | sed "s/.*=//g")
+}
+
+function formatData {
+    content_size=$(formatBytes $size_download)
+    speed_download=$(echo -E $jsondata | jq ".speed_download")
+    speed_download_kb=$(echo "scale=3; $speed_download/1024" | bc -l | sed 's/^\./0./')
+    time_lookup=$(echo -E $jsondata | jq ".time_namelookup")
+    time_lookup=$(((time_lookup*1000)|0))
+    if [[ $time_lookup -gt 50 ]]; then
+        time_lookup="${bold}${red}$time_lookup"
+    fi
+    time_connect=$(echo -E $jsondata | jq ".time_connect")
+    time_connect=$(((time_connect*1000)|0))
+    time_pretransfer=$(echo -E $jsondata | jq ".time_pretransfer")
+    time_pretransfer=$(((time_pretransfer*1000)|0))
+    time_appconnect=$(echo -E $jsondata | jq ".time_appconnect")
+    time_appconnect=$(((time_appconnect*1000)|0))
+    time_starttransfer=$(echo -E $jsondata | jq ".time_starttransfer")
+    time_starttransfer_f=$(((time_starttransfer*1000)|0))
+    if [[ $time_starttransfer_f -gt 799 ]]; then
+        time_starttransfer_f="${red}$time_starttransfer_f"
+    elif [[ $time_starttransfer_f -gt 499 ]]; then
+        time_starttransfer_f="${yellow}$time_starttransfer_f"
+    elif [[ $time_starttransfer_f -lt 251 ]]; then
+        time_starttransfer_f="${green}$time_starttransfer_f"
+    else
+        time_starttransfer_f="$time_starttransfer_f"
+    fi
+    time_total=$(echo -E $jsondata | jq ".time_total")
+    time_transfer=time_total-time_starttransfer
+    time_total=$(((time_total*1000)|0))
+
+    if [[ ${#redirect_url} -ge $trimurl ]]; then
+        redirect_url_t="${redirect_url:0:$trimurl} [...]"
+    else
+        redirect_url_t="${redirect_url}"
+    fi
+
+    case "$http_code" in
+        "200") response="${bold}${green}200${clear} OK" 
+        ;;
+        "301") response="${bold}${yellow}301${clear} Moved Permanently: ${underline}${cyan}${redirect_url_t}${clear}" 
+        ;;
+        "302") response="${bold}${yellow}302${clear} Moved Temporarily: ${underline}${cyan}${redirect_url_t}${clear}" 
+        ;;
+        "404") response="${bold}${red}404${clear} Not Found" 
+        ;;
+        "500") response="${bold}${red}404${clear} Internal Server Error" 
+        ;;
+        *) response="HTTP Error ${bold}${http_code}${clear}" 
+        ;;
+    esac
+
+    if [[ -n $remote_ip ]]; then
+        remote="(${green}${remote_ip}${clear}:${red}${remote_port}${clear})"
+    else
+        remote=""
+    fi
+
+    if [[ ${#url_no_port} -ge $trimurl ]]; then
+        url_t="${url_no_port:0:$trimurl} [...]"
+    else
+        url_t="${url_no_port}"
+    fi
+
+    request="\nRequest:            $method: ${underline}${cyan}${url_t}${clear} $remote"
+    response="Response:           ${response}"
+    error="${bold}${red}Error${clear}:              ${errormsg}\n"
+    content_type="Content type:       ${content_type:l}"
+    content_size="Content size:       $content_size downloaded at ${speed_download_kb} kB/s"
+    certificate="Certificate:        for: $subject by: $issuer expiry: $expiry"
+    speeds="\nDNS Lookup Time:    ${time_lookup} ms${clear}\t     ${gray}Time the name resolving was completed${clear}
+TCP Connect Time:   ${time_connect} ms\t  ${gray}Time the TCP connect to the remote host/proxy was completed${clear}
+App Connect Time:   ${time_appconnect} ms\t  ${gray}Time the handshake to the remote host was completed${clear}
+${bold}Time to First Byte: ${time_starttransfer_f} ms${clear}\t    ${gray}TTFB: Time the first byte was just about to be transferred${clear}
+${bold}Total Time:         ${time_total} ms${clear}\t${gray}The total time that the full operation lasted${clear}\n"
+
+}
+
+checkRequirements curl jq sed bc
+checkInput $@
+jsondata=$(curl \
+    --connect-timeout $timeout \
+    -H "user-agent: $useragent" \
+    -H "sec-ch-ua-platform: $userplatform" \
+    -H "cache-control: no-cache" \
+    -H "pragma: no-cache" \
+    -H "sec-fetch-dest: document" \
+    -H "sec-fetch-mode: navigate" \
+    -H "sec-fetch-site: none" \
+    -H "sec-fetch-user: ?1" \
+    -s -w "%{json}" \
+    -o /dev/null \
+    -X GET $url_with_port)
+
+jsonvars=$(echo -E $jsondata | jq -r 'keys | [ .[] | tostring ] | @csv' | sed 's/,/ /g' |  sed 's/"//g')
+
+setopt shwordsplit
+for var in $jsonvars; do
+    value=$(echo -E $jsondata | jq --raw-output ".$var")
+    declare "${var}=$value"
+    #echo "$var = $value"
+done
+unsetopt shwordsplit
+if [[ $scheme = "HTTPS" ]]; then 
+    checkCert $host
+fi
+
+formatData
+
+echo $request
+if [[ $exitcode -eq 0 ]]; then
+    echo $response
+    if [[ $http_code -eq 301 || $http_code -eq 302 ]]; then 
+        echo "\nRedirecting..."
+        sitespeed $redirect_url
+    else
+        echo $content_type
+        echo $content_size
+        if [[ $scheme = "HTTPS" ]]; then
+            echo $certificate
+        fi
+        echo $speeds
+    fi
+else
+    echo $error
+fi
