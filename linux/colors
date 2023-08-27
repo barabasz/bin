@@ -8,7 +8,6 @@
 #     do echo -e "\e[38;5;${code}m"'\\e[38;5;'"$code"m"\e[0m"
 # done
 
-
 red='\e[31m'
 green='\e[32m'
 yellow='\e[33m'
