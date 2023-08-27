@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sudo NEEDRESTART_MODE=a apt -y install zsh
+chsh -s $(which zsh)
+ln -sf ~/GitHub/config/zsh/.zprofile ~/
+ln -sf ~/GitHub/config/zsh/.zshrc ~/

@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+sudo add-apt-repository ppa:ondrej/php
+sudo NEEDRESTART_MODE=a apt -y install php8.2
+sudo NEEDRESTART_MODE=a apt -y install php8.2-{bcmath,fpm,xml,mysql,zip,intl,ldap,gd}
+sudo NEEDRESTART_MODE=a apt -y install php8.2-{cli,bz2,curl,mbstring,opcache,soap,cgi}
+
+mv composer.phar /usr/local/bin/composer
