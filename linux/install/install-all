@@ -2,6 +2,8 @@
 
 github="https://raw.githubusercontent.com/barabasz/bin/main/linux/install"
 
+sudo echo -e "\n*** Kickstart for Ubuntu ***\n"
+
 # Update and upgrade
 /bin/bash -c "$(curl -fsSL $github/install-updates)"
 

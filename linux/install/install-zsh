@@ -7,7 +7,5 @@ echo "Installing zsh..."
 sudo $envopt apt-get install $aptopt zsh > /dev/null
 chsh -s $(which zsh)
 
-echo 'export PATH=$HOME/bin:$HOME/bin/install:$HOME/binc:$PATH' > ~/.zshrc
+echo 'export PATH=$HOME/bin:$HOME/bin/install:$HOME/binc:$PATH' >> ~/.zshrc
 echo 'export PS1="[%{%F{cyan}%}%n%{%f%}@%{%F{green}%}%m:%{%F{yellow}%}%~%{%f%}%]]$ "' >>  ~/.zshrc
-
-exec zsh
