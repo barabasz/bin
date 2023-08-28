@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# zsh
-
 sudo NEEDRESTART_MODE=a apt -y install zsh
 chsh -s $(which zsh)
 
