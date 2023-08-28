@@ -3,7 +3,6 @@
 envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
 aptopt="-qq"
 
-echo "Installing mc..."
 sudo $envopt apt-get install $aptopt mc > /dev/null
 
 install-config

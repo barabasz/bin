@@ -3,7 +3,5 @@
 envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
 aptopt="-qq"
 
-echo "Installing git..."
 sudo $envopt apt-get install $aptopt git gh > /dev/null
-echo "Authenticating to GitHub..."
 gh auth login

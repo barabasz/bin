@@ -3,8 +3,6 @@
 envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
 aptopt="-qq"
 
-echo "Installing essential packages..."
-
 # Certs & security
 sudo $envopt apt-get install $aptopt openssh-server gnupg2 ca-certificates acl > /dev/null
 

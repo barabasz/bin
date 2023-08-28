@@ -3,5 +3,4 @@
 envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
 aptopt="-qq"
 
-echo "Installing Lua..."
 sudo $envopt apt-get install $aptopt lua5.4 > /dev/null

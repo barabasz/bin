@@ -5,7 +5,6 @@ aptopt="-qq"
 
 sudo $envopt apt-get install $aptopt fuse > /dev/null
 
-echo "Installing nvim..."
 mkdir -p ~/Downloads && cd $_
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage 

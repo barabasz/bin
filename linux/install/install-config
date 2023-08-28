@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "Fetching config repo..."
 if [ ! -d ~/GitHub/config ]; then
     mkdir -p ~/GitHub && cd $_
     gh repo clone barabasz/config

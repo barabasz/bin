@@ -1,10 +1,7 @@
 #!/bin/sh
 
+echo "Removing snap..."
 sudo snap remove --purge lxd
 sudo snap remove --purge core20
 sudo snap remove --purge snapd
-sudo apt -y remove --purge --autoremove snapd
-NOSNAP_APT_PREF_FILE='/etc/apt/preferences.d/no_snap.pref'
-sudo echo 'Package: snapd' > $NOSNAP_APT_PREF_FILE
-sudo echo 'Pin: release a=*' >> $NOSNAP_APT_PREF_FILE
-sudo echo 'Pin-Priority: -10' >> $NOSNAP_APT_PREF_FILE
+sudo apt-get -qq remove --purge --autoremove snapd  > /dev/null
