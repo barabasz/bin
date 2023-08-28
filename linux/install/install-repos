@@ -2,9 +2,9 @@
 
 mkdir -p ~/GitHub && cd $_
 
-gh repo clone barabasz/bin > /dev/null
+gh repo clone barabasz/bin &> /dev/null
 
 ln -sf ~/GitHub/bin/linux ~/bin
 ln -sf ~/GitHub/bin/common ~/binc
 
-gh repo clone barabasz/config > /dev/null
+gh repo clone barabasz/config &> /dev/null

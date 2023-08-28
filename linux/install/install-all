@@ -33,7 +33,7 @@ fix-login-info
 
 # set locale
 echo 'Setting locale...'
-set-locale
+install-locale
 
 # core tools & apps
 echo 'Installing essential packages...'

@@ -6,8 +6,8 @@ aptopt="-qq"
 sudo $envopt apt-get install $aptopt fuse > /dev/null
 
 mkdir -p ~/Downloads && cd $_
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+curl -fsSLO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage 
 sudo mv nvim.appimage /usr/local/bin/nvim
-sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/nvim 1000
+sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/nvim 1000  > /dev/null
 pip install pynvim  > /dev/null
