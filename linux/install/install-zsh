@@ -5,16 +5,3 @@
 sudo NEEDRESTART_MODE=a apt -y install zsh
 chsh -s $(which zsh)
 
-# omz
-
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-rm -f ~/.zshrc.pre-oh-my-zsh
-rm -f ~/.shell.pre-oh-my-zsh
-ln -sf ~/GitHub/config/zsh/.zprofile ~/
-ln -sf ~/GitHub/config/zsh/.zshrc ~/
-ln -sf ~/GitHub/config/zsh/.p10k.zsh ~/
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-source ~/.zshrc
