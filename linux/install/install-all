@@ -1,17 +1,18 @@
 #!/bin/sh
 
-github=""
+github="https://raw.githubusercontent.com/barabasz/bin/main/linux/install"
 
 # Git, gh
 # install-git
+/bin/sh -c "$(curl -fsSL $github/install-git)"
 
 # repos
 # install-repos
-/bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/barabasz/config/main/ubuntu.sh)"
-
+/bin/sh -c "$(curl -fsSL $github/install-repos)"
 
 # zsh & omz
-install-zsh
+#install-zsh
+/bin/sh -c "$(curl -fsSL $github/install-zsh)"
 install-omz
 
 # remove snap

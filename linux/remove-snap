@@ -1,4 +1,5 @@
-#!/bin/zsh
+#!/bin/sh
+
 sudo snap remove --purge lxd
 sudo snap remove --purge core20
 sudo snap remove --purge snapd
