@@ -2,9 +2,8 @@
 
 github="https://raw.githubusercontent.com/barabasz/bin/main/linux/install"
 
-sudo echo -e "\n*** Kickstart for Ubuntu ***\n"
-
 # Update and upgrade
+sudo echo -e "\nUpdating system..."
 /bin/bash -c "$(curl -fsSL $github/install-updates)"
 
 # Git, gh
@@ -17,13 +16,14 @@ echo "Cloning setup repositories..."
 
 # add path to scripts
 echo "Adding path to scripts..."
-export PATH=$HOME/bin:$HOME/bin/install:$HOME/binc:$HOME/binc/test:/usr/local/bin:$PATH
+/bin/bash -c "$(curl -fsSL $github/install-path)"
+# export PATH=$HOME/bin:$HOME/bin/install:$HOME/binc:$HOME/binc/test:/usr/local/bin:$PATH
 
 # zsh & omz
 echo 'Installing zsh...'
 install-zsh
 echo 'Installing oh-my-zsh...'
-install-omz > /dev/null
+install-omz
 
 # remove snap
 echo 'Removing snap...'

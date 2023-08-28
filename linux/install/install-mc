@@ -3,10 +3,7 @@
 envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
 aptopt="-qq"
 
-sudo $envopt apt-get install $aptopt mc > /dev/null
-
-install-config
-
+sudo $envopt apt-get install $aptopt mc
 mkdir -p ~/.config/mc
 ln -sf ~/GitHub/config/mc/ini ~/.config/mc/ini
 ln -sf ~/GitHub/config/mc/panels.ini ~/.config/mc/panels.ini

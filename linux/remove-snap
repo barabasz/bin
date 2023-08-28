@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo snap remove --purge lxd > /dev/null
-sudo snap remove --purge core20 > /dev/null
-sudo snap remove --purge snapd > /dev/null
-sudo apt-get -qq remove --purge --autoremove snapd  > /dev/null
+sudo snap remove --purge lxd
+sudo snap remove --purge core20
+sudo snap remove --purge snapd
+sudo apt-get -qq remove --purge --autoremove snapd

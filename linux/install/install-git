@@ -3,5 +3,5 @@
 envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
 aptopt="-qq"
 
-sudo $envopt apt-get install $aptopt git gh > /dev/null
+sudo $envopt apt-get install $aptopt git gh
 # gh auth login

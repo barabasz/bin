@@ -3,7 +3,7 @@
 envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
 aptopt="-qq"
 
-sudo $envopt apt-get install $aptopt zsh > /dev/null
+sudo $envopt apt-get install $aptopt zsh
 chsh -s $(which zsh)
 
 echo 'export PATH=$HOME/bin:$HOME/bin/install:$HOME/binc:$PATH' >> ~/.zshrc

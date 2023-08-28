@@ -3,11 +3,11 @@
 envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
 aptopt="-qq"
 
-sudo $envopt apt-get install $aptopt fuse > /dev/null
+sudo $envopt apt-get install $aptopt fuse
 
 mkdir -p ~/Downloads && cd $_
 curl -fsSLO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage 
 sudo mv nvim.appimage /usr/local/bin/nvim
-sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/nvim 1000  > /dev/null
-pip install pynvim  > /dev/null
+sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/nvim 1000
+pip install pynvim
