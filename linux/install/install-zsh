@@ -3,7 +3,6 @@
 envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
 aptopt="-qq"
 
-echo "Installing zsh..."
 sudo $envopt apt-get install $aptopt zsh > /dev/null
 chsh -s $(which zsh)
 

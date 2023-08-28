@@ -3,7 +3,6 @@
 envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
 aptopt="-qq"
 
-echo "Installing zsh..."
 sudo $envopt apt-get install $aptopt language-pack-pl-base language-pack-pl > /dev/null
 sudo locale-gen pl_PL && sudo locale-gen pl_PL.UTF-8 > /dev/null
 sudo cp -f ~/GitHub/config/default/locale /etc/default/locale
