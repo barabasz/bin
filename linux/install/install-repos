@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 mkdir -p ~/GitHub && cd $_
 gh repo clone barabasz/bin
