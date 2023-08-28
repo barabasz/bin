@@ -3,15 +3,12 @@
 github="https://raw.githubusercontent.com/barabasz/bin/main/linux/install"
 
 # Git, gh
-# install-git
 /bin/bash -c "$(curl -fsSL $github/install-git)"
 
-# repos
-# install-repos
+# clone setup repositories
 /bin/bash -c "$(curl -fsSL $github/install-repos)"
 
 # zsh & omz
-#install-zsh
 /bin/bash -c "$(curl -fsSL $github/install-zsh)"
 exec zsh
 install-omz
@@ -33,6 +30,7 @@ install-python
 
 # PHP
 install-php
+install-composer
 
 # Lua
 install-lua
