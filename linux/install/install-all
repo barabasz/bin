@@ -15,9 +15,7 @@ echo "Cloning setup repositories..."
 /bin/bash -c "$(curl -fsSL $github/install-repos)"
 
 # add path to scripts
-echo "Adding path to scripts..."
-/bin/bash -c "$(curl -fsSL $github/install-path)"
-# export PATH=$HOME/bin:$HOME/bin/install:$HOME/binc:$HOME/binc/test:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/bin/install:$HOME/binc:$HOME/binc/test:/usr/local/bin:$PATH
 
 # zsh & omz
 echo 'Installing zsh...'
