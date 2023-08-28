@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 sudo NEEDRESTART_MODE=a apt -y install zsh
 chsh -s $(which zsh)
