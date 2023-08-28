@@ -1,15 +1,18 @@
 #!/bin/bash
 
-# Update, upgrade & cleanup
-sudo NEEDRESTART_MODE=a apt update && sudo apt -y upgrade
-sudo apt autoremove
+envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
+aptopt="-qq"
+
+echo "Installing essential packages..."
 
 # Certs & security
-sudo NEEDRESTART_MODE=a apt install -y openssh-server gnupg2 ca-certificates acl
+sudo $envopt apt-get install $aptopt openssh-server gnupg2 ca-certificates acl > /dev/null
+
+# Software info
+sudo $envopt apt-get install $aptopt lsb-release software-properties-common > /dev/null
 
 # Basic tools
-sudo NEEDRESTART_MODE=a apt install -y net-tools lsb-release apt-transport-https software-properties-common
+sudo $envopt apt-get install $aptopt net-tools apt-transport-https > /dev/null
 
 # Basic languages
-sudo NEEDRESTART_MODE=a apt -y install build-essential cmake ninja-build
-
+sudo $envopt apt-get install $aptopt build-essential cmake ninja-build > /dev/null

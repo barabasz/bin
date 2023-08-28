@@ -1,6 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
 github="https://raw.githubusercontent.com/barabasz/bin/main/linux/install"
+
+# Update and upgrade
+/bin/bash -c "$(curl -fsSL $github/install-updates)"
 
 # Git, gh
 /bin/bash -c "$(curl -fsSL $github/install-git)"
@@ -9,8 +12,7 @@ github="https://raw.githubusercontent.com/barabasz/bin/main/linux/install"
 /bin/bash -c "$(curl -fsSL $github/install-repos)"
 
 # zsh & omz
-/bin/bash -c "$(curl -fsSL $github/install-zsh)"
-exec zsh
+install-zsh
 install-omz
 
 # remove snap

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Brew (unattended installation)
 NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

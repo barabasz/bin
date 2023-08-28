@@ -1,9 +1,14 @@
-#!/bin/sh
+#!/bin/bash
 
-sudo NEEDRESTART_MODE=a apt -y install fuse
+envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
+aptopt="-qq"
+
+sudo $envopt apt-get install $aptopt fuse > /dev/null
+
+echo "Installing nvim..."
 mkdir -p ~/Downloads && cd $_
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage 
 sudo mv nvim.appimage /usr/local/bin/nvim
 sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/nvim 1000
-pip install pynvim
+pip install pynvim  > /dev/null

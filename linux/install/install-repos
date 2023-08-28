@@ -1,7 +1,13 @@
 #!/bin/bash
 
 mkdir -p ~/GitHub && cd $_
+
+echo "Cloning barabasz/bin repository..."
 gh repo clone barabasz/bin
+
+echo "Creating bin symlinks..."
 ln -sf ~/GitHub/bin/linux ~/bin
 ln -sf ~/GitHub/bin/common ~/binc
+
+echo "Cloning barabasz/config repository..."
 gh repo clone barabasz/config

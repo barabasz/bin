@@ -1,4 +1,8 @@
 #!/bin/bash
 
-sudo NEEDRESTART_MODE=a apt -y install git gh
+envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
+aptopt="-qq"
+
+echo "Installing git..."
+sudo $envopt apt-get install $aptopt git gh > /dev/null
 gh auth login

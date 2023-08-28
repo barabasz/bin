@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ ! -d ~/GitHub/config ]; then
     mkdir -p ~/GitHub && cd $_
@@ -7,4 +7,3 @@ else
     cd ~/GitHub/config
     gh repo sync
 fi
-
