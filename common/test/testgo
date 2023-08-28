@@ -1,0 +1,10 @@
+#!/usr/bin/env go
+
+package main
+import "fmt"
+
+x := 8.0 - 6.4
+
+func main() {
+    fmt.Println("hello world")
+}

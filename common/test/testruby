@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+$x = 8.00 - 6.40
+puts $x

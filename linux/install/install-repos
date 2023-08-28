@@ -4,5 +4,5 @@ mkdir -p ~/GitHub && cd $_
 gh repo clone barabasz/bin
 ln -sf ~/GitHub/bin/linux ~/bin
 gh repo clone barabasz/bintest
-ln -sf ~/GitHub/bintest/linux ~/bintest
+ln -sf ~/GitHub/bintest/linux ~/bin/test
 gh repo clone barabasz/config

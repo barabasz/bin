@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+text="Ala ma kota..."
+printf '%s\n' "${(%):-%F{green}$text${(%):-%f}"

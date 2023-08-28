@@ -1,6 +1,11 @@
 #!/bin/zsh
 source ~/bin/colors
 
+# -----------------------------------
+# Archival script replaced by urlinfo
+# https://github.com/barabasz/urlinfo
+# -----------------------------------
+
 # CONFIG
 timeout=2
 trimurl=70
