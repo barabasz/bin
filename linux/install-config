@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+if [ ! -d ~/GitHub/config ]; then
+    mkdir -p ~/GitHub && cd $_
+    gh repo clone barabasz/config
+else
+    cd ~/GitHub/config
+    gh repo sync
+fi
+
