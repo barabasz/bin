@@ -1,0 +1,42 @@
+#!/bin/sh
+
+github=""
+
+# Git, gh
+# install-git
+
+# repos
+# install-repos
+/bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/barabasz/config/main/ubuntu.sh)"
+
+
+# zsh & omz
+install-zsh
+install-omz
+
+# remove snap
+remove-snap
+
+# minimize login info
+fix-login-info
+
+# set locale
+set-locale
+
+# core tools & apps
+install-essentials
+
+# Pyhon & pip
+install-python
+
+# PHP
+install-php
+
+# Lua
+install-lua
+
+# mc (Midnight Commander)
+install-mc
+
+# nvim (neovim)
+install-nvim

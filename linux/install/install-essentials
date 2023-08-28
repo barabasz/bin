@@ -12,8 +12,4 @@ sudo NEEDRESTART_MODE=a apt install -y net-tools lsb-release apt-transport-https
 
 # Basic languages
 sudo NEEDRESTART_MODE=a apt -y install build-essential cmake ninja-build
-# Python
-sudo NEEDRESTART_MODE=a apt -y install python3 python3-pip lua5.4
-# Lua
-sudo NEEDRESTART_MODE=a apt -y install lua5.4
-# PHP
+

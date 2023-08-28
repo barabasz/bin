@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 sudo NEEDRESTART_MODE=a apt -y install fuse
 mkdir -p ~/Downloads && cd $_

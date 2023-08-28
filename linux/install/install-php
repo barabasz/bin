@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 sudo add-apt-repository ppa:ondrej/php
 sudo NEEDRESTART_MODE=a apt -y install php8.2
