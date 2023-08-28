@@ -1,11 +1,16 @@
 #!/bin/bash
 
 envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
+aptopt="-qq"
 
-sudo apt update
-sudo $envopt apt -qq upgrade
-sudo apt dist-upgrade
-sudo apt -y clean
-sudo apt -y autoclean
-sudo apt -y autoremove
+echo "Updating packages..."
+sudo apt-get update > /dev/null
+echo "Upgrading packages..."
+sudo $envopt apt-get $aptopt upgrade > /dev/null
+echo "Upgrading distribution..."
+sudo $envopt apt-get $aptopt dist-upgrade > /dev/null
+echo "Cleaning..."
+sudo apt-get $aptopt clean > /dev/null
+sudo apt-get $aptopt autoclean > /dev/null
+sudo apt-get $aptopt autoremove > /dev/null
 sudo sync

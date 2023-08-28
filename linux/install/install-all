@@ -11,6 +11,9 @@ github="https://raw.githubusercontent.com/barabasz/bin/main/linux/install"
 # clone setup repositories
 /bin/bash -c "$(curl -fsSL $github/install-repos)"
 
+# add path to scripts
+/bin/bash -c "$(curl -fsSL $github/install-path)"
+
 # zsh & omz
 install-zsh
 install-omz

@@ -5,4 +5,5 @@ aptopt="-qq"
 
 echo "Installing git..."
 sudo $envopt apt-get install $aptopt git gh > /dev/null
+echo "Authenticating to GitHub..."
 gh auth login
