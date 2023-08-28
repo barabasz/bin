@@ -13,7 +13,6 @@ github="https://raw.githubusercontent.com/barabasz/bin/main/linux/install"
 # zsh & omz
 #install-zsh
 /bin/bash -c "$(curl -fsSL $github/install-zsh)"
-install-omz
 
 # remove snap
 remove-snap
