@@ -1,4 +1,4 @@
 #!/bin/bash
 
-source functions/aptinstall
+source ~/binc/functions/aptinstall
 aptinstall $@

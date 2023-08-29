@@ -10,32 +10,32 @@ printhead 'Updating system...'
 gitscript $github/install-updates
 
 # Git, gh
-printinf 'Installing git...'
+printhead 'Installing git...'
 gitscript $github/install-git
 
 # clone setup repositories
-printinf 'Cloning setup repositories...'
+printhead 'Cloning setup repositories...'
 gitscript $github/install-repos
 
 # set temporary path
 gitsource $github/install-path
 
 # set locale
-printinf 'Setting locale...'
-install-locale
+printhead 'Setting locale...'
+set-locale
 
 # minimize login info
-printinf 'Minimizing login info...'
+printhead 'Minimizing login info...'
 fix-login-info
 
 # remove snap
-printinf 'Removing snap...'
+printhead 'Removing snap...'
 remove-snap
 
 # zsh
-printinf 'Installing zsh...'
+printhead 'Installing zsh...'
 install-zsh
 
 # omz
-printinf 'Installing oh-my-zsh...'
+printhead 'Installing oh-my-zsh...'
 install-omz

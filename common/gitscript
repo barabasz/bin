@@ -1,0 +1,4 @@
+#!/bin/bash
+
+source ~/binc/functions/gitscript
+gitscript $1
