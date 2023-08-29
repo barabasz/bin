@@ -1,10 +1,6 @@
 #!/bin/bash
 
-envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
-aptopt="-qq"
-
-sudo $envopt apt-get install $aptopt fuse
-
+aptinstall fuse
 mkdir -p ~/Downloads && cd $_
 curl -fsSLO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage 
