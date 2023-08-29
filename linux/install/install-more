@@ -1,15 +1,4 @@
-#!/bin/bash
-
-github="https://raw.githubusercontent.com/barabasz/bin/main/linux/install"
-
-# Load functions
-source /dev/stdin <<< "$(curl -fsSL $github/load-functions)"
-
-# Install core
-gitscript $github/install-core
-
-# set temporary path
-gitsource $github/set-path
+#!/bin/zsh
 
 # core tools & apps
 printhead 'Installing essential packages...'
