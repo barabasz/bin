@@ -2,9 +2,10 @@
 
 envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
 aptopt="-qq"
+filter='^NEEDRESTART|^update|Reading'
 
 sudo apt-get update
-sudo $envopt apt-get $aptopt upgrade
+sudo $envopt apt-get $aptopt upgrade | grep -Ev $filter
 sudo $envopt apt-get $aptopt dist-upgrade
 
 sudo apt-get $aptopt clean

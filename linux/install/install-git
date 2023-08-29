@@ -1,6 +1,6 @@
 #!/bin/bash
 
 # load aptinstall
-source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/barabasz/bin/main/linux/functions/aptinstall)"
+gitsource https://raw.githubusercontent.com/barabasz/bin/main/linux/functions/aptinstall
 
 aptinstall git

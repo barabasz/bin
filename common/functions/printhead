@@ -1,5 +1,5 @@
 #!/bin/bash
 
 function printhead() {
-    printf "\n\e[1m\e[33m"$1"\033[0m\n\n"
+    printf "\n\e[1m\e[33m$1\033[0m\n\n"
 }
