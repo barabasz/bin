@@ -9,7 +9,7 @@ source /dev/stdin <<< "$(curl -fsSL $github/load-functions)"
 printhead 'Updating system...'
 gitscript $github/install-updates
 
-# Git, gh
+# Git
 printhead 'Installing git...'
 gitscript $github/install-git
 
