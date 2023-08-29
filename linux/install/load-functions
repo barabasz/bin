@@ -1,0 +1,4 @@
+#!/bin/bash
+
+source /dev/stdin <<< "$(curl -fsSL $1)"
+

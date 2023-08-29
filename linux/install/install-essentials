@@ -1,16 +1,13 @@
 #!/bin/bash
 
-envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
-aptopt="-qq"
-
 # Certs & security
-sudo $envopt apt-get install $aptopt openssh-server gnupg2 ca-certificates acl
+aptinstall openssh-server gnupg2 ca-certificates acl
 
 # Software info
-sudo $envopt apt-get install $aptopt lsb-release software-properties-common
+aptinstall lsb-release software-properties-common
 
 # Basic tools
-sudo $envopt apt-get install $aptopt net-tools apt-transport-https
+aptinstall net-tools apt-transport-https
 
 # Basic languages
-sudo $envopt apt-get install $aptopt build-essential cmake ninja-build
+aptinstall build-essential cmake ninja-build

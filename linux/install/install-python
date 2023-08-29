@@ -1,7 +1,4 @@
 #!/bin/bash
 
-envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
-aptopt="-qq"
-
-sudo $envopt apt-get install $aptopt python3 python3-pip
+aptinstall python3 python3-pip
 

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+function gitscript() {
+    /bin/bash -c "$(curl -fsSL $1)"
+}

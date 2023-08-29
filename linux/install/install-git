@@ -1,7 +1,6 @@
 #!/bin/bash
 
-envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
-aptopt="-qq"
+# load aptinstall
+source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/barabasz/bin/main/linux/functions/aptinstall)"
 
-sudo $envopt apt-get install $aptopt git gh
-# gh auth login
+aptinstall git
