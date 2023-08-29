@@ -2,7 +2,8 @@
 
 github="https://raw.githubusercontent.com/barabasz/bin/main/linux/install"
 
-#### load printinf
+# load functions
+source /dev/stdin <<< "$(curl -fsSL $github/load-functions)"
 
 # Update and upgrade
 printhead 'Updating system...'

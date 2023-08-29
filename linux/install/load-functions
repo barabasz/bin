@@ -1,4 +1,8 @@
 #!/bin/bash
 
-source /dev/stdin <<< "$(curl -fsSL $1)"
+gitpath=https://raw.githubusercontent.com/barabasz/bin/main/common/functions/
+
+source /dev/stdin <<< "$(curl -fsSL $gitpath/printhead)"
+source /dev/stdin <<< "$(curl -fsSL $gitpath/gitscript)"
+source /dev/stdin <<< "$(curl -fsSL $gitpath/gitsource)"
 
