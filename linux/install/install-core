@@ -1,0 +1,35 @@
+#!/bin/bash
+
+github="https://raw.githubusercontent.com/barabasz/bin/main/linux/install"
+
+function printinf() {
+    echo -e "\n\e[1m\e[33m"$1"\033[0m\n"
+}
+
+# Update and upgrade
+printinf 'Updating system...'
+/bin/bash -c "$(curl -fsSL $github/install-updates)"
+
+# Git, gh
+printinf 'Installing git...'
+/bin/bash -c "$(curl -fsSL $github/install-git)"
+
+# clone setup repositories
+printinf 'Cloning setup repositories...'
+/bin/bash -c "$(curl -fsSL $github/install-repos)"
+
+# set locale
+printinf 'Setting locale...'
+install-locale
+
+# minimize login info
+printinf 'Minimizing login info...'
+fix-login-info
+
+# remove snap
+printinf 'Removing snap...'
+remove-snap
+
+# zsh
+printinf 'Installing zsh...'
+install-zsh

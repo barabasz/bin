@@ -17,23 +17,23 @@ echo "Cloning setup repositories..."
 # add path to scripts
 export PATH=$HOME/bin:$HOME/bin/install:$HOME/binc:$HOME/binc/test:/usr/local/bin:$PATH
 
-# zsh & omz
-echo 'Installing zsh...'
-install-zsh
-echo 'Installing oh-my-zsh...'
-install-omz
-
-# remove snap
-echo 'Removing snap...'
-remove-snap
+# set locale
+echo 'Setting locale...'
+install-locale
 
 # minimize login info
 echo 'Minimizing login info...'
 fix-login-info
 
-# set locale
-echo 'Setting locale...'
-install-locale
+# remove snap
+echo 'Removing snap...'
+remove-snap
+
+# zsh & omz
+echo 'Installing zsh...'
+install-zsh
+echo 'Installing oh-my-zsh...'
+install-omz
 
 # core tools & apps
 echo 'Installing essential packages...'

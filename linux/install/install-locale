@@ -5,4 +5,20 @@ aptopt="-qq"
 
 sudo $envopt apt-get install $aptopt language-pack-pl-base language-pack-pl
 sudo locale-gen pl_PL.UTF-8
-sudo cp -f ~/GitHub/config/default/locale /etc/default/locale
+
+sudo localectl set-locale LANG=en_US.UTF-8
+sudo localectl set-locale LANGUAGE=en_US:en:C
+sudo localectl set-locale LC_MESSAGES=en_US.UTF-8
+
+sudo localectl set-locale LC_ADDRESS=en_US.UTF-8
+sudo localectl set-locale LC_COLLATE=pl_PL.UTF-8
+sudo localectl set-locale LC_CTYPE=pl_PL.UTF-8
+sudo localectl set-locale LC_IDENTIFICATION=pl_PL.UTF-8
+sudo localectl set-locale LC_MEASUREMENT=pl_PL.UTF-8
+sudo localectl set-locale LC_MONETARY=pl_PL.UTF-8
+sudo localectl set-locale LC_MONETARY=pl_PL.UTF-8
+sudo localectl set-locale LC_NAME=en_US.UTF-8
+sudo localectl set-locale LC_NUMERIC=pl_PL.UTF-8
+sudo localectl set-locale LC_PAPER=pl_PL.UTF-8
+sudo localectl set-locale LC_TELEPHONE=en_US.UTF-8
+sudo localectl set-locale LC_TIME=pl_PL.UTF-8
