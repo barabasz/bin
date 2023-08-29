@@ -6,6 +6,7 @@ sudo printf ''
 # load functions
 printf "\n\e[33m\e[1mLoading functions...\033[0m\n"
 source /dev/stdin <<< "$(curl -fsSL $github/load-functions)"
+echo 'OK'
 
 # Update and upgrade
 printhead 'Updating system...'
@@ -32,6 +33,7 @@ set-locale
 # minimize login info
 printhead 'Minimizing login info...'
 fix-login-info
+echo 'OK'
 
 # remove snap
 printhead 'Removing snap...'
