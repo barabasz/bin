@@ -18,7 +18,7 @@ printhead 'Cloning setup repositories...'
 gitscript $github/install-repos
 
 # set temporary path
-gitsource $github/install-path
+gitsource $github/set-path
 
 # set locale
 printhead 'Setting locale...'
