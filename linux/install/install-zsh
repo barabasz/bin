@@ -1,13 +1,11 @@
 #!/bin/bash
 
-# load aptinstall
-source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/barabasz/bin/main/linux/functions/aptinstall)"
-
 # install zsh
 aptinstall zsh
 
 # set default shell
-chsh -s $(which zsh)
+# chsh -s $(which zsh)
+sudo chsh -s $(which zsh) $(whoami)
 
 # make temporary .zshrc
 echo 'export PATH=$HOME/bin:$HOME/bin/install:$HOME/binc:$PATH' >> ~/.zshrc

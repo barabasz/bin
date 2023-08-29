@@ -1,8 +1,10 @@
 #!/bin/bash
 
 github="https://raw.githubusercontent.com/barabasz/bin/main/linux/install"
+sudo printf ''
 
 # load functions
+printf "\n\e[33m\e[1mLoading functions...\033[0m\n"
 source /dev/stdin <<< "$(curl -fsSL $github/load-functions)"
 
 # Update and upgrade
@@ -12,13 +14,16 @@ gitscript $github/install-updates
 # Git
 printhead 'Installing git...'
 gitscript $github/install-git
+echo 'OK'
 
 # clone setup repositories
 printhead 'Cloning setup repositories...'
 gitscript $github/install-repos
 
 # set temporary path
+printhead 'Setting path...'
 gitsource $github/set-path
+echo 'OK'
 
 # set locale
 printhead 'Setting locale...'
