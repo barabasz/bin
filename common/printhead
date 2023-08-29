@@ -1,4 +1,4 @@
 #!/bin/bash
 
 source ~/binc/functions/printhead
-printhead $1
+printhead $*

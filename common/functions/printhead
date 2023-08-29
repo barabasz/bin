@@ -1,5 +1,9 @@
 #!/bin/bash
 
 function printhead() {
-    printf "\n\e[1m\e[33m$1\033[0m\n\n"
+    bold='\e[1m'
+    yellow='\e[33m'
+    clear='\033[0m'
+    output="\n${yellow}${bold}"$*"${clear}\n"
+    printf "$output"
 }
