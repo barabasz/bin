@@ -1,2 +1,3 @@
 #!/bin/zsh
+
 php ~/GitHub/urlinfo/src/urlinfo.php $@

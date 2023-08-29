@@ -1,2 +1,3 @@
 #!/bin/zsh
+
 php --define phar.readonly=0 ~/GitHub/makephar/makephar.php ${PWD}
