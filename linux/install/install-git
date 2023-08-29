@@ -1,11 +1,7 @@
 #!/bin/bash
 
-github="https://raw.githubusercontent.com/barabasz/bin/main/linux/install"
-
 # load functions
+github="https://raw.githubusercontent.com/barabasz/bin/main/linux/install"
 source /dev/stdin <<< "$(curl -fsSL $github/load-functions)"
-
-# load aptinstall
-gitsource https://raw.githubusercontent.com/barabasz/bin/main/linux/functions/aptinstall
 
 aptinstall git
