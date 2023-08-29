@@ -6,6 +6,9 @@ function printinf() {
     echo -e "\n\e[1m\e[33m"$1"\033[0m\n"
 }
 
+# load aptinstall
+source /dev/stdin <<< "$(curl -fsSL $github/install-path)"
+
 # Update and upgrade
 printinf 'Updating system...'
 /bin/bash -c "$(curl -fsSL $github/install-updates)"
@@ -17,6 +20,9 @@ printinf 'Installing git...'
 # clone setup repositories
 printinf 'Cloning setup repositories...'
 /bin/bash -c "$(curl -fsSL $github/install-repos)"
+
+# set temporary path
+source /dev/stdin <<< "$(curl -fsSL $github/install-path)"
 
 # set locale
 printinf 'Setting locale...'
@@ -33,3 +39,7 @@ remove-snap
 # zsh
 printinf 'Installing zsh...'
 install-zsh
+
+# omz
+echo 'Installing oh-my-zsh...'
+install-omz

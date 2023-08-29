@@ -2,38 +2,8 @@
 
 github="https://raw.githubusercontent.com/barabasz/bin/main/linux/install"
 
-# Update and upgrade
-sudo echo -e "\nUpdating system..."
-/bin/bash -c "$(curl -fsSL $github/install-updates)"
-
-# Git, gh
-echo "Installing git..."
-/bin/bash -c "$(curl -fsSL $github/install-git)"
-
-# clone setup repositories
-echo "Cloning setup repositories..."
-/bin/bash -c "$(curl -fsSL $github/install-repos)"
-
-# add path to scripts
-export PATH=$HOME/bin:$HOME/bin/install:$HOME/binc:$HOME/binc/test:/usr/local/bin:$PATH
-
-# set locale
-echo 'Setting locale...'
-install-locale
-
-# minimize login info
-echo 'Minimizing login info...'
-fix-login-info
-
-# remove snap
-echo 'Removing snap...'
-remove-snap
-
-# zsh & omz
-echo 'Installing zsh...'
-install-zsh
-echo 'Installing oh-my-zsh...'
-install-omz
+# Install core
+/bin/bash -c "$(curl -fsSL $github/install-core)"
 
 # core tools & apps
 echo 'Installing essential packages...'

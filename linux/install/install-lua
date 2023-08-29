@@ -1,9 +1,3 @@
 #!/bin/bash
 
-#envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
-#aptopt="-qq"
-#filter="grep  -Ev '^NEEDRESTART|^update|Reading'"
-#sudo $envopt apt-get install $aptopt lua5.4 | $filter
-
-source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/barabasz/bin/main/linux/install/install-path)"
 aptinstall lua5.4
