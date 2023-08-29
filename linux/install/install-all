@@ -2,31 +2,34 @@
 
 github="https://raw.githubusercontent.com/barabasz/bin/main/linux/install"
 
+# Load functions
+source /dev/stdin <<< "$(curl -fsSL $github/load-functions)"
+
 # Install core
-/bin/bash -c "$(curl -fsSL $github/install-core)"
+gitscript $github/install-core
 
 # core tools & apps
-echo 'Installing essential packages...'
+printhead 'Installing essential packages...'
 install-essentials
 
 # Pyhon & pip
-echo 'Installing Python...'
+printhead 'Installing Python...'
 install-python
 
 # PHP
-echo 'Installing PHP...'
+printhead 'Installing PHP...'
 install-php
-echo 'Installing PHP Composer...'
+printhead 'Installing PHP Composer...'
 install-composer
 
 # Lua
-echo 'Installing Lua...'
+printhead 'Installing Lua...'
 install-lua
 
 # mc (Midnight Commander)
-echo 'Installing mc...'
+printhead 'Installing mc...'
 install-mc
 
 # nvim (neovim)
-echo 'Installing nvim...'
+printhead 'Installing nvim...'
 install-nvim
