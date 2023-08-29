@@ -8,6 +8,9 @@ source /dev/stdin <<< "$(curl -fsSL $github/load-functions)"
 # Install core
 gitscript $github/install-core
 
+# set temporary path
+gitsource $github/set-path
+
 # core tools & apps
 printhead 'Installing essential packages...'
 install-essentials
