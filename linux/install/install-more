@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+sudo printf ''
+
 # core tools & apps
 printhead 'Installing essential packages...'
 install-essentials
@@ -13,6 +15,7 @@ printhead 'Installing PHP...'
 install-php
 printhead 'Installing PHP Composer...'
 install-composer
+echo 'OK'
 
 # Lua
 printhead 'Installing Lua...'

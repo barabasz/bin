@@ -21,14 +21,14 @@ echo 'OK'
 printhead 'Cloning setup repositories...'
 gitscript $github/install-repos
 
+# set locale
+printhead 'Setting locale...'
+gitsource $github/set-locale
+
 # set temporary path
 printhead 'Setting path...'
 gitsource $github/set-path
 echo 'OK'
-
-# set locale
-printhead 'Setting locale...'
-set-locale
 
 # minimize login info
 printhead 'Minimizing login info...'
