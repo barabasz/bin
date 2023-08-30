@@ -1,7 +1,12 @@
 #!/bin/bash
 
-aptinstall language-pack-pl-base language-pack-pl
-#sudo locale-gen pl_PL.UTF-8
+# load functions
+github="https://raw.githubusercontent.com/barabasz/bin/main/linux/install"
+source /dev/stdin <<< "$(curl -fsSL $github/load-functions)"
+
+if [[ "$(osname)" == "ubuntu" ]]; then
+    aptinstall language-pack-pl-base language-pack-pl
+fi
 
 sudo localectl set-locale LANG=en_US.UTF-8
 sudo localectl set-locale LANGUAGE=en_US:en:C
