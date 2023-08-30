@@ -3,11 +3,11 @@
 cd ~/GitHub/bin
 git fetch origin
 git checkout main
-git reset --hard origin/maain
+git reset --hard origin/main
 git pull
 
 cd ~/GitHub/config
 git fetch origin
 git checkout main
-git reset --hard origin/maain
+git reset --hard origin/main
 git pull
