@@ -1,6 +1,5 @@
 #!/bin/bash
 
-gitpath=https://raw.githubusercontent.com/barabasz/bin/main/common/functions/
-
-source /dev/stdin <<< "$(curl -fsSL $gitpath/printhead)"
+gitpath=https://raw.githubusercontent.com/barabasz/config/main/zsh/
+source /dev/stdin <<< "$(curl -fsSL $gitpath/.zsh_functions)"
 

@@ -10,24 +10,24 @@ echo 'OK'
 
 # Update and upgrade
 printhead 'Updating system...'
-gitscript $github/install-updates
+extscript $github/install-updates
 
 # Git
 printhead 'Installing git...'
-gitscript $github/install-git
+extscript $github/install-git
 echo 'OK'
 
 # clone setup repositories
 printhead 'Cloning setup repositories...'
-gitscript $github/install-repos
+extscript $github/install-repos
 
 # set locale
 printhead 'Setting locale...'
-gitsource $github/set-locale
+extsource $github/set-locale
 
 # set temporary path
 printhead 'Setting path...'
-gitsource $github/set-path
+extsource $github/set-path
 echo 'OK'
 
 # minimize login info
