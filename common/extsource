@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# load functions
+source ~/.zsh_functions
+
+extsource $*

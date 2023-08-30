@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+# read su password
 sudo printf ''
 
 # gh
