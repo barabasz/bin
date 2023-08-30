@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+cd ~/GitHub/bin
+gh repo sync
+cd ~/GitHub/config
+gh repo sync
