@@ -1,6 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 
-sudo snap remove --purge lxd
-sudo snap remove --purge core20
-sudo snap remove --purge snapd
-sudo apt-get -qq remove --purge --autoremove snapd
+# load functions
+github="https://raw.githubusercontent.com/barabasz/bin/main/linux/install"
+source /dev/stdin <<< "$(curl -fsSL $github/load-functions)"
+
+if [[ "$(osname)" == "ubuntu" ]]; then
+    if [[ "$(which snap | grep -o 'snap')" == "snap" ]]; then
+        sudo snap remove --purge lxd
+        sudo snap remove --purge core20
+        sudo snap remove --purge snapd
+        sudo apt-get -qq remove --purge --autoremove snapd
+    fi
+else
+    echo 'Snap not installed.'
+fi

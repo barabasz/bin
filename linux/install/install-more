@@ -33,3 +33,7 @@ install-mc
 # nvim (neovim)
 printhead 'Installing nvim...'
 install-nvim
+
+# brew
+printhead 'Installing brew...'
+install-brew
