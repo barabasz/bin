@@ -10,4 +10,4 @@ aptinstall lsb-release software-properties-common
 aptinstall net-tools apt-transport-https
 
 # Basic languages
-aptinstall build-essential cmake ninja-build
+aptinstall build-essential gcc cmake ninja-build

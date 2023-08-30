@@ -2,6 +2,10 @@
 
 sudo printf ''
 
+# gh
+printhead 'Installing GitHub CLI...'
+install-gh
+
 # core tools & apps
 printhead 'Installing essential packages...'
 install-essentials

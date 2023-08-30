@@ -2,7 +2,7 @@
 
 envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
 aptopt="-qq"
-filter1='^Hit:|^Get:|E:'
+filter1='^Hit|^Get'
 filter2='^NEEDRESTART|^update|Reading'
 
 sudo apt-get update | grep -Ev $filter1

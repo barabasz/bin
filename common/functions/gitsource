@@ -1,5 +1,0 @@
-#!/bin/bash
-
-function gitsource() {
-    source /dev/stdin <<< "$(curl -fsSL $1)"
-}

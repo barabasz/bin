@@ -1,9 +1,0 @@
-#!/bin/bash
-
-function printhead() {
-    bold='\e[1m'
-    yellow='\e[33m'
-    clear='\033[0m'
-    output="\n${yellow}${bold}"$*"${clear}\n"
-    printf "$output"
-}

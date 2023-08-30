@@ -1,5 +1,10 @@
 #!/bin/bash
 
+ln -sf ~/GitHub/config/zsh/.zprofile ~/
+ln -sf ~/GitHub/config/zsh/.zshrc ~/
+ln -sf ~/GitHub/config/zsh/.zsh_aliases ~/
+ln -sf ~/GitHub/config/zsh/.zsh_functions ~/
+
 # install zsh
 aptinstall zsh
 
