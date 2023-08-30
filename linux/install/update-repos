@@ -1,6 +1,13 @@
 #!/bin/zsh
 
 cd ~/GitHub/bin
-gh repo sync
+git fetch origin
+git checkout main
+git reset --hard origin/maain
+git pull
+
 cd ~/GitHub/config
-gh repo sync
+git fetch origin
+git checkout main
+git reset --hard origin/maain
+git pull
