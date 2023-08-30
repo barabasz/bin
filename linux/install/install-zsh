@@ -1,12 +1,13 @@
 #!/bin/bash
 
-# load functions
-source ~/.zsh_functions
-
+# symbolic links
 ln -sf ~/GitHub/config/zsh/.zprofile ~/
 ln -sf ~/GitHub/config/zsh/.zshrc ~/
 ln -sf ~/GitHub/config/zsh/.zsh_aliases ~/
 ln -sf ~/GitHub/config/zsh/.zsh_functions ~/
+
+# load functions
+source ~/.zsh_functions
 
 # fallback for bash's shopt (Fedora)
 sudo ln -sf ~/GitHub/bin/common/shopt /usr/bin/shopt
