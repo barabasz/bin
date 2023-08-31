@@ -1,12 +1,8 @@
 #!/bin/bash
 
 mkdir -p ~/GitHub && cd $_
-
-# gh repo clone barabasz/bin
 git clone https://github.com/barabasz/bin.git
-# gh repo clone barabasz/config
-git clone https://github.com/barabasz/config.git
-
 ln -sf ~/GitHub/bin/linux ~/bin
 ln -sf ~/GitHub/bin/common ~/binc
+git clone https://github.com/barabasz/config.git
 

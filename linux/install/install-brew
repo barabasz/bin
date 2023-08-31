@@ -1,9 +1,0 @@
-#!/bin/bash
-
-# Dependencies
-aptinstall fzf
-
-# Brew (unattended installation)
-sudo mkdir -p /home/linuxbrew/
-sudo chmod 755 /home/linuxbrew/
-NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

@@ -1,0 +1,65 @@
+#!/bin/bash
+
+github="https://raw.githubusercontent.com/barabasz/bin/main/common/install"
+
+# load functions
+sudo printf "\n\e[33m\e[1mLoading functions...\033[0m\n"
+source /dev/stdin <<< "$(curl -fsSL $github/load-functions)"
+echo 'OK'
+
+# Update and upgrade
+if [[ ! "$(osname)" == "macos" ]]; then
+    printhead 'Updating system...'
+    extscript $github/install-updates
+fi
+
+# brew
+printhead 'Installing brew...'
+install-brew
+install-brew-essentials
+
+# Git
+printhead 'Installing git...'
+extscript $github/install-git
+echo 'OK'
+
+# clone setup repositories
+printhead 'Cloning setup repositories...'
+extscript $github/install-repos
+
+# set locale
+if [[ "$(osname)" == "ubuntu" ]]; then
+    printhead 'Setting locale...'
+    extsource $(echo $github | sed 's/common\/install/linux/')/set-locale
+fi
+
+# set temporary path
+printhead 'Setting path...'
+extsource $github/set-path
+echo 'OK'
+
+# minimize login info
+if [[ ! "$(osname)" == "macos" ]]; then
+    printhead 'Minimizing login info...'
+    fix-login-info
+    echo 'OK'
+fi
+
+# remove snap
+if [[ "$(osname)" == "ubuntu" ]]; then
+    printhead 'Removing snap...'
+    remove-snap
+fi
+
+# zsh
+if [[ ! "$(osname)" == "macos" ]]; then
+    printhead 'Installing zsh...'
+    install-zsh
+fi
+
+# omz
+printhead 'Installing oh-my-zsh...'
+install-omz
+omz reload
+
+printhead 'Core installation completed.'

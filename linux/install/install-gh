@@ -1,4 +1,0 @@
-#!/bin/bash
-
-aptinstall gh
-gh auth login

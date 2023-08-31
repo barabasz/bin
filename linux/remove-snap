@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [[ "$(which snap | grep -o 'snap')" == "snap" ]]; then
+    sudo snap remove --purge lxd
+    sudo snap remove --purge core20
+    sudo snap remove --purge snapd
+    sudo apt-get -qq remove --purge --autoremove snapd
+else
+    echo 'Snap not installed.'
+fi

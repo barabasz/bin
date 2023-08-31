@@ -4,4 +4,9 @@
 github="https://raw.githubusercontent.com/barabasz/bin/main/linux/install"
 source /dev/stdin <<< "$(curl -fsSL $github/load-functions)"
 
-aptinstall git
+if [[ "$(osname)" == "macos" ]]; then
+    xcode-select --install
+else
+    aptinstall git
+fi
+

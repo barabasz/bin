@@ -6,16 +6,18 @@ ln -sf ~/GitHub/config/zsh/.zshrc ~/
 ln -sf ~/GitHub/config/zsh/.zsh_aliases ~/
 ln -sf ~/GitHub/config/zsh/.zsh_functions ~/
 
-# load functions
+# load aliases & functions
+source ~/.zsh_aliases
 source ~/.zsh_functions
 
-# fallback for bash's shopt (Fedora)
+# fallback for bash's shopt
 sudo ln -sf ~/GitHub/bin/common/shopt /usr/bin/shopt
 
 # install zsh
-aptinstall zsh
+if [[ ! "$(osname)" == "macos" ]]; then
+    aptinstall zsh
+fi
 
 # set default shell
 # chsh -s $(which zsh)
 sudo chsh -s $(which zsh) $(whoami)
-

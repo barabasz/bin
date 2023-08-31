@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-mkdir -p ~/GitHub && cd $_
-gh repo clone barabasz/bin
-ln -sf ~/GitHub/bin/macos ~/bin
-ln -sf ~/GitHub/bin/common ~/binc
-gh repo clone barabasz/config

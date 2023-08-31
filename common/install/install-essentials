@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Certs & security
 aptinstall openssh-server gnupg2 ca-certificates acl

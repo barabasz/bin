@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ "$(osname)" == "macos" ]]; then
+    brew install lua
+else
+    aptinstall lua5.4
+fi

@@ -1,6 +1,0 @@
-#!/bin/bash
-
-sudo chmod -x /etc/update-motd.d/10-help-text
-sudo chmod -x /etc/update-motd.d/50-motd-news
-sudo chmod -x /etc/update-motd.d/90-updates-available
-sudo chmod -x /etc/update-motd.d/91-contract-ua-esm-status

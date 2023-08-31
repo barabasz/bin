@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ "$(osname)" == "macos" ]]; then
+    brew install gh
+else
+    aptinstall gh
+fi
+
+gh auth login

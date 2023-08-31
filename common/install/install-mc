@@ -1,6 +1,11 @@
 #!/bin/bash
 
-aptinstall mc
+if [[ "$(osname)" == "macos" ]]; then
+    brew install midnight-commander
+else
+    aptinstall mc
+fi
+
 mkdir -p ~/.config/mc
 ln -sf ~/GitHub/config/mc/ini ~/.config/mc/ini
 ln -sf ~/GitHub/config/mc/panels.ini ~/.config/mc/panels.ini

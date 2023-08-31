@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Debian fix
+if [[ "$(osname)" == "debian" ]]; then
+    sudo mkdir -p /home/linuxbrew/
+    sudo chmod 755 /home/linuxbrew/
+else
+
+# Brew (unattended installation)
+NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Execute shellenv
+if [[ -f /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+# Disable analytics
+brew analytics off
+
+# User env settings
+mkdir -p $HOMEBREW_PREFIX/etc/homebrew
+ln -sf ~/GitHub/config/brew/brew.env $HOMEBREW_PREFIX/etc/homebrew/brew.env
+source $HOMEBREW_PREFIX/etc/homebrew/brew.env
+
+# Install essentials
+brew install fzf ncurses tree zlib
