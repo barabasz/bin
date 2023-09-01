@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# load functions
+github="https://raw.githubusercontent.com/barabasz/bin/main/common/install"
+source /dev/stdin <<< "$(curl -fsSL $github/load-functions)"
+
 if [[ ! "$(osname)" == "macos" ]]; then
     envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"
     aptopt="-qq"
