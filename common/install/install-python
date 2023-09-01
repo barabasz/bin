@@ -1,4 +1,11 @@
 #!/bin/bash
 
-aptinstall python3 python3-pip
-
+if [[ "$(isinstalled python3)" == "no" ]]; then
+    if [[ "$(osname)" == "macos" ]]; then
+        brew install python3
+    else
+        aptinstall python3 python3-pip
+    fi
+else
+    echo "Python is installed: $(python3 --version)"
+fi

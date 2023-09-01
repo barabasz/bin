@@ -1,9 +1,17 @@
 #!/bin/bash
 
-if [[ "$(osname)" == "macos" ]]; then
-    brew install gh
+if [[ "$(isinstalled gh)" == "no" ]]; then
+    if [[ "$(osname)" == "macos" ]]; then
+        brew install gh
+    else
+        aptinstall gh
+    fi
 else
-    aptinstall gh
+    gh --version
 fi
 
-gh auth login
+if [[ "$(gh auth status | grep -o 'Logged')" == "Logged" ]]; then
+    gh auth status | grep 'Logged'
+else
+    gh auth login
+fi

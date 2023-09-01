@@ -1,9 +1,13 @@
 #!/bin/bash
 
-if [[ "$(osname)" == "macos" ]]; then
-    brew install midnight-commander
-else
-    aptinstall mc
+if [[ "$(isinstalled mc)" == "no" ]]; then
+    if [[ "$(osname)" == "macos" ]]; then
+        brew install -q midnight-commander
+    else
+        aptinstall mc
+    fi
+else 
+    mc --version | grep 'Midnight Commander'
 fi
 
 mkdir -p ~/.config/mc

@@ -1,13 +1,8 @@
 #!/bin/zsh
 
-# Certs & security
-aptinstall openssh-server gnupg2 ca-certificates acl
+if [[ "$(osname)" == "macos" ]]; then
+    brew install -q net-tools ca-certificates fzf
+else
+    aptinstall net-tools ca-certificates fzf acl lsb-release software-properties-common build-essential gcc cmake ninja-build
+fi
 
-# Software info
-aptinstall lsb-release software-properties-common
-
-# Basic tools
-aptinstall net-tools apt-transport-https
-
-# Basic languages
-aptinstall build-essential gcc cmake ninja-build

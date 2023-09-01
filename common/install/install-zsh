@@ -14,7 +14,7 @@ source ~/.zsh_functions
 sudo ln -sf ~/GitHub/bin/common/shopt /usr/bin/shopt
 
 # install zsh
-if [[ ! "$(osname)" == "macos" ]]; then
+if [[ "$(isinstalled zsh)" == "no" ]]; then
     aptinstall zsh
 fi
 

@@ -1,9 +1,10 @@
 #!/bin/bash
 
 github="https://raw.githubusercontent.com/barabasz/bin/main/common/install"
+sudo echo > /dev/null
 
 # load functions
-sudo printf "\n\e[33m\e[1mLoading functions...\033[0m\n"
+printf "\n\e[33m\e[1mLoading functions...\033[0m\n"
 source /dev/stdin <<< "$(curl -fsSL $github/load-functions)"
 echo 'OK'
 
@@ -16,7 +17,6 @@ fi
 # brew
 printhead 'Installing brew...'
 install-brew
-install-brew-essentials
 
 # Git
 printhead 'Installing git...'

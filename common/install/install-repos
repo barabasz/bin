@@ -1,8 +1,21 @@
 #!/bin/bash
 
 mkdir -p ~/GitHub && cd $_
-git clone https://github.com/barabasz/bin.git
-ln -sf ~/GitHub/bin/linux ~/bin
-ln -sf ~/GitHub/bin/common ~/binc
-git clone https://github.com/barabasz/config.git
 
+if [[ ! -d ~/GitHub/bin ]]; then
+    git clone https://github.com/barabasz/bin.git
+fi
+
+if [[ ! -d ~/GitHub/config ]]; then
+    git clone https://github.com/barabasz/config.git
+fi
+
+# Common scripts
+ln -sf ~/GitHub/bin/common ~/binc
+
+# OS-specific scripts
+if [[ "$(osname)" == "macos" ]]; then
+    ln -sf ~/GitHub/bin/macos ~/bin
+else
+    ln -sf ~/GitHub/bin/linux ~/bin
+fi

@@ -1,12 +1,15 @@
 #!/bin/bash
 
 # load functions
-github="https://raw.githubusercontent.com/barabasz/bin/main/linux/install"
+github="https://raw.githubusercontent.com/barabasz/bin/main/common/install"
 source /dev/stdin <<< "$(curl -fsSL $github/load-functions)"
 
-if [[ "$(osname)" == "macos" ]]; then
-    xcode-select --install
+if [[ "$(isinstalled git)" == "no" ]]; then
+    if [[ "$(osname)" == "macos" ]]; then
+        xcode-select --install
+    else
+        aptinstall git
+    fi
 else
-    aptinstall git
+    git --version
 fi
-
