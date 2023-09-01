@@ -1,5 +1,0 @@
-#!/bin/bash
-
-gitpath=https://raw.githubusercontent.com/barabasz/config/main/zsh/
-source /dev/stdin <<< "$(curl -fsSL $gitpath/.zsh_functions)"
-
