@@ -30,5 +30,7 @@ fi
 
 # set default shell
 if [[ "$(echo $SHELL | grep -o 'zsh')" != "zsh" ]]; then
+    sudo sed -i 's/required/sufficient/g' /etc/pam.d/chsh
     sudo chsh -s $(which zsh) $(whoami)
+    sudo sed -i 's/sufficient/required/g' /etc/pam.d/chsh
 fi
