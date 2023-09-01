@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-brew update --auto-update
-brew upgrade
-brew cleanup

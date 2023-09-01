@@ -11,7 +11,7 @@ echo 'OK'
 # Update and upgrade
 if [[ ! "$(osname)" == "macos" ]]; then
     printhead 'Updating system...'
-    extscript $github/install-updates
+    extscript $github/update
 fi
 
 # brew
@@ -21,7 +21,6 @@ install-brew
 # Git
 printhead 'Installing git...'
 extscript $github/install-git
-echo 'OK'
 
 # clone setup repositories
 printhead 'Cloning setup repositories...'
@@ -60,6 +59,5 @@ fi
 # omz
 printhead 'Installing oh-my-zsh...'
 install-omz
-omz reload
 
 printhead 'Core installation completed.'

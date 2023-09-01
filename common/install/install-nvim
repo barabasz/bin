@@ -24,7 +24,7 @@ if [[ "$(isinstalled nvim)" == "no" ]]; then
     # Load plugins
     nvim --headless +'PlugInstall' +qa
 else
-    echo "nvim is installed: $(nvim --version)"
+    nvim --version | grep 'NVIM'
 fi
 
 

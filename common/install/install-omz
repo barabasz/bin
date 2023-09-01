@@ -1,8 +1,12 @@
 #!/bin/zsh
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-rm -f ~/.zshrc.pre-oh-my-zsh
-rm -f ~/.shell.pre-oh-my-zsh
+if [[ "$(echo $ZSH | grep -o 'oh-my-zsh')" != "oh-my-zsh" ]]; then
+    omzinstall=https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    sh -c "$(curl -fsSL $omzinstall)" "" --unattended
+    rm -f ~/.zshrc.pre-oh-my-zsh
+    rm -f ~/.shell.pre-oh-my-zsh
+fi
+
 ln -sf ~/GitHub/config/zsh/.zprofile ~/
 ln -sf ~/GitHub/config/zsh/.zshrc ~/
 ln -sf ~/GitHub/config/zsh/.p10k.zsh ~/

@@ -10,6 +10,7 @@ install-gh
 # core tools & apps
 printhead 'Installing essential packages...'
 install-essentials
+echo 'Done.'
 
 # Pyhon & pip
 printhead 'Installing Python...'
@@ -20,7 +21,6 @@ printhead 'Installing PHP...'
 install-php
 printhead 'Installing PHP Composer...'
 install-composer
-echo 'OK'
 
 # Lua
 printhead 'Installing Lua...'
