@@ -4,8 +4,17 @@ if [[ "$(isinstalled python3)" == "no" ]]; then
     if [[ "$(osname)" == "macos" ]]; then
         brew install -q python3
     else
-        aptinstall python3 python3-pip
+        aptinstall python3
+        aptinstall python3-pip
     fi
 else
-    echo "Python is installed: $(python3 --version)"
+    python3 --version
+fi
+
+if [[ "$(isinstalled pip)" == "no" ]]; then
+    if [[ "$(osname)" != "macos" ]]; then
+        aptinstall python3-pip
+    fi
+else
+    pip --version    
 fi
