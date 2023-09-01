@@ -11,12 +11,12 @@ echo 'OK'
 # Update and upgrade
 if [[ ! "$(osname)" == "macos" ]]; then
     printhead 'Updating system...'
-    extscript $github/update
+    extscript $(echo $github | sed 's/\/install//')/update
 fi
 
 # brew
 printhead 'Installing brew...'
-install-brew
+extscript $github/install-brew
 
 # Git
 printhead 'Installing git...'
