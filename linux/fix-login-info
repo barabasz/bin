@@ -12,4 +12,6 @@ if [[ "$(osname)" == "debian" ]]; then
     sudo chmod -x /etc/update-motd.d/10-uname
 fi
 
-ln -sf ~/GitHub/config/motd/05-header /etc/update-motd.d
+if [[ ! "$(osname)" == "macos" ]]; then
+    sudo ln -sf ~/GitHub/config/motd/05-header /etc/update-motd.d
+fi

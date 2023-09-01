@@ -8,10 +8,14 @@ mkdir -p ~/GitHub && cd $_
 
 if [[ ! -d ~/GitHub/bin ]]; then
     git clone https://github.com/barabasz/bin.git
+else
+    echo '"bin" repo already cloned.'
 fi
 
 if [[ ! -d ~/GitHub/config ]]; then
     git clone https://github.com/barabasz/config.git
+else
+    echo '"config" repo already cloned.'
 fi
 
 # Common scripts
