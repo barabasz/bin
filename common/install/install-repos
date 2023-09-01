@@ -27,3 +27,5 @@ if [[ "$(osname)" == "macos" ]]; then
 else
     ln -sf ~/GitHub/bin/linux ~/bin
 fi
+
+ln -sf ~/GitHub/config/zsh/.zsh_functions ~/

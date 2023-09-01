@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ "$(which snap | grep -o 'snap')" == "snap" ]]; then
+if [[ "$(isinstalled snap)" == "yes" ]]; then
     sudo snap remove --purge lxd
     sudo snap remove --purge core20
     sudo snap remove --purge snapd
