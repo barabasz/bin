@@ -28,5 +28,9 @@ else
     ln -sf ~/GitHub/bin/linux ~/bin
 fi
 
-# Core functions
+# Core symlinks
+ln -sf ~/GitHub/config/zsh/.zprofile ~/
+ln -sf ~/GitHub/config/zsh/.zshrc ~/
+ln -sf ~/GitHub/config/zsh/.zsh_aliases ~/
 ln -sf ~/GitHub/config/zsh/.zsh_functions ~/
+ln -sf ~/GitHub/config/zsh/.zsh_locale ~/

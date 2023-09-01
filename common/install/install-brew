@@ -2,6 +2,7 @@
 
 # load functions
 source ~/.zsh_functions
+source ~/.zsh_locale
 
 if [[ "$(isinstalled brew)" == "no" ]]; then
     # Debian fix

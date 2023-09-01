@@ -3,11 +3,14 @@
 # load functions
 zshpath=https://raw.githubusercontent.com/barabasz/config/main/zsh/
 source /dev/stdin <<< "$(curl -fsSL $zshpath/.zsh_functions)"
+source /dev/stdin <<< "$(curl -fsSL $zshpath/.zsh_locale)"
 
 if [[ "$(isinstalled git)" == "no" ]]; then
     if [[ "$(osname)" == "macos" ]]; then
         xcode-select --install
     else
+        export LC_ALL="en_US.UTF-8"
+        export LC_CTYPE="en_US.UTF-8"
         aptinstall git
     fi
 else

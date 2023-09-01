@@ -5,10 +5,12 @@ ln -sf ~/GitHub/config/zsh/.zprofile ~/
 ln -sf ~/GitHub/config/zsh/.zshrc ~/
 ln -sf ~/GitHub/config/zsh/.zsh_aliases ~/
 ln -sf ~/GitHub/config/zsh/.zsh_functions ~/
+ln -sf ~/GitHub/config/zsh/.zsh_locale ~/
 
 # load aliases & functions
 source ~/.zsh_aliases
 source ~/.zsh_functions
+source ~/.zsh_locale
 
 # fallback for bash's shopt
 if [[ ! "$(osname)" == "macos" ]]; then
@@ -18,6 +20,8 @@ fi
 # install zsh
 if [[ "$(isinstalled zsh)" == "no" ]]; then
     if [[ ! "$(osname)" == "macos" ]]; then
+        export LC_ALL="en_US.UTF-8"
+        export LC_CTYPE="en_US.UTF-8"
         aptinstall zsh
     fi
 else

@@ -13,17 +13,16 @@ if [[ "$(osname)" == "ubuntu" ]]; then
     sudo localectl set-locale LANGUAGE=en_US:en:C
     sudo localectl set-locale LC_MESSAGES=en_US.UTF-8
 
-    sudo localectl set-locale LC_ADDRESS=en_US.UTF-8
+    sudo localectl set-locale LC_ADDRESS=pl_PL.UTF-8
     sudo localectl set-locale LC_COLLATE=pl_PL.UTF-8
     sudo localectl set-locale LC_CTYPE=pl_PL.UTF-8
     sudo localectl set-locale LC_IDENTIFICATION=pl_PL.UTF-8
     sudo localectl set-locale LC_MEASUREMENT=pl_PL.UTF-8
     sudo localectl set-locale LC_MONETARY=pl_PL.UTF-8
-    sudo localectl set-locale LC_MONETARY=pl_PL.UTF-8
-    sudo localectl set-locale LC_NAME=en_US.UTF-8
+    sudo localectl set-locale LC_NAME=pl_PL.UTF-8
     sudo localectl set-locale LC_NUMERIC=pl_PL.UTF-8
     sudo localectl set-locale LC_PAPER=pl_PL.UTF-8
-    sudo localectl set-locale LC_TELEPHONE=en_US.UTF-8
+    sudo localectl set-locale LC_TELEPHONE=pl_PL.UTF-8
     sudo localectl set-locale LC_TIME=pl_PL.UTF-8
 fi
 
