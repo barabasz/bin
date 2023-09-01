@@ -2,7 +2,7 @@
 
 if [[ "$(isinstalled lua)" == "no" ]]; then
     if [[ "$(osname)" == "macos" ]]; then
-        brew install lua
+        brew install -q lua
     else
         aptinstall lua5.4
     fi

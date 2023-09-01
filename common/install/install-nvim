@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ "$(isinstalled nvim)" == "no" ]]; then
-    brew install nvim
+    brew install -q nvim
 
     if [[ ! "$(osname)" == "macos" ]]; then
         sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/nvim 1000

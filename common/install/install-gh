@@ -2,7 +2,7 @@
 
 if [[ "$(isinstalled gh)" == "no" ]]; then
     if [[ "$(osname)" == "macos" ]]; then
-        brew install gh
+        brew install -q gh
     else
         aptinstall gh
     fi
