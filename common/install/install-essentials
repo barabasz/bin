@@ -14,7 +14,7 @@ if [[ "$(osname)" != "macos" ]]; then brews="$brews libxml2"; fi
 brews="$brews gettext"
 if [[ "$(osname)" != "macos" ]]; then brews="$brews libtirpc libnsl"; fi
 brews="$brews tree sevenzip"
-brew install -q $brews
+brew install -q $(echo $brews)
 
 if [[ "$(osname)" == "macos" ]]; then
     brew install -q htop
