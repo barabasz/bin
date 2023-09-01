@@ -14,9 +14,6 @@ if [[ "$(isinstalled brew)" == "no" ]]; then
     # Brew (unattended installation)
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    # Disable analytics
-    brew analytics off
-else
     # Execute shellenv
     if [[ -f /opt/homebrew/bin/brew ]]; then
         eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -27,7 +24,10 @@ else
     mkdir -p $HOMEBREW_PREFIX/etc/homebrew
     ln -sf ~/GitHub/config/brew/brew.env $HOMEBREW_PREFIX/etc/homebrew/brew.env
     source $HOMEBREW_PREFIX/etc/homebrew/brew.env
-    
+
+    # Disable analytics
+    brew analytics off
+else
     brew --version
 fi
 
