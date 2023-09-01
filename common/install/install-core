@@ -22,8 +22,10 @@ extscript $github/install-git
 printhead 'Cloning setup repositories...'
 extscript $github/install-repos
 
-# set temporary path
+# set temporary path and locale
 export PATH=$HOME/bin:$HOME/bin/install:$HOME/binc:$HOME/binc/install:$HOME/binc/test:/usr/local/bin:$PATH
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
 
 # brew
 printhead 'Installing brew...'
