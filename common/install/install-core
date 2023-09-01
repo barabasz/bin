@@ -27,15 +27,15 @@ export PATH=$HOME/bin:$HOME/bin/install:$HOME/binc:$HOME/binc/install:$HOME/binc
 export LC_ALL="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 
-# brew
-printhead 'Installing brew...'
-install-brew
-
 # set locale
 if [[ "$(osname)" != "macos" ]]; then
     printhead 'Setting locale...'
     set-locale
 fi
+
+# brew
+printhead 'Installing brew...'
+install-brew
 
 # minimize login info
 if [[ ! "$(osname)" == "macos" ]]; then
