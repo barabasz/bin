@@ -4,7 +4,6 @@ github="https://raw.githubusercontent.com/barabasz/bin/main/common/install"
 sudo echo > /dev/null
 
 # load functions
-printhead 'Loading functionss...'
 zshpath=https://raw.githubusercontent.com/barabasz/config/main/zsh/
 source /dev/stdin <<< "$(curl -fsSL $zshpath/.zsh_functions)"
 echo 'OK'
@@ -31,7 +30,7 @@ printhead 'Installing brew...'
 install-brew
 
 # set locale
-if [[ "$(osname)" == "ubuntu" ]]; then
+if [[ "$(osname)" != "macos" ]]; then
     printhead 'Setting locale...'
     set-locale
 fi
