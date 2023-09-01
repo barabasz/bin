@@ -4,6 +4,10 @@
 source ~/.zsh_functions
 source ~/.zsh_locale
 
+mkdir -p $HOMEBREW_PREFIX/etc/homebrew
+ln -sf ~/GitHub/config/brew/brew.env $HOMEBREW_PREFIX/etc/homebrew/brew.env
+source $HOMEBREW_PREFIX/etc/homebrew/brew.env
+
 if [[ "$(isinstalled brew)" == "no" ]]; then
     # Ubuntu/Debian fix
     if [[ "$(osname)" != "macos" ]]; then
@@ -20,10 +24,6 @@ if [[ "$(isinstalled brew)" == "no" ]]; then
     elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
         eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     fi
-
-    mkdir -p $HOMEBREW_PREFIX/etc/homebrew
-    ln -sf ~/GitHub/config/brew/brew.env $HOMEBREW_PREFIX/etc/homebrew/brew.env
-    source $HOMEBREW_PREFIX/etc/homebrew/brew.env
 
     # Disable analytics
     brew analytics off
