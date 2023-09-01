@@ -7,19 +7,20 @@ source ~/.zsh_functions
 export LC_ALL="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 
-if [[ "$(osname)" == "debian" ]]; then
-    if [[ "$(locale -a | awk '{print tolower($0)}' | grep -o 'pl_pl.utf')" != "pl_pl.utf" ]]; then
+if [[ "$(locale -a | awk '{print tolower($0)}' | grep -o 'pl_pl.utf')" != "pl_pl.utf" ]]; then
+    # Debian
+    if [[ "$(osname)" == "debian" ]]; then
         sudo sed -i -e 's/# pl_PL.UTF-8 UTF-8/pl_PL.UTF-8 UTF-8/' /etc/locale.gen
         sudo dpkg-reconfigure --frontend=noninteractive locales
-fi
-
-if [[ "$(osname)" == "ubuntu" ]]; then
-    aptinstall language-pack-pl-base language-pack-pl
-    if [[ "$(locale -a | awk '{print tolower($0)}' | grep -o 'pl_pl.utf')" != "pl_pl.utf" ]]; then
+    fi
+    # Ubuntu
+    if [[ "$(osname)" == "ubuntu" ]]; then
+        aptinstall language-pack-pl-base language-pack-pl
         sudo locale-gen pl_PL.UTF-8
     fi
+else
+    echo "Already installed: $(locale -a | grep 'pl')"
 fi
-echo "Already installed: $(locale -a | grep 'pl')"
 
 sudo localectl set-locale LANG=en_US.UTF-8
 sudo localectl set-locale LANGUAGE=en_US:en:C
@@ -38,5 +39,9 @@ sudo localectl set-locale LC_TELEPHONE=pl_PL.UTF-8
 sudo localectl set-locale LC_TIME=pl_PL.UTF-8
 
 # Setting timezone
-sudo timedatectl set-timezone Europe/Warsaw
-sudo dpkg-reconfigure -f noninteractive tzdata
+if [[ "$(cat /etc/timezone | grep -o 'Warsaw')" != "Warsaw" ]]; then
+    sudo timedatectl set-timezone Europe/Warsaw
+    sudo dpkg-reconfigure -f noninteractive tzdata
+else
+    echo "Timezone: $(cat /etc/timezone)"
+fi
