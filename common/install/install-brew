@@ -5,8 +5,8 @@ source ~/.zsh_functions
 source ~/.zsh_locale
 
 if [[ "$(isinstalled brew)" == "no" ]]; then
-    # Debian fix
-    if [[ "$(osname)" == "debian" ]]; then
+    # Ubuntu/Debian fix
+    if [[ "$(osname)" != "macos" ]]; then
         sudo mkdir -p /home/linuxbrew/
         sudo chmod 755 /home/linuxbrew/
     fi
@@ -27,13 +27,6 @@ if [[ "$(isinstalled brew)" == "no" ]]; then
 
     # Disable analytics
     brew analytics off
-
-    # Install essentials
-    brew install -q ca-certificates gettext krb5 libvterm luajit msgpack ncurses tree-sitter fzf icu4c libtermkey libuv luv readline unibilium
-    if [[ "$(osname)" != "macos" ]]; then
-        brew install -q zlib libedit libxml2 libtirpc libnsl
-    fi
-
 else
     brew --version
 fi

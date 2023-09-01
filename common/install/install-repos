@@ -18,6 +18,12 @@ else
     echo '"config" repo already cloned.'
 fi
 
+if [[ ! -d ~/GitHub/urlinfo ]]; then
+    git clone https://github.com/barabasz/urlinfo.git
+else
+    echo '"urlinfo" repo already cloned.'
+fi
+
 # Common scripts
 ln -sf ~/GitHub/bin/common ~/binc
 
