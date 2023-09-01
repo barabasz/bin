@@ -24,11 +24,6 @@ if [[ "$(isinstalled brew)" == "no" ]]; then
     # Disable analytics
     brew analytics off
 
-    # User env settings
-    mkdir -p $HOMEBREW_PREFIX/etc/homebrew
-    ln -sf ~/GitHub/config/brew/brew.env $HOMEBREW_PREFIX/etc/homebrew/brew.env
-    source $HOMEBREW_PREFIX/etc/homebrew/brew.env
-
     # Install essentials
     brew install fzf ncurses tree zlib
 else
