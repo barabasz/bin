@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# load functions
+github="https://raw.githubusercontent.com/barabasz/bin/main/common/install"
+source /dev/stdin <<< "$(curl -fsSL $github/load-functions)"
+
 mkdir -p ~/GitHub && cd $_
 
 if [[ ! -d ~/GitHub/bin ]]; then
