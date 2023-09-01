@@ -1,10 +1,16 @@
 #!/bin/zsh
 
+# load functions
+source ~/.zsh_functions
+
 if [[ "$(echo $ZSH | grep -o 'oh-my-zsh')" != "oh-my-zsh" ]]; then
     omzinstall=https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
     sh -c "$(curl -fsSL $omzinstall)" "" --unattended
     rm -f ~/.zshrc.pre-oh-my-zsh
     rm -f ~/.shell.pre-oh-my-zsh
+else
+    source ~/.zshrc
+    echo "Oh My Zsh version: $(omz version)"
 fi
 
 ln -sf ~/GitHub/config/zsh/.zprofile ~/

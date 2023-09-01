@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # load functions
-zshpath=https://raw.githubusercontent.com/barabasz/config/main/zsh/
-source /dev/stdin <<< "$(curl -fsSL $zshpath/.zsh_functions)"
+source ~/.zsh_functions
 
 if [[ "$(osname)" == "ubuntu" ]]; then
     aptinstall language-pack-pl-base language-pack-pl

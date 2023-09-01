@@ -28,4 +28,5 @@ else
     ln -sf ~/GitHub/bin/linux ~/bin
 fi
 
+# Core functions
 ln -sf ~/GitHub/config/zsh/.zsh_functions ~/

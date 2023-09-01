@@ -4,6 +4,7 @@ github="https://raw.githubusercontent.com/barabasz/bin/main/common/install"
 sudo echo > /dev/null
 
 # load functions
+printhead 'Loading functionss...'
 zshpath=https://raw.githubusercontent.com/barabasz/config/main/zsh/
 source /dev/stdin <<< "$(curl -fsSL $zshpath/.zsh_functions)"
 echo 'OK'
@@ -22,18 +23,18 @@ extscript $github/install-git
 printhead 'Cloning setup repositories...'
 extscript $github/install-repos
 
+# set temporary path
+export PATH=$HOME/bin:$HOME/bin/install:$HOME/binc:$HOME/binc/install:$HOME/binc/test:/usr/local/bin:$PATH
+
 # brew
 printhead 'Installing brew...'
-extscript $github/install-brew
+install-brew
 
 # set locale
 if [[ "$(osname)" == "ubuntu" ]]; then
     printhead 'Setting locale...'
-    extsource $(echo $github | sed 's/common\/install/linux/')/set-locale
+    set-locale
 fi
-
-# set temporary path
-export PATH=$HOME/bin:$HOME/bin/install:$HOME/binc:$HOME/binc/install:$HOME/binc/test:/usr/local/bin:$PATH
 
 # minimize login info
 if [[ ! "$(osname)" == "macos" ]]; then

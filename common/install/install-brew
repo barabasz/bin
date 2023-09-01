@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # load functions
-zshpath=https://raw.githubusercontent.com/barabasz/config/main/zsh/
-source /dev/stdin <<< "$(curl -fsSL $zshpath/.zsh_functions)"
+source ~/.zsh_functions
 
 if [[ "$(isinstalled brew)" == "no" ]]; then
     # Debian fix
@@ -21,11 +20,12 @@ if [[ "$(isinstalled brew)" == "no" ]]; then
         eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     fi
 
+    mkdir -p $HOMEBREW_PREFIX/etc/homebrew
+    ln -sf ~/GitHub/config/brew/brew.env $HOMEBREW_PREFIX/etc/homebrew/brew.env
+    source $HOMEBREW_PREFIX/etc/homebrew/brew.env
+
     # Disable analytics
     brew analytics off
-
-    # Install essentials
-    brew install fzf ncurses tree zlib
 else
     brew --version
 fi

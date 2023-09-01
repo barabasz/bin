@@ -11,13 +11,20 @@ source ~/.zsh_aliases
 source ~/.zsh_functions
 
 # fallback for bash's shopt
-sudo ln -sf ~/GitHub/bin/common/shopt /usr/bin/shopt
+if [[ ! "$(osname)" == "macos" ]]; then
+    sudo ln -sf ~/GitHub/bin/common/shopt /usr/bin/shopt
+fi
 
 # install zsh
 if [[ "$(isinstalled zsh)" == "no" ]]; then
-    aptinstall zsh
+    if [[ ! "$(osname)" == "macos" ]]; then
+        aptinstall zsh
+    fi
+else
+    $(which zsh) --version
 fi
 
 # set default shell
-# chsh -s $(which zsh)
-sudo chsh -s $(which zsh) $(whoami)
+if [[ "$(echo $SHELL | grep -o 'zsh')" != "zsh" ]]; then
+    sudo chsh -s $(which zsh) $(whoami)
+fi

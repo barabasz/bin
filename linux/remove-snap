@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# load functions
+source ~/.zsh_functions
+
 if [[ "$(isinstalled snap)" == "yes" ]]; then
     sudo snap remove --purge lxd
     sudo snap remove --purge core20

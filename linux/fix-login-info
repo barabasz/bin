@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# load functions
+source ~/.zsh_functions
+
 if [[ "$(osname)" == "ubuntu" ]]; then
     sudo chmod -x /etc/update-motd.d/00-header
     sudo chmod -x /etc/update-motd.d/10-help-text

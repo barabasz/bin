@@ -1,8 +1,7 @@
 #!/bin/zsh
 
 if [[ "$(osname)" == "macos" ]]; then
-    brew install -q ca-certificates fzf
+    brew install -q ca-certificates fzf ncurses tree zlib
 else
     aptinstall net-tools ca-certificates fzf acl lsb-release software-properties-common build-essential gcc cmake ninja-build
 fi
-
