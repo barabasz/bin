@@ -41,7 +41,7 @@ install-brew
 if [[ ! "$(osname)" == "macos" ]]; then
     printhead 'Minimizing login info...'
     fix-login-info
-    echo 'OK'
+    echo 'Done.'
 fi
 
 # remove snap
