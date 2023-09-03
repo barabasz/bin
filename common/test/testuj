@@ -1,4 +1,20 @@
 #!/bin/zsh
 
-text="Ala ma kota..."
-printf '%s\n' "${(%):-%F{green}$text${(%):-%f}"
+set -euo pipefail
+source ~/.zsh_functions
+source ~/lib/log.sh
+source ~/lib/ansi.sh
+
+log::header 'header'
+log::success 'succes'
+log::error 'error'
+log::warning 'warning'
+log::note 'note'
+
+# for code in {0..255}
+#     do echo -e "\e[38;5;${code}m"'\\e[38;5;'"$code"m"\e[0m"
+# done
+
+# echo "$(ansi 8bit 196) kolor $(ansi reset)zwykły"
+
+# echo "$(ansi bg rgb 50 50 50) czerwony $(ansi reset)zwykły"

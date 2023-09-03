@@ -4,6 +4,7 @@
 # https://gist.github.com/JBlond/2fea43a3049b38287e5e9cefc87b2124
 
 # To list all colors available in 256 color mode with their codes run
+# 256-color mode — foreground: ESC[38;5;#m   background: ESC[48;5;#m
 # for code in {0..255}
 #     do echo -e "\e[38;5;${code}m"'\\e[38;5;'"$code"m"\e[0m"
 # done
@@ -23,7 +24,7 @@ bg_blue='\e[44m'
 bg_magenta='\e[45m'
 bg_cyan='\e[46m'
 
-bold='\e[1m'
-underline='\e[4m'
+temp_bold='\e[1m'
+temp_underline='\e[4m'
 
 clear='\033[0m'

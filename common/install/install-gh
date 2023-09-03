@@ -1,11 +1,7 @@
 #!/bin/bash
 
 if [[ "$(isinstalled gh)" == "no" ]]; then
-    if [[ "$(osname)" == "macos" ]]; then
-        brew install -q gh
-    else
-        aptinstall gh
-    fi
+    brew install -q gh
 else
     gh --version
 fi
