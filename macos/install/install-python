@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+pip uninstall -y pycurl
+brew install openssl
+PYCURL_SSL_LIBRARY=openssl LDFLAGS="-L/opt/homebrew/lib" CPPFLAGS="-I/opt/homebrew/include" pip install --no-cache-dir pycurl
