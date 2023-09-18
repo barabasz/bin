@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+# pycurl
+if [[ "$(osname)" == "macos" ]]; then
+	pip uninstall -y pycurl
+	brew install openssl
+	PYCURL_SSL_LIBRARY=openssl LDFLAGS="-L/opt/homebrew/lib" CPPFLAGS="-I/opt/homebrew/include" pip install --no-cache-dir pycurl
+else
+	aptinstall libcurl4-openssl-dev libssl-dev
+	pip install pycurl
+fi
+
+# https://gitlab.com/dslackw/colored
+pip install colored
