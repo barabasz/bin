@@ -12,3 +12,9 @@ fi
 
 # https://gitlab.com/dslackw/colored
 pip install colored
+
+# https://pypi.org/project/dotmap
+# pip install dotmap
+# https://pypi.org/project/dotwiz/
+# almost 30x faster than accessing keys from a DotMap
+pip install dotwiz
