@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+# Show All Extensions
+defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
+
+# Keep folders on top 
+defaults write com.apple.finder "_FXSortFoldersFirst" -bool "true"
+
+# Default column view
+defaults write com.apple.finder "FXPreferredViewStyle" -string "clmv"
+
