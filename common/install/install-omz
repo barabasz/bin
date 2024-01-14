@@ -10,6 +10,7 @@ if [[ "$(echo $ZSH | grep -o 'oh-my-zsh')" != "oh-my-zsh" ]]; then
     rm -f ~/.shell.pre-oh-my-zsh
 else
     source ~/.zshrc
+    omz update
     echo "Oh My Zsh version: $(omz version)"
 fi
 
