@@ -35,23 +35,3 @@ if [[ ! -d ~/GitHub/urlinfo ]]; then
 else
     echo '"urlinfo" repo already cloned.'
 fi
-
-# Common scripts
-ln -sf ~/GitHub/bin/common ~/binc
-
-# OS-specific scripts
-if [[ "$(osname)" == "macos" ]]; then
-    ln -sf ~/GitHub/bin/macos ~/bin
-else
-    ln -sf ~/GitHub/bin/linux ~/bin
-fi
-
-# Library
-ln -sf ~/GitHub/bin/lib ~/
-
-# Core symlinks
-ln -sf ~/GitHub/config/zsh/.zprofile ~/
-ln -sf ~/GitHub/config/zsh/.zshrc ~/
-ln -sf ~/GitHub/config/zsh/.zsh_aliases ~/
-ln -sf ~/GitHub/config/zsh/.zsh_functions ~/
-ln -sf ~/GitHub/config/zsh/.zsh_locale ~/
