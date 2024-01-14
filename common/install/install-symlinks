@@ -1,3 +1,4 @@
+#!/bin/bash
 
 # Common scripts
 ln -sf ~/GitHub/bin/common ~/binc
@@ -12,7 +13,7 @@ fi
 # Library
 ln -sf ~/GitHub/bin/lib ~/
 
-# Core symlinks
+# ZSH
 ln -sf ~/GitHub/config/zsh/.zprofile ~/
 ln -sf ~/GitHub/config/zsh/.zshrc ~/
 ln -sf ~/GitHub/config/zsh/.zsh_aliases ~/
