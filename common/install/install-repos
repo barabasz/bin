@@ -18,6 +18,18 @@ else
     echo '"config" repo already cloned.'
 fi
 
+if [[ ! -d ~/GitHub/resources ]]; then
+    git clone https://github.com/barabasz/resources.git
+else
+    echo '"resources" repo already cloned.'
+fi
+
+if [[ ! -d ~/GitHub/cheatsheets ]]; then
+    git clone https://github.com/barabasz/cheatsheets.git
+else
+    echo '"cheatsheets" repo already cloned.'
+fi
+
 if [[ ! -d ~/GitHub/urlinfo ]]; then
     git clone https://github.com/barabasz/urlinfo.git
 else
