@@ -13,5 +13,7 @@ if [[ "$(isinstalled git)" == "no" ]]; then
         aptinstall git
     fi
 else
+    git config --global user.email "abarabasz@gmail.com"
+    git config --global user.name "Andrzej Barabasz"
     git --version
 fi
