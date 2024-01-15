@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ "$(isinstalled magick)" == "no" ]]; then
+    brew install -q imagemagick
+else
+    magick --version | grep "Version"
+fi

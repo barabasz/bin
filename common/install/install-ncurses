@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ "$(isinstalledbybrew ncurses)" == "no" ]]; then
+    brew install -q ncurses
+else
+    brew list ncurses | grep "bin/ncurses"
+fi

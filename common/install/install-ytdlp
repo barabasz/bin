@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ "$(isinstalled yt-dlp)" == "no" ]]; then
+    brew install yt-dlp
+else
+    yt-dlp --version
+fi

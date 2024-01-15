@@ -26,6 +26,10 @@ extscript $github/install-repos
 printhead 'Creating symlinks...'
 extscript $github/install-symlinks
 
+# gh
+printhead 'Installing GitHub CLI...'
+install-gh
+
 # set temporary path and locale
 export PATH=$HOME/bin:$HOME/bin/install:$HOME/binc:$HOME/binc/install:$HOME/binc/test:/usr/local/bin:$PATH
 export LC_ALL="en_US.UTF-8"
@@ -40,6 +44,32 @@ fi
 # brew
 printhead 'Installing brew...'
 install-brew
+
+# certificates
+printhead 'Installing certificates...'
+install-certs
+
+# common libraries
+printhead 'Installing common libraries...'
+install-libs
+
+# acl - Commands for manipulating POSIX access control lists
+if [[ "$(osname)" != "macos" ]]; then
+    printhead 'Installing acl...'
+    install-acl
+fi
+
+# fzf - Command-line fuzzy finder written in Go
+printhead 'Installing fzf...'
+install-fzf
+
+# ncurses - Text-based UI library
+printhead 'Installing ncurses...'
+install-ncurses
+
+# archivers
+printhead 'Installing archivers...'
+install-archivers
 
 # minimize login info
 if [[ ! "$(osname)" == "macos" ]]; then
@@ -65,3 +95,4 @@ printhead 'Installing oh-my-zsh...'
 install-omz
 
 printhead 'Core installation completed.'
+printhead 'Reload terminal to apply changes.'

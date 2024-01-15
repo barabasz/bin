@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# load functions
+source ~/.zsh_functions
+source ~/.zsh_locale
+
 if [[ "$(isinstalled gh)" == "no" ]]; then
     brew install -q gh
 else

@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if [[ "$(isinstalled gcc)" == "no" ]]; then
+    brew install -q gcc
+else
+    gcc --version | grep version
+fi

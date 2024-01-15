@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if [[ "$(isinstalled zzz)" == "no" ]]; then
+    brew install -q zzz
+else
+    echo "zzz is installed"
+fi

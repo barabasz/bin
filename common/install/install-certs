@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if [[ "$(isinstalledbybrew ca-certificates)" == "no" ]]; then
+    brew install -q ca-certificates
+else
+    brew list ca-certificates
+fi

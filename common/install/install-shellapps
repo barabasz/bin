@@ -1,0 +1,63 @@
+#!/bin/zsh
+
+# read su password
+sudo printf ''
+
+# mc (Midnight Commander)
+printhead 'Installing mc...'
+install-mc
+
+# htop
+printhead 'Installing htop...'
+install-htop
+
+# nvim (neovim)
+printhead 'Installing nvim...'
+install-nvim
+
+# navi
+printhead 'Installing navi...'
+install-navi
+
+# wget
+printhead 'Installing wget...'
+install-wget
+
+# ffmpeg
+printhead 'Installing ffmpeg...'
+install-ffmpeg
+
+# ImageMagick (magick)
+# collection of tools to modify and manipulate images
+printhead 'Installing imagemagick...'
+install-imagemagick
+
+# The Fuck
+printhead 'Installing thefuck...'
+install-thefuck
+
+# Exiftool
+printhead 'Installing exiftool...'
+install-exiftool
+
+# Lynx console web browser
+printhead 'Installing lynx...'
+install-lynx
+
+# yt-dlp
+# YouTube video downloader
+printhead 'Installing yt-dlp...'
+install-ytdlp
+
+# calc
+# C-style arbitrary precision calculator with custom functions
+printhead 'Installing calc...'
+install-calc
+
+# zzz put mac to sleep
+if [[ "$(osname)" == "macos" ]]; then
+    printhead 'Installing zzz...'
+    install-zzz
+fi
+
+printhead 'Installation completed.'

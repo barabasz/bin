@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if [[ "$(isinstalled lynx)" == "no" ]]; then
+    brew install -q lynx
+else
+    lynx --version | grep "Lynx Version"
+fi

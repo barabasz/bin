@@ -3,14 +3,18 @@
 # read su password
 sudo printf ''
 
-# gh
-printhead 'Installing GitHub CLI...'
-install-gh
-
 # core tools & apps
 printhead 'Installing essential packages...'
 install-essentials
 echo 'Done.'
+
+# cmake  - Cross-platform make
+printhead 'Installing cmake...'
+install-cmake
+
+# gcc  - GNU compiler collection
+printhead 'Installing gcc...'
+install-gcc
 
 # Pyhon & pip
 printhead 'Installing Python...'
@@ -25,17 +29,5 @@ install-composer
 # Lua
 printhead 'Installing Lua...'
 install-lua
-
-# mc (Midnight Commander)
-printhead 'Installing mc...'
-install-mc
-
-# nvim (neovim)
-printhead 'Installing nvim...'
-install-nvim
-
-# navi
-printhead 'Installing navi...'
-install-navi
 
 printhead 'Installation completed.'

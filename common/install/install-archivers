@@ -1,0 +1,51 @@
+#!/bin/zsh
+
+# bzip2
+# Freely available high-quality data compressor
+# https://sourceware.org/bzip2/
+
+if [[ "$(isinstalled bzip2)" == "no" ]]; then
+    brew install -q bzip2
+else
+    echo "bzip2 is installed"
+fi
+
+# 7zip
+# file archiver with a high compression ratio
+# https://7-zip.org
+
+if [[ "$(isinstalled 7zz)" == "no" ]]; then
+    brew install -q sevenzip
+else
+    7zz | grep Copyright
+fi
+
+# zlib
+# General-purpose lossless data-compression library
+# https://zlib.net/
+
+if [[ "$(isinstalledbybrew zlib)" == "no" ]]; then
+    brew install -q zlib
+else
+    brew list zlib | sed -n '1p'
+fi
+
+# lz4
+# Extremely Fast Compression algorithm
+# https://lz4.github.io/lz4/
+
+if [[ "$(isinstalled lz4)" == "no" ]]; then
+    brew install -q lz4
+else
+    lz4 --version
+fi
+
+# xz
+# General-purpose data compression with high compression ratio
+# https://tukaani.org/xz/
+
+if [[ "$(isinstalled xz)" == "no" ]]; then
+    brew install -q xz
+else
+    xz --version
+fi

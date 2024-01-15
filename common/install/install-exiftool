@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if [[ "$(isinstalled exiftool)" == "no" ]]; then
+    brew install -q exiftool
+else
+    echo exiftool $(exiftool -ver)
+fi

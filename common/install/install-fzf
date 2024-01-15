@@ -1,0 +1,8 @@
+
+#!/bin/bash
+
+if [[ "$(isinstalled fzf)" == "no" ]]; then
+    brew install -q fzf
+else
+    echo "fzf $(fzf --version)"
+fi

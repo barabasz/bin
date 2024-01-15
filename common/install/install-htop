@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if [[ "$(isinstalled htop)" == "no" ]]; then
+    brew install -q htop
+else
+    htop --version
+fi

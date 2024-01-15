@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if [[ "$(isinstalled wget)" == "no" ]]; then
+    brew install -q wget
+else
+    wget -V | grep "GNU Wget"
+fi

@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if [[ "$(isinstalled cmake)" == "no" ]]; then
+    brew install -q cmake
+else
+    cmake --version | grep version
+fi

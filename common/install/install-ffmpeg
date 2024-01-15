@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if [[ "$(isinstalled ffmpeg)" == "no" ]]; then
+    brew install -q ffmpeg
+else
+    ffmpeg -version | grep "ffmpeg version"
+fi
