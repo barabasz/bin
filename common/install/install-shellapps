@@ -7,6 +7,12 @@ sudo printf ''
 printhead 'Installing mc...'
 install-mc
 
+# nnn
+# Tiny, lightning fast, feature-packed file manager
+# https://github.com/jarun/nnn
+printhead 'Installing nnn...'
+install-nnn
+
 # htop
 printhead 'Installing htop...'
 install-htop
@@ -60,4 +66,4 @@ if [[ "$(osname)" == "macos" ]]; then
     install-zzz
 fi
 
-printhead 'Installation completed.'
+printhead 'Shell apps installation completed.'

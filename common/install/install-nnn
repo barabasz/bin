@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [[ "$(isinstalled nnn)" == "no" ]]; then
+    if [[ "$(osname)" == "macos" ]]; then
+        brew install -q nnn
+    else
+        aptinstall nnn
+    fi
+else 
+    echo "nnn $(nnn -V)"
+fi
