@@ -3,11 +3,6 @@
 # read su password
 sudo printf ''
 
-# core tools & apps
-printhead 'Installing essential packages...'
-install-essentials
-echo 'Done.'
-
 # cmake  - Cross-platform make
 printhead 'Installing cmake...'
 install-cmake

@@ -59,10 +59,6 @@ if [[ "$(osname)" != "macos" ]]; then
     install-acl
 fi
 
-# fzf - Command-line fuzzy finder written in Go
-printhead 'Installing fzf...'
-install-fzf
-
 # ncurses - Text-based UI library
 printhead 'Installing ncurses...'
 install-ncurses

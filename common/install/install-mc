@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# mc (Midnight Commander)
+# feature rich full-screen text mode visual file manager
+# https://midnight-commander.org/
+
 if [[ "$(isinstalled mc)" == "no" ]]; then
     if [[ "$(osname)" == "macos" ]]; then
         brew install -q midnight-commander

@@ -4,6 +4,8 @@
 sudo printf ''
 
 # mc (Midnight Commander)
+# feature rich full-screen text mode visual file manager
+# https://midnight-commander.org/
 printhead 'Installing mc...'
 install-mc
 
@@ -13,54 +15,81 @@ install-mc
 printhead 'Installing nnn...'
 install-nnn
 
+# fzf
+# Command-line fuzzy finder written in Go
+# https://github.com/junegunn/fzf
+printhead 'Installing fzf...'
+install-fzf
+
 # htop
+# Improved top (interactive process viewer)
+# https://htop.dev/
 printhead 'Installing htop...'
 install-htop
 
 # nvim (neovim)
+# hyperextensible Vim-based text editor
+# https://neovim.io/
 printhead 'Installing nvim...'
 install-nvim
 
 # navi
+# Interactive cheatsheet tool for the command-line
+# https://github.com/denisidoro/navi
 printhead 'Installing navi...'
 install-navi
 
 # wget
+# Internet file retriever
+# https://www.gnu.org/software/wget/
 printhead 'Installing wget...'
 install-wget
 
 # ffmpeg
+# Play, record, convert, and stream audio and video
+# https://ffmpeg.org/
 printhead 'Installing ffmpeg...'
 install-ffmpeg
 
 # ImageMagick (magick)
 # collection of tools to modify and manipulate images
+# https://imagemagick.org
 printhead 'Installing imagemagick...'
 install-imagemagick
 
 # The Fuck
+# Programmatically correct mistyped console commands
+# https://github.com/nvbn/thefuck
 printhead 'Installing thefuck...'
 install-thefuck
 
 # Exiftool
+# Perl lib for reading and writing EXIF metadata
+# https://exiftool.org
 printhead 'Installing exiftool...'
 install-exiftool
 
-# Lynx console web browser
+# Lynx
+# console web browser
+# https://www.lynxcloud.app/
 printhead 'Installing lynx...'
 install-lynx
 
 # yt-dlp
 # YouTube video downloader
+# https://github.com/yt-dlp/yt-dlp
 printhead 'Installing yt-dlp...'
 install-ytdlp
 
 # calc
 # C-style arbitrary precision calculator with custom functions
+# http://www.isthe.com/chongo/tech/comp/calc/
 printhead 'Installing calc...'
 install-calc
 
-# zzz put mac to sleep
+# zzz
+# put mac to sleep
+# https://github.com/Orc/Zzz
 if [[ "$(osname)" == "macos" ]]; then
     printhead 'Installing zzz...'
     install-zzz

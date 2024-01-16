@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+# navi
+# Interactive cheatsheet tool for the command-line
+# https://github.com/denisidoro/navi
+
 if [[ "$(isinstalled navi)" == "no" ]]; then
     brew install -q navi
 else

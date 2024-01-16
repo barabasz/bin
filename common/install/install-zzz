@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+# zzz
+# put mac to sleep
+# https://github.com/Orc/Zzz
+
 if [[ "$(isinstalled zzz)" == "no" ]]; then
     brew install -q zzz
 else

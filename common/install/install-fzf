@@ -1,6 +1,10 @@
 
 #!/bin/bash
 
+# fzf
+# Command-line fuzzy finder written in Go
+# https://github.com/junegunn/fzf
+
 if [[ "$(isinstalled fzf)" == "no" ]]; then
     brew install -q fzf
 else

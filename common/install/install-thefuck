@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+# The Fuck
+# Programmatically correct mistyped console commands
+# https://github.com/nvbn/thefuck
+
 if [[ "$(isinstalled thefuck)" == "no" ]]; then
     brew install -q thefuck
 else

@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+# Exiftool
+# Perl lib for reading and writing EXIF metadata
+# https://exiftool.org
+
 if [[ "$(isinstalled exiftool)" == "no" ]]; then
     brew install -q exiftool
 else

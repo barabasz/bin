@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+# calc
+# C-style arbitrary precision calculator with custom functions
+# http://www.isthe.com/chongo/tech/comp/calc/
+
 if [[ "$(isinstalled calc)" == "no" ]]; then
     brew install -q calc
 else

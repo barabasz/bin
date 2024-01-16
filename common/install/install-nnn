@@ -1,11 +1,16 @@
 #!/bin/bash
 
+# nnn
+# Tiny, lightning fast, feature-packed file manager
+# https://github.com/jarun/nnn
+
 if [[ "$(isinstalled nnn)" == "no" ]]; then
     if [[ "$(osname)" == "macos" ]]; then
         brew install -q nnn
     else
         aptinstall nnn
     fi
+    sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)"
 else 
     echo "nnn $(nnn -V)"
 fi

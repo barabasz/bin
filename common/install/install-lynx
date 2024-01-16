@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+# Lynx
+# console web browser
+# https://www.lynxcloud.app/
+
 if [[ "$(isinstalled lynx)" == "no" ]]; then
     brew install -q lynx
 else
