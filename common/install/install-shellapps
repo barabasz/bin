@@ -19,6 +19,12 @@ install-mc
 printhead 'Installing nnn...'
 install-nnn
 
+# fd
+# fd is a program to find entries in your filesystem
+# https://github.com/sharkdp/fd
+printhead 'Installing fd...'
+install-fd
+
 # fzf
 # Command-line fuzzy finder written in Go
 # https://github.com/junegunn/fzf
