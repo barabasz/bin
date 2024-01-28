@@ -12,8 +12,8 @@ if [[ "$(isinstalled git)" == "no" ]]; then
         export LC_CTYPE="en_US.UTF-8"
         aptinstall git
     fi
-else
-    git config --global user.email "abarabasz@gmail.com"
-    git config --global user.name "Andrzej Barabasz"
-    git --version
 fi
+
+git config --global user.email "abarabasz@gmail.com"
+git config --global user.name "Andrzej Barabasz"
+git --version
