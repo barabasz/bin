@@ -3,14 +3,6 @@
 # read su password
 sudo printf ''
 
-# cmake  - Cross-platform make
-printhead 'Installing cmake...'
-install-cmake
-
-# gcc  - GNU compiler collection
-printhead 'Installing gcc...'
-install-gcc
-
 # Pyhon & pip
 printhead 'Installing Python...'
 install-python

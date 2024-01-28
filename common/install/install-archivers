@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # bzip2
 # Freely available high-quality data compressor
