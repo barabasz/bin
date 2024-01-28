@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# load functions
+zshpath=https://raw.githubusercontent.com/barabasz/config/main/zsh/
+source /dev/stdin <<< "$(curl -fsSL $zshpath/.zsh_functions)"
+
 # Common scripts
 ln -sf ~/GitHub/bin/common ~/binc
 
