@@ -67,10 +67,6 @@ fi
 printhead 'Installing ncurses...'
 install-ncurses
 
-# archivers
-printhead 'Installing archivers...'
-install-archivers
-
 # cmake  - Cross-platform make
 printhead 'Installing cmake...'
 install-cmake
@@ -78,6 +74,10 @@ install-cmake
 # gcc  - GNU compiler collection
 printhead 'Installing gcc...'
 install-gcc
+
+# archivers
+printhead 'Installing archivers...'
+install-archivers
 
 # minimize login info
 if [[ ! "$(osname)" == "macos" ]]; then
