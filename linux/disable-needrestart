@@ -1,1 +1,3 @@
+#!/bin/bash
 
+sudo sed -i -e "s/#\$nrconf{restart} = 'i';/\$nrconf{restart} = 'a';/g" /etc/needrestart/needrestart.conf
