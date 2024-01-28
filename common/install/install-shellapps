@@ -45,41 +45,17 @@ install-navi
 printhead 'Installing wget...'
 install-wget
 
-# ffmpeg
-# Play, record, convert, and stream audio and video
-# https://ffmpeg.org/
-printhead 'Installing ffmpeg...'
-install-ffmpeg
-
-# ImageMagick (magick)
-# collection of tools to modify and manipulate images
-# https://imagemagick.org
-printhead 'Installing imagemagick...'
-install-imagemagick
-
 # The Fuck
 # Programmatically correct mistyped console commands
 # https://github.com/nvbn/thefuck
 printhead 'Installing thefuck...'
 install-thefuck
 
-# Exiftool
-# Perl lib for reading and writing EXIF metadata
-# https://exiftool.org
-printhead 'Installing exiftool...'
-install-exiftool
-
 # Lynx
 # console web browser
 # https://www.lynxcloud.app/
 printhead 'Installing lynx...'
 install-lynx
-
-# yt-dlp
-# YouTube video downloader
-# https://github.com/yt-dlp/yt-dlp
-printhead 'Installing yt-dlp...'
-install-ytdlp
 
 # calc
 # C-style arbitrary precision calculator with custom functions
