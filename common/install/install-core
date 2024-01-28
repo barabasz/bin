@@ -26,6 +26,12 @@ extscript $github/install-repos
 printhead 'Creating symlinks...'
 extscript $github/install-symlinks
 
+# disable NEEDRESTART prompt
+if [[ "$(osname)" == "ubuntu" ]]; then
+    printhead 'Setting NEEDRESTART_MODE to auto...'
+    disable-needrestart
+fi
+
 # gh
 printhead 'Installing GitHub CLI...'
 install-gh
