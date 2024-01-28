@@ -1,10 +1,11 @@
-#!/bin/zsh
+#!/bin/bash
 
 if [[ "$(osname)" != "macos" ]]; then
     if [[ "$(isinstalled getfacl)" == "no" ]]; then
-        brew install -q acl
+        # brew install -q acl
+        aptinstall acl
     else
-        getfacl
+        getfacl --version
     fi
 else
     echo "Linux is required for this software."
