@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+# Spark
+# Fast, cross-platform email client designed to filter out the noise.
+# https://sparkmailapp.com/
+
+brew install --cask readdle-spark

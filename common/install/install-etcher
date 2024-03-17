@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+# balenaEtcher
+# Flash OS images to SD cards & USB drives, safely and easily.
+# https://etcher.balena.io/
+
+brew install --cask balenaetcher

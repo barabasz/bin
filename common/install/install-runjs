@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+# RunJS
+# The JavaScript playground for your desktop
+# https://runjs.app/
+
 if [[ ! -f /Applications/RunJS.app/Contents/MacOS/RunJS ]]; then
     brew install --cask runjs
 else
