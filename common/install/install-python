@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 if [[ "$(isinstalled python3)" == "no" ]]; then
     if [[ "$(osname)" == "macos" ]]; then

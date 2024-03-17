@@ -81,4 +81,4 @@ if [[ "$(osname)" == "macos" ]]; then
     install-zzz
 fi
 
-printhead 'Shell apps installation completed.'
+printinfo 'Shell apps installation completed.'

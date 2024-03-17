@@ -6,6 +6,7 @@ sudo printf ''
 # Pyhon & pip
 printhead 'Installing Python...'
 install-python
+printinfo 'Install oficiall Python as well (python.org/downloads)'
 
 # PHP
 printhead 'Installing PHP...'
@@ -17,4 +18,4 @@ install-composer
 printhead 'Installing Lua...'
 install-lua
 
-printhead 'Installation completed.'
+printinfo 'Installation completed.'

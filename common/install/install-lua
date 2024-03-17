@@ -1,10 +1,12 @@
 #!/bin/bash
 
+luaver="5.4"
+
 if [[ "$(isinstalled lua)" == "no" ]]; then
     if [[ "$(osname)" == "macos" ]]; then
-        brew install -q lua luarocks luv luajit
+        brew install -q lua luarocks luv luajit luacheck
     else
-        aptinstall lua5.4
+        aptinstall lua$luaver
     fi
 else
     lua -v
