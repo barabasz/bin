@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Node.js
+# JavaScript runtime environment
+# https://github.com/jarun/nnn
+
+if [[ "$(isinstalled node)" == "no" ]]; then
+    brew install -q node
+else
+    echo "Node.js version $(node --version)"
+fi
+
+# Node basic config
+npm config set fund false --location=global
+
+# typescript
+# https://github.com/microsoft/TypeScript
+
+npm install -gD typescript
+
+# tsx - TypeScript Execute
+# https://github.com/privatenumber/tsx
+
+npm install -g tsx

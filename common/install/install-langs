@@ -8,6 +8,10 @@ printhead 'Installing Python...'
 install-python
 printinfo 'Install oficiall Python as well (python.org/downloads)'
 
+# Node
+printhead 'Installing Node...'
+install-node
+
 # PHP
 printhead 'Installing PHP...'
 install-php
