@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+# Vivaldi
+# Web browser with built-in email client focusing on customization and control
+# https://vivaldi.com/
+
+brew install --cask vivaldi
