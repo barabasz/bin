@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+# Raycast
+# Control your tools with a few keystrokes
+# https://raycast.com/
+
+brew install --cask raycast
