@@ -10,5 +10,5 @@ else
     echo "Karabiner-Elements $(karabiner_cli --version)"
 fi
 
-mkdir -p ~/.config/karabiner
-ln -sf ~/GitHub/config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
+mkdir -p ~/.config
+ln -sF ~/GitHub/config/karabiner ~/.config/karabiner
