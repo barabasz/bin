@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+# espanso
+# A Privacy-first, Cross-platform Text Expander
+# https://espanso.org
+
+if [[ "$(isinstalled espanso)" == "no" ]]; then
+    brew install espanso
+else
+    espanso --version
+fi
+
+ln -sF ~/GitHub/config/espanso ~/Library/Application\ Support/espanso
