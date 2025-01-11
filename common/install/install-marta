@@ -1,0 +1,20 @@
+#!/bin/zsh
+
+# Marta
+# Native, extensible and fast File Manager for macOS.
+# https://marta.sh
+
+if [[ "$(isinstalledbybrew marta)" == "no" ]]; then
+    brew install -q -force marta
+else
+    brew info marta | grep Caskroom
+fi
+
+marta_git="$HOME/GitHub/config/marta"
+marta_dir="$HOME/Library/Application\ Support/org.yanex.marta"
+marta_cf="conf.marco"
+marta_fm="favorites.marco"
+
+mkdir -p $marta_dir
+ln -sf $marta_git/$marta_cf $marta_dir/$marta_cf
+ln -sf $marta_git/$marta_fm $marta_dir/$marta_fm
