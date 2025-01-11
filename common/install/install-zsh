@@ -13,8 +13,8 @@ ln -sf ~/GitHub/config/zsh/.zsh_functions ~/
 ln -sf ~/GitHub/config/zsh/.zsh_locale ~/
 
 # load aliases & functions
-source ~/.zsh_aliases
 source ~/.zsh_functions
+source ~/.zsh_aliases
 source ~/.zsh_locale
 
 # fallback for bash's shopt
