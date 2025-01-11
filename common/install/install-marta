@@ -11,7 +11,7 @@ else
 fi
 
 marta_git="$HOME/GitHub/config/marta"
-marta_dir="$HOME/Library/Application\ Support/org.yanex.marta"
+marta_dir="$HOME/Library/Application Support/org.yanex.marta"
 marta_cf="conf.marco"
 marta_fm="favorites.marco"
 
