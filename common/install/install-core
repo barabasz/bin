@@ -75,6 +75,10 @@ install-cmake
 printhead 'Installing gcc...'
 install-gcc
 
+# Collection of Linux utilities
+printhead 'Installing util-linux...'
+install-util-linux
+
 # archivers
 printhead 'Installing archivers...'
 install-archivers
