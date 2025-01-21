@@ -24,14 +24,10 @@ else
     echo '"resources" repo already cloned.'
 fi
 
-if [[ ! -d ~/GitHub/cheatsheets ]]; then
-    git clone https://github.com/barabasz/cheatsheets.git
+if [[ ! -d ~/GitHub/scripts ]]; then
+    git clone https://github.com/barabasz/scripts.git
 else
-    echo '"cheatsheets" repo already cloned.'
+    echo '"scripts" repo already cloned.'
 fi
 
-if [[ ! -d ~/GitHub/urlinfo ]]; then
-    git clone https://github.com/barabasz/urlinfo.git
-else
-    echo '"urlinfo" repo already cloned.'
-fi
+
