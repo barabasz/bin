@@ -5,9 +5,25 @@ git fetch origin
 git checkout main
 git reset --hard origin/main
 git pull
+echo '"bin" repo updated.'
 
 cd ~/GitHub/config
 git fetch origin
 git checkout main
 git reset --hard origin/main
 git pull
+echo '"config" repo updated.'
+
+cd ~/GitHub/resources
+git fetch origin
+git checkout main
+git reset --hard origin/main
+git pull
+echo '"resources" repo updated.'
+
+cd ~/GitHub/scripts
+git fetch origin
+git checkout main
+git reset --hard origin/main
+git pull
+echo '"scripts" repo updated.'
