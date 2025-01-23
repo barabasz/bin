@@ -16,4 +16,6 @@ fi
 
 git config --global user.email "abarabasz@gmail.com"
 git config --global user.name "Andrzej Barabasz"
+git config --global core.pager cat
+git config --global core.editor code
 git --version
