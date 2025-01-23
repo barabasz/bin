@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+cd ~/GitHub/bin
+printhead 'bin'
+git status
+
+cd ~/GitHub/config
+printhead 'config
+git status
+
+cd ~/GitHub/resources
+printhead 'resources'
+git status
+
+cd ~/GitHub/scripts
+printhead 'scripts'
+git status
