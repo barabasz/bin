@@ -1,17 +1,8 @@
 #!/bin/zsh
 
-printhead 'bin'
-cd ~/GitHub/bin
-git pull --rebase
-
-printhead 'config'
-cd ~/GitHub/config
-git pull --rebase
-
-printhead 'resources'
-cd ~/GitHub/resources
-git pull --rebase
-
-printhead 'scripts'
-cd ~/GitHub/scripts
-git pull --rebase
+for repo in "bin" "config" "resources" "scripts"
+do
+    printhead $repo
+    cd ~/GitHub/$repo
+    git pull --rebase
+done
