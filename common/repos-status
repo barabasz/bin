@@ -5,7 +5,7 @@ printhead 'bin'
 git status
 
 cd ~/GitHub/config
-printhead 'config
+printhead 'config'
 git status
 
 cd ~/GitHub/resources
