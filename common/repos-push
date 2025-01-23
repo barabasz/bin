@@ -1,0 +1,25 @@
+#!/bin/zsh
+
+printhead 'bin'
+cd ~/GitHub/bin
+git add -all
+git commit -m "update"
+git push
+
+printhead 'config'
+cd ~/GitHub/config
+git add -all
+git commit -m "update"
+git push
+
+printhead 'resources'
+cd ~/GitHub/resources
+git add -all
+git commit -m "update"
+git push
+
+printhead 'scripts'
+cd ~/GitHub/scripts
+git add -all
+git commit -m "update"
+git push
