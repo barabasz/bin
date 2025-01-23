@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+printhead 'bin'
+cd ~/GitHub/bin
+git pull --rebase
+
+printhead 'config'
+cd ~/GitHub/config
+git pull --rebase
+
+printhead 'resources'
+cd ~/GitHub/resources
+git pull --rebase
+
+printhead 'scripts'
+cd ~/GitHub/scripts
+git pull --rebase
