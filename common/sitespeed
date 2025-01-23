@@ -1,10 +1,10 @@
 #!/bin/zsh
 source ~/bin/colors
 
-# -----------------------------------
-# Archival script replaced by urlinfo
-# https://github.com/barabasz/urlinfo
-# -----------------------------------
+# ---------------------------------------------------------
+# Obsolete script replaced by urlinfo
+# https://github.com/barabasz/scripts/tree/main/php/urlinfo
+# ---------------------------------------------------------
 
 # CONFIG
 timeout=2

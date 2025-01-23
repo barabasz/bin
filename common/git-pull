@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-for repo in "bin" "config" "resources" "scripts"
+for repo in $(git-repos)
 do
     printhead $repo
     cd ~/GitHub/$repo

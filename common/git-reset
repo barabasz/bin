@@ -1,33 +1,11 @@
 #!/bin/zsh
 
-printhead 'bin'
-cd ~/GitHub/bin
-git fetch origin
-git checkout main
-git reset --hard origin/main
-git pull
-echo '"bin" repo updated.'
-
-printhead 'config'
-cd ~/GitHub/config
-git fetch origin
-git checkout main
-git reset --hard origin/main
-git pull
-echo '"config" repo updated.'
-
-printhead 'resources'
-cd ~/GitHub/resources
-git fetch origin
-git checkout main
-git reset --hard origin/main
-git pull
-echo '"resources" repo updated.'
-
-printhead 'scripts'
-cd ~/GitHub/scripts
-git fetch origin
-git checkout main
-git reset --hard origin/main
-git pull
-echo '"scripts" repo updated.'
+for repo in $(git-repos)
+do
+    printhead $repo
+    cd ~/GitHub/$repo
+    git fetch origin
+    git checkout main
+    git reset --hard origin/main
+    git pull
+done

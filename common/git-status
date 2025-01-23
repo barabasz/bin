@@ -1,17 +1,8 @@
 #!/bin/zsh
 
-printhead 'bin'
-cd ~/GitHub/bin
-git status
-
-printhead 'config'
-cd ~/GitHub/config
-git status
-
-printhead 'resources'
-cd ~/GitHub/resources
-git status
-
-printhead 'scripts'
-cd ~/GitHub/scripts
-git status
+for repo in $(git-repos)
+do
+    printhead $repo
+    cd ~/GitHub/$repo
+    git status
+done
