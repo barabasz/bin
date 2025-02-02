@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# yazi
+# terminal file manager written in Rust
+# https://github.com/sxyazi/yazi
+
+if [[ "$(isinstalled yazi)" == "no" ]]; then
+    if [[ "$(osname)" == "macos" ]]; then
+        brew install yazi --HEAD
+    else
+        aptinstall yazi
+    fi
+else 
+    yazi --version
+fi
+
+if [[ -d ~/.config/yazi || -h ~/.config/yazi ]]; then
+    rm -r ~/.config/yazi
+fi
+ln -sFf ~/GitHub/config/yazi ~/.config/yazi
+
+
+
