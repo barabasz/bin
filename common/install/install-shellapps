@@ -31,6 +31,12 @@ install-fd
 printhead 'Installing fzf...'
 install-fzf
 
+# bat
+# A cat clone with syntax highlighting
+# https://github.com/sharkdp/bat
+printhead 'Installing bat...'
+install-bat
+
 # htop
 # Improved top (interactive process viewer)
 # https://htop.dev/

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# bat
+# A cat clone with syntax highlighting
+# https://github.com/sharkdp/bat
+
+if [[ "$(isinstalled bat)" == "no" ]]; then
+    brew install -q bat
+else
+    bat --version
+fi
