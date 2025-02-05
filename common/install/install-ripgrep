@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+# ripgrep
+# line-oriented search tool for files
+# https://github.com/BurntSushi/ripgrep
+
+if [[ "$(isinstalled rg)" == "no" ]]; then
+    brew install -q ripgrep
+else
+    rg --version | grep ripgrep
+fi

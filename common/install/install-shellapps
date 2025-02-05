@@ -93,4 +93,10 @@ fi
 printhead 'Installing eza...'
 install-eza
 
+# ripgrep
+# line-oriented search tool for files
+# https://github.com/BurntSushi/ripgrep
+printhead 'Installing ripgrep...'
+install-ripgrep
+
 printinfo 'Shell apps installation completed.'
