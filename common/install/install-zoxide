@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+# zoxide
+# smarter cd command, inspired by z and autojump
+# https://github.com/ajeetdsouza/zoxide
+
+if [[ "$(isinstalled zoxide)" == "no" ]]; then
+    brew install -q zoxide
+    eval "$(zoxide init zsh)"
+else
+    zoxide --version
+fi

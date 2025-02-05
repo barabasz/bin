@@ -99,4 +99,10 @@ install-eza
 printhead 'Installing ripgrep...'
 install-ripgrep
 
+# zoxide
+# smarter cd command, inspired by z and autojump
+# https://github.com/ajeetdsouza/zoxide
+printhead 'Installing zoxide...'
+install-zoxide
+
 printinfo 'Shell apps installation completed.'
