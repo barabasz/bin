@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+# tldr → tlrc
+# tlrc is a tldr client written in Rust
+# https://github.com/tldr-pages/tlrc
+
+if [[ "$(isinstalled tldr)" == "no" ]]; then
+    brew install -q tlrc
+else
+    tldr --version
+fi

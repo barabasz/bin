@@ -55,6 +55,12 @@ install-nvim
 printhead 'Installing navi...'
 install-navi
 
+# tlrc
+# tlrc is a tldr client written in Rust
+# https://github.com/tldr-pages/tlrc
+printhead 'Installing tldr...'
+install-tldr
+
 # wget
 # Internet file retriever
 # https://www.gnu.org/software/wget/
