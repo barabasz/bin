@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+# eza
+# modern alternative for the ls
+# https://github.com/eza-community/eza
+
+if [[ "$(isinstalled eza)" == "no" ]]; then
+    brew install -q eza
+else
+    echo eza $(eza --version | grep v)
+fi

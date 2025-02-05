@@ -87,4 +87,10 @@ if [[ "$(osname)" == "macos" ]]; then
     install-zzz
 fi
 
+# eza
+# modern alternative for the ls
+# https://github.com/eza-community/eza
+printhead 'Installing eza...'
+install-eza
+
 printinfo 'Shell apps installation completed.'
