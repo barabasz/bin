@@ -5,17 +5,17 @@
 # including some features of Bash, ksh, and tcsh.
 # https://www.zsh.org/
 
-# symbolic links
-ln -sf ~/GitHub/config/zsh/.zprofile ~/
-ln -sf ~/GitHub/config/zsh/.zshrc ~/
-ln -sf ~/GitHub/config/zsh/.zsh_aliases ~/
-ln -sf ~/GitHub/config/zsh/.zsh_functions ~/
-ln -sf ~/GitHub/config/zsh/.zsh_locale ~/
+export GHCONFDIR=$HOME/GitHub/config
+export CONFDIR=$HOME/.config
+
+# symbolic link
+ln -sF $GHCONFDIR/zsh $CONFDIR/zsh
 
 # load aliases & functions
-source ~/.zsh_functions
-source ~/.zsh_aliases
-source ~/.zsh_locale
+source $ZDOTDIR/.zshenv
+source $ZDOTDIR/.zsh_functions
+source $ZDOTDIR/.zsh_aliases
+source $ZDOTDIR/.zsh_locale
 
 # fallback for bash's shopt
 if [[ ! "$(osname)" == "macos" ]]; then
