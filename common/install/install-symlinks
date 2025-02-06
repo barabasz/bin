@@ -2,24 +2,21 @@
 
 # load functions
 zshpath=https://raw.githubusercontent.com/barabasz/config/main/zsh/
+source /dev/stdin <<< "$(curl -fsSL $zshpath/.zshenv)"
 source /dev/stdin <<< "$(curl -fsSL $zshpath/.zsh_functions)"
 
 # Common scripts
-ln -sf ~/GitHub/bin/common ~/binc
+ln -sf $GHBINDIR/common $HOME/bin
 
 # OS-specific scripts
 if [[ "$(osname)" == "macos" ]]; then
-    ln -sf ~/GitHub/bin/macos ~/bin
+    ln -sf $GHBINDIR/macos ~/bin
 else
-    ln -sf ~/GitHub/bin/linux ~/bin
+    ln -sf $GHBINDIR/linux ~/bin
 fi
 
 # Library
-ln -sf ~/GitHub/bin/lib ~/
+ln -sF $GHBINDIR/lib $HOME/lib
 
 # ZSH
-ln -sf ~/GitHub/config/zsh/.zprofile ~/
-ln -sf ~/GitHub/config/zsh/.zshrc ~/
-ln -sf ~/GitHub/config/zsh/.zsh_aliases ~/
-ln -sf ~/GitHub/config/zsh/.zsh_functions ~/
-ln -sf ~/GitHub/config/zsh/.zsh_locale ~/
+ln -sF $GHCONFDIR/zsh $CONFDIR/zsh2

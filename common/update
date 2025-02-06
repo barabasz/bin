@@ -26,6 +26,3 @@ if [[ "$(isinstalled brew)" == "yes" ]]; then
     brew cleanup
 fi
 
-
-
-
