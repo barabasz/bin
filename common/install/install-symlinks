@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # load functions
-zshpath=https://raw.githubusercontent.com/barabasz/config/main/zsh/
+zshpath=https://raw.githubusercontent.com/barabasz/resources/refs/heads/main/zsh
 source /dev/stdin <<< "$(curl -fsSL $zshpath/.zshenv)"
 source /dev/stdin <<< "$(curl -fsSL $zshpath/.zsh_functions)"
 
@@ -10,13 +10,13 @@ ln -sf $GHBINDIR/common $HOME/bin
 
 # OS-specific scripts
 if [[ "$(osname)" == "macos" ]]; then
-    ln -sf $GHBINDIR/macos ~/bin
+    ln -sf $GHBINDIR/macos $HOME/binmac
 else
-    ln -sf $GHBINDIR/linux ~/bin
+    ln -sf $GHBINDIR/linux $HOME/binlinux
 fi
 
 # Library
 ln -sF $GHBINDIR/lib $HOME/lib
 
 # ZSH
-ln -sF $GHCONFDIR/zsh $CONFDIR/zsh2
+ln -sF $GHCONFDIR/zsh $CONFDIR/zsh
