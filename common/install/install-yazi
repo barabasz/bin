@@ -4,20 +4,24 @@
 # terminal file manager written in Rust
 # https://github.com/sxyazi/yazi
 
-if [[ "$(isinstalled yazi)" == "no" ]]; then
+appname=yazi
+
+if [[ "$(isinstalled $appname)" == "no" ]]; then
     if [[ "$(osname)" == "macos" ]]; then
-        brew install yazi --HEAD
+        brew install $appname --HEAD
     else
-        aptinstall yazi
+        aptinstall $appname
     fi
 else 
-    yazi --version
+    $appname --version
 fi
 
-if [[ -d ~/.config/yazi || -h ~/.config/yazi ]]; then
-    rm -r ~/.config/yazi
+if [[ -d $CONFDIR/$appname || -h $CONFDIR/$appname ]]; then
+    rm -r $CONFDIR/$appname
+    ln -sF $GHCONFDIR/$appname $CONFDIR/$appname
 fi
-ln -sFf ~/GitHub/config/yazi ~/.config/yazi
 
-
-
+if [[ ! -f $CONFDIR/$appname ]]; then
+    mkdir -p $CONFDIR
+    
+fi

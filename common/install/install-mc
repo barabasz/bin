@@ -4,16 +4,22 @@
 # feature rich full-screen text mode visual file manager
 # https://midnight-commander.org/
 
-if [[ "$(isinstalled mc)" == "no" ]]; then
+appname='Midnight Commander'
+cliname=mc
+dirname=mc
+pkgname=midnight-commander
+
+if [[ "$(isinstalled $cliname)" == "no" ]]; then
     if [[ "$(osname)" == "macos" ]]; then
         brew install -q midnight-commander
     else
-        aptinstall mc
+        aptinstall $cliname
     fi
-else 
-    mc --version | grep 'Midnight Commander'
+else
+    versioninfo $appname $cliname
 fi
 
-mkdir -p ~/.config/mc
-ln -sf ~/GitHub/config/mc/ini ~/.config/mc/ini
-ln -sf ~/GitHub/config/mc/panels.ini ~/.config/mc/panels.ini
+if [[ -d $CONFDIR/$dirname ]]; then
+    rm -r $CONFDIR/$dirname
+    ln -sfF $GHCONFDIR/$dirname $CONFDIR/$dirname
+fi

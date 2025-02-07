@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# load functions
+source $ZDOTDIR/.zsh_functions
+
+versioninfo $1 "$2"

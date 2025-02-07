@@ -10,6 +10,9 @@ source /dev/stdin <<< "$(curl -fsSL $zshpath/.zshenv)"
 source /dev/stdin <<< "$(curl -fsSL $zshpath/.zsh_functions)"
 echo 'OK'
 
+# create config directory
+mkdir -p $CONFDIR
+
 # Update and upgrade
 if [[ ! "$(osname)" == "macos" ]]; then
     printhead 'Updating system...'
