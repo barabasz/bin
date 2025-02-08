@@ -5,14 +5,14 @@
 # https://github.com/sharkdp/bat
 
 appname=bat
-cliname=bat
-dirname=$cliname
-pkgname=bat
+cliname=$appname
+dirname=$appname
+pkgname=$appname
 
-if [[ "$(isinstalled $appname)" == "no" ]]; then
-    brew install -q $appname
+if [[ "$(isinstalled $cliname)" == "no" ]]; then
+    brew install -q $pkgname
 else
-    verinf $appname $cliname
+    verinf $cliname "$appname"
 fi
 
 makeconfln $dirname

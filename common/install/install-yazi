@@ -5,23 +5,18 @@
 # https://github.com/sxyazi/yazi
 
 appname=yazi
+cliname=$appnamem
+dirname=$cliname
+pkgname=$cliname
 
-if [[ "$(isinstalled $appname)" == "no" ]]; then
+if [[ "$(isinstalled $cliname)" == "no" ]]; then
     if [[ "$(osname)" == "macos" ]]; then
-        brew install $appname --HEAD
+        brew install -q $pkgname
     else
-        aptinstall $appname
+        aptinstall $cliname
     fi
-else 
-    $appname --version
+else
+    verinf $cliname "$appname"
 fi
 
-if [[ -d $CONFDIR/$appname || -h $CONFDIR/$appname ]]; then
-    rm -r $CONFDIR/$appname
-    ln -sF $GHCONFDIR/$appname $CONFDIR/$appname
-fi
-
-if [[ ! -f $CONFDIR/$appname ]]; then
-    mkdir -p $CONFDIR
-    
-fi
+makeconfln $dirname

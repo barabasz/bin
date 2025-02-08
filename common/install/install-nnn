@@ -4,13 +4,22 @@
 # Tiny, lightning fast, feature-packed file manager
 # https://github.com/jarun/nnn
 
-if [[ "$(isinstalled nnn)" == "no" ]]; then
+appname=nnn
+cliname=$appname
+dirname=$appname
+pkgname=$appname
+vercmmd="-V"
+
+if [[ "$(isinstalled $cliname)" == "no" ]]; then
     if [[ "$(osname)" == "macos" ]]; then
-        brew install -q nnn
+        brew install -q $pkgname
     else
-        aptinstall nnn
+        aptinstall $cliname
     fi
-    sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)"
-else 
-    echo "nnn $(nnn -V)"
+else
+    verinf $cliname "$appname" $vercmmd
 fi
+
+makeconfln $dirname
+# Install plugins
+sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)"

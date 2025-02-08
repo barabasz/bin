@@ -4,9 +4,15 @@
 # smarter cd command, inspired by z and autojump
 # https://github.com/ajeetdsouza/zoxide
 
-if [[ "$(isinstalled zoxide)" == "no" ]]; then
-    brew install -q zoxide
-    eval "$(zoxide init zsh)"
+appname=zoxide
+cliname=$appname
+dirname=$appname
+pkgname=$appname
+
+if [[ "$(isinstalled $cliname)" == "no" ]]; then
+    brew install -q $pkgname
 else
-    zoxide --version
+    verinf $cliname "$appname"
 fi
+
+makeconfln $dirname

@@ -4,8 +4,13 @@
 # YouTube video downloader
 # https://github.com/yt-dlp/yt-dlp
 
-if [[ "$(isinstalled yt-dlp)" == "no" ]]; then
-    brew install yt-dlp
+appname=yt-dlp
+cliname=$appname
+dirname=$appname
+pkgname=$appname
+
+if [[ "$(isinstalled $cliname)" == "no" ]]; then
+    brew install -q $pkgname
 else
-    yt-dlp --version
+    verinf $cliname "$appname"
 fi

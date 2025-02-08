@@ -1,51 +1,58 @@
 #!/bin/bash
 
-# bzip2
-# Freely available high-quality data compressor
-# https://sourceware.org/bzip2/
+# gzip
+# Popular GNU data compression program
+# https://www.gnu.org/software/gzip/
 
-if [[ "$(isinstalled bzip2)" == "no" ]]; then
-    brew install -q bzip2
+appname=gzip
+cliname=$appname
+pkgname=$appname
+
+if [[ "$(isinstalled $cliname)" == "no" ]]; then
+    brew install -q $pkgname
 else
-    echo "bzip2 is installed"
+    verinf $cliname "$appname"
 fi
 
 # 7zip
 # file archiver with a high compression ratio
 # https://7-zip.org
 
-if [[ "$(isinstalled 7zz)" == "no" ]]; then
-    brew install -q sevenzip
-else
-    7zz | grep Copyright
-fi
+appname=7-zip
+cliname=7zz
+pkgname=sevenzip
+vercmmd="i"
 
-# zlib
-# General-purpose lossless data-compression library
-# https://zlib.net/
-
-if [[ "$(isinstalledbybrew zlib)" == "no" ]]; then
-    brew install -q zlib
+if [[ "$(isinstalled $cliname)" == "no" ]]; then
+    brew install -q $pkgname
 else
-    brew list zlib | sed -n '1p'
+    verinf $cliname "$appname" "$vercmmd"
 fi
 
 # lz4
 # Extremely Fast Compression algorithm
 # https://lz4.github.io/lz4/
 
-if [[ "$(isinstalled lz4)" == "no" ]]; then
-    brew install -q lz4
+appname=lz4
+cliname=$appname
+pkgname=$appname
+
+if [[ "$(isinstalled $cliname)" == "no" ]]; then
+    brew install -q $pkgname
 else
-    lz4 --version
+    verinf $cliname "$appname"
 fi
 
 # xz
 # General-purpose data compression with high compression ratio
 # https://tukaani.org/xz/
 
-if [[ "$(isinstalled xz)" == "no" ]]; then
-    brew install -q xz
+appname=xz
+cliname=$appname
+pkgname=$appname
+
+if [[ "$(isinstalled $cliname)" == "no" ]]; then
+    brew install -q $pkgname
 else
-    xz --version
+    verinf $cliname "$appname"
 fi

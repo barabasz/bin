@@ -4,8 +4,14 @@
 # put mac to sleep
 # https://github.com/Orc/Zzz
 
-if [[ "$(isinstalled zzz)" == "no" ]]; then
-    brew install -q zzz
+appname=Zzz
+cliname=zzz
+dirname=$appname
+pkgname=$appname
+
+if [[ "$(isinstalled $cliname)" == "no" ]]; then
+    brew install -q $pkgname
 else
-    echo "zzz is installed"
+    # zzz does not have a version option
+    # verinf $cliname "$appname"
 fi
