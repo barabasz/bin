@@ -6,7 +6,7 @@
 
 appname='Midnight Commander'
 cliname=mc
-dirname=mc
+dirname=$cliname
 pkgname=midnight-commander
 
 if [[ "$(isinstalled $cliname)" == "no" ]]; then
@@ -16,10 +16,7 @@ if [[ "$(isinstalled $cliname)" == "no" ]]; then
         aptinstall $cliname
     fi
 else
-    versioninfo $appname $cliname
+    verinf $appname $cliname
 fi
 
-if [[ -d $CONFDIR/$dirname ]]; then
-    rm -r $CONFDIR/$dirname
-    ln -sfF $GHCONFDIR/$dirname $CONFDIR/$dirname
-fi
+makeconfln $dirname

@@ -6,17 +6,13 @@
 
 appname=bat
 cliname=bat
-dirname=bat
+dirname=$cliname
 pkgname=bat
-
 
 if [[ "$(isinstalled $appname)" == "no" ]]; then
     brew install -q $appname
 else
-    echo "$appname $($cliname --version | grep -Eo '[0-9]\.[0-9]+') is already installed"
+    verinf $appname $cliname
 fi
 
-if [[ -d $CONFDIR/$dirname || -h $CONFDIR/$dirname ]]; then
-    rm -r $CONFDIR/$dirname
-    ln -sF $GHCONFDIR/$dirname $CONFDIR/$dirname
-fi
+makeconfln $dirname
