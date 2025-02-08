@@ -3,7 +3,6 @@
 # Brew core packages
 
 # load functions
-echo 'Loading install environment and functions...'
 scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
 source /dev/stdin <<< "$(curl -fsSL $scrpath)"
 

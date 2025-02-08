@@ -4,6 +4,10 @@
 # Mozilla CA certificate store
 # https://curl.se/docs/caextract.html
 
+# load functions
+scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+source /dev/stdin <<< "$(curl -fsSL $scrpath)"
+
 if [[ "$(isinstalledbybrew ca-certificates)" == "no" ]]; then
     brew install -q ca-certificates
 else

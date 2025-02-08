@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# ncurses
+# Text-based UI library
+# https://invisible-island.net/ncurses/
+
+# load functions
+scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+source /dev/stdin <<< "$(curl -fsSL $scrpath)"
+
 if [[ "$(isinstalledbybrew ncurses)" == "no" ]]; then
     brew install -q ncurses
 else

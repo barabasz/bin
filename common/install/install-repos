@@ -1,11 +1,8 @@
 #!/bin/bash
 
 # load functions
-echo 'Loading .zshenv and .zsh_functions...'
-zshpath="https://raw.githubusercontent.com/barabasz/resources/main/zsh/"
-source /dev/stdin <<< "$(curl -fsSL $zshpath/.zshenv)"
-source /dev/stdin <<< "$(curl -fsSL $zshpath/.zsh_functions)"
-echo 'OK'
+scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+source /dev/stdin <<< "$(curl -fsSL $scrpath)"
 
 mkdir -p ~/GitHub && cd $_
 
