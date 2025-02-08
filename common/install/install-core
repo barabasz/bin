@@ -19,7 +19,7 @@ mkdir -p $CONFDIR
 # Generatle locale (Ubuntu)
 if [[ "$(osname)" == "ubuntu" ]]; then
     printhead 'Installing locales...'
-    extscript $github/install-locales
+    extscript $github/install-locales > /dev/null 2>&1
 fi
 
 # Update and upgrade
@@ -40,6 +40,9 @@ if [[ -f /opt/homebrew/bin/brew ]]; then
 elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
+
+# Basic brew libraries
+brew install -q 
 
 # gh - GitHub CLI
 printhead 'Installing gh...'

@@ -29,30 +29,3 @@ else
     verinf $cliname "$appname" "$vercmmd"
 fi
 
-# lz4
-# Extremely Fast Compression algorithm
-# https://lz4.github.io/lz4/
-
-appname=lz4
-cliname=$appname
-pkgname=$appname
-
-if [[ "$(isinstalled $cliname)" == "no" ]]; then
-    brew install -q $pkgname
-else
-    verinf $cliname "$appname"
-fi
-
-# xz
-# General-purpose data compression with high compression ratio
-# https://tukaani.org/xz/
-
-appname=xz
-cliname=$appname
-pkgname=$appname
-
-if [[ "$(isinstalled $cliname)" == "no" ]]; then
-    brew install -q $pkgname
-else
-    verinf $cliname "$appname"
-fi
