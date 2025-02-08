@@ -41,8 +41,21 @@ elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+# certificates
+printhead 'Installing certificates...'
+extscript $github/install-certs
+
 # Basic brew libraries
-brew install -q 
+printhead 'Installing brew core packages...'
+extscript $github/install-brew-core
+
+# ncurses - Text-based UI library
+printhead 'Installing ncurses...'
+extscript $github/install-ncurses
+
+# gcc  - GNU compiler collection
+printhead 'Installing gcc...'
+extscript $github/install-gcc
 
 # gh - GitHub CLI
 printhead 'Installing gh...'
@@ -73,27 +86,15 @@ if [[ "$(osname)" != "macos" ]]; then
     set-locale
 fi
 
-# certificates
-printhead 'Installing certificates...'
-install-certs
-
 # acl - Commands for manipulating POSIX access control lists
 if [[ "$(osname)" != "macos" ]]; then
     printhead 'Installing acl...'
     install-acl
 fi
 
-# ncurses - Text-based UI library
-printhead 'Installing ncurses...'
-install-ncurses
-
 # cmake  - Cross-platform make
 printhead 'Installing cmake...'
 install-cmake
-
-# gcc  - GNU compiler collection
-printhead 'Installing gcc...'
-install-gcc
 
 # Collection of Linux utilities
 if [[ ! "$(osname)" == "macos" ]]; then

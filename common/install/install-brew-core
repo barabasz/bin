@@ -1,35 +1,14 @@
 #!/bin/bash
 
+# Brew core packages
+
 # load functions
 echo 'Loading install environment and functions...'
 scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
 source /dev/stdin <<< "$(curl -fsSL $scrpath)"
 
-# lz4
-# Extremely Fast Compression algorithm
-# https://lz4.github.io/lz4/
-
-appname=lz4
-cliname=$appname
-pkgname=$appname
-
-if [[ "$(isinstalled $cliname)" == "no" ]]; then
-    brew install -q $pkgname
+if [[ "$(isinstalled brew)" == "yes" ]]; then
+    brew install -q gmp isl mpfr libmpc lz4 xz bzip2 zlib zstd binutils m4 pkgconf
 else
-    verinf $cliname "$appname"
+    echo "Brew is not installed"
 fi
-
-# xz
-# General-purpose data compression with high compression ratio
-# https://tukaani.org/xz/
-
-appname=xz
-cliname=$appname
-pkgname=$appname
-
-if [[ "$(isinstalled $cliname)" == "no" ]]; then
-    brew install -q $pkgname
-else
-    verinf $cliname "$appname"
-fi
-
