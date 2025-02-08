@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# gh - GitHub CLI
+# GitHub CLI brings GitHub to your terminal
+# https://cli.github.com
+
 # load functions
 echo 'Loading install environment and functions...'
 scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
@@ -7,8 +11,8 @@ source /dev/stdin <<< "$(curl -fsSL $scrpath)"
 
 appname="GitHub CLI"
 cliname=gh
-dirname=$appname
-pkgname=$appname
+dirname=$cliname
+pkgname=$cliname
 
 if [[ "$(isinstalled $cliname)" == "no" ]]; then
     brew install -q $pkgname
