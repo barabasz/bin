@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # load functions
-source ~/.zsh_functions
+source $ZDOTDIR/.zsh_functions
 
 # temporary locales
 export LC_ALL="en_US.UTF-8"

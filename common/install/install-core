@@ -69,11 +69,6 @@ extscript $github/install-repos
 printhead 'Creating symlinks...'
 extscript $github/install-symlinks
 
-# set temporary path and locale
-export PATH=$HOME/bin:$HOME/bin/install:$HOME/binos:/usr/local/bin:$PATH
-export LC_ALL="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
-
 # disable NEEDRESTART prompt
 if [[ "$(osname)" == "ubuntu" ]]; then
     printhead 'Setting NEEDRESTART_MODE to auto...'
