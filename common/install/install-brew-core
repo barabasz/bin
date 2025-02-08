@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# load functions
+echo 'Loading install environment and functions...'
+scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+source /dev/stdin <<< "$(curl -fsSL $scrpath)"
+
 # lz4
 # Extremely Fast Compression algorithm
 # https://lz4.github.io/lz4/
