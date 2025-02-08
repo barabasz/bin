@@ -5,6 +5,9 @@ echo 'Loading install environment and functions...'
 scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
 source /dev/stdin <<< "$(curl -fsSL $scrpath)"
 
+export HOMEBREW_NO_ENV_HINTS=1
+export HOMEBREW_NO_EMOJI=1
+
 if [[ "$(isinstalled brew)" == "no" ]]; then
     # Ubuntu/Debian fix
     if [[ "$(osname)" != "macos" ]]; then
