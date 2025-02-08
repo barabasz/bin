@@ -2,7 +2,16 @@
 
 # THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
 
-sudo apt install -yq locales
-sudo locale-gen en_US.UTF-8
-sudo locale-gen pl_PL.UTF-8
-sudo update-locale
+# load functions
+scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+source /dev/stdin <<< "$(curl -fsSL $scrpath)"
+
+if [[ "$(osname)" == "ubuntu" ]]; then
+    sudo apt install -yq locales
+    sudo locale-gen en_US.UTF-8
+    sudo locale-gen pl_PL.UTF-8
+    sudo update-locale
+else
+    echo "Unsupported OS: $(osname)"
+    exit 1
+fi

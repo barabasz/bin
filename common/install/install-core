@@ -16,8 +16,8 @@ source /dev/stdin <<< "$(curl -fsSL $scrpath)"
 # create config directory
 mkdir -p $CONFDIR
 
-# Generatle locale
-if [[ "$(osname)" != "ubuntu" ]]; then
+# Generatle locale (Ubuntu)
+if [[ "$(osname)" == "ubuntu" ]]; then
     printhead 'Installing locales...'
     extscript $github/install-locales
 fi
