@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# gcc
+# GNU compiler collection
+# https://gcc.gnu.org/
+
+# load functions
+scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+source /dev/stdin <<< "$(curl -fsSL $scrpath)"
+
 if [[ "$(isinstalled gcc)" == "no" ]]; then
     brew install -q gcc
 else
