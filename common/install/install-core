@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
+
 # set variables
 github="https://raw.githubusercontent.com/barabasz/bin/main/common/install"
 
@@ -13,6 +15,12 @@ source /dev/stdin <<< "$(curl -fsSL $scrpath)"
 
 # create config directory
 mkdir -p $CONFDIR
+
+# Generatle locale
+if [[ "$(osname)" != "ubuntu" ]]; then
+    printhead 'Installing locales...'
+    extscript $github/install-locales
+fi
 
 # Update and upgrade
 if [[ ! "$(osname)" == "macos" ]]; then
