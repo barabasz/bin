@@ -1,13 +1,19 @@
 #!/bin/bash
 
 # load functions
-source ~/.zsh_functions
-source ~/.zsh_locale
+echo 'Loading install environment and functions...'
+scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+source /dev/stdin <<< "$(curl -fsSL $scrpath)"
 
-if [[ "$(isinstalled gh)" == "no" ]]; then
-    brew install -q gh
+appname="GitHub CLI"
+cliname=gh
+dirname=$appname
+pkgname=$appname
+
+if [[ "$(isinstalled $cliname)" == "no" ]]; then
+    brew install -q $pkgname
 else
-    gh --version
+    verinf $cliname "$appname"
 fi
 
 if [[ "$(gh auth status | grep -o 'Logged')" == "Logged" ]]; then

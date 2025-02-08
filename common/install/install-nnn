@@ -16,10 +16,15 @@ if [[ "$(isinstalled $cliname)" == "no" ]]; then
     else
         aptinstall $cliname
     fi
+    echo "==> Installing nnn plugins..."
+    sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)" &>/dev/null
 else
     verinf $cliname "$appname" $vercmmd
 fi
 
-makeconfln $dirname
-# Install plugins
-sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)"
+# Symlink bookmarks
+mkdir -p $CONFDIR/nnn
+if [[ -f $CONFDIR/nnn/bookmarks ]]; then
+    rm -f $CONFDIR/nnn/bookmarks
+fi
+ln -sfF $GHCONFDIR/nnn/bookmarks $CONFDIR/nnn/bookmarks

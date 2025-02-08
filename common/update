@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # load functions
-zshpath=https://raw.githubusercontent.com/barabasz/config/main/zsh/
-source /dev/stdin <<< "$(curl -fsSL $zshpath/.zsh_functions)"
+echo 'Loading install environment and functions...'
+scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+source /dev/stdin <<< "$(curl -fsSL $scrpath)"
 
 if [[ ! "$(osname)" == "macos" ]]; then
     envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"

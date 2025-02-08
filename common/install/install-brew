@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # load functions
-source $ZDOTDIR/.zsh_functions
-source $ZDOTDIR/.zsh_locale
+echo 'Loading install environment and functions...'
+scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+source /dev/stdin <<< "$(curl -fsSL $scrpath)"
 
 if [[ "$(isinstalled brew)" == "no" ]]; then
     # Ubuntu/Debian fix

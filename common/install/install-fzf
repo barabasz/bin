@@ -4,8 +4,13 @@
 # Command-line fuzzy finder written in Go
 # https://github.com/junegunn/fzf
 
-if [[ "$(isinstalled fzf)" == "no" ]]; then
-    brew install -q fzf
+appname=fzf
+cliname=$appname
+dirname=$appname
+pkgname=$appname
+
+if [[ "$(isinstalled $cliname)" == "no" ]]; then
+    brew install -q $pkgname
 else
-    echo "fzf $(fzf --version)"
+    verinf $cliname "$appname"
 fi

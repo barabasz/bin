@@ -1,31 +1,34 @@
 #!/bin/bash
 
 # load functions
-zshpath=https://raw.githubusercontent.com/barabasz/config/main/zsh/
+echo 'Loading .zshenv and .zsh_functions...'
+zshpath="https://raw.githubusercontent.com/barabasz/resources/main/zsh/"
+source /dev/stdin <<< "$(curl -fsSL $zshpath/.zshenv)"
 source /dev/stdin <<< "$(curl -fsSL $zshpath/.zsh_functions)"
+echo 'OK'
 
 mkdir -p ~/GitHub && cd $_
 
 if [[ ! -d ~/GitHub/bin ]]; then
-    git clone https://github.com/barabasz/bin.git
+    gh repo clone barabasz/bin
 else
     echo '"bin" repo already cloned.'
 fi
 
 if [[ ! -d ~/GitHub/config ]]; then
-    git clone https://github.com/barabasz/config.git
+    gh repo clone barabasz/config
 else
     echo '"config" repo already cloned.'
 fi
 
 if [[ ! -d ~/GitHub/resources ]]; then
-    git clone https://github.com/barabasz/resources.git
+    gh repo clone barabasz/resources
 else
     echo '"resources" repo already cloned.'
 fi
 
 if [[ ! -d ~/GitHub/scripts ]]; then
-    git clone https://github.com/barabasz/scripts.git
+    gh repo clone barabasz/scripts
 else
     echo '"scripts" repo already cloned.'
 fi

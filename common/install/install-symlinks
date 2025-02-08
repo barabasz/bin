@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # load functions
-zshpath=https://raw.githubusercontent.com/barabasz/resources/refs/heads/main/zsh
-source /dev/stdin <<< "$(curl -fsSL $zshpath/.zshenv)"
-source /dev/stdin <<< "$(curl -fsSL $zshpath/.zsh_functions)"
+echo 'Loading install environment and functions...'
+scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+source /dev/stdin <<< "$(curl -fsSL $scrpath)"
 
 # Common scripts
 ln -sF $GHBINDIR/common $HOME/bin
@@ -17,6 +17,3 @@ fi
 
 # Library
 ln -sF $GHBINDIR/lib $HOME/lib
-
-# ZSH
-ln -sF $GHCONFDIR/zsh $CONFDIR/zsh

@@ -1,21 +1,32 @@
 #!/bin/bash
 
 # load functions
-zshpath=https://raw.githubusercontent.com/barabasz/config/main/zsh/
+echo 'Loading .zshenv and .zsh_functions...'
+zshpath="https://raw.githubusercontent.com/barabasz/resources/main/zsh/"
+source /dev/stdin <<< "$(curl -fsSL $zshpath/.zshenv)"
 source /dev/stdin <<< "$(curl -fsSL $zshpath/.zsh_functions)"
+echo 'OK'
 
-if [[ "$(isinstalled git)" == "no" ]]; then
+appname=git
+cliname=$appname
+dirname=$appname
+pkgname=$appname
+
+if [[ "$(isinstalled $cliname)" == "no" ]]; then
     if [[ "$(osname)" == "macos" ]]; then
         xcode-select --install
     else
         export LC_ALL="en_US.UTF-8"
         export LC_CTYPE="en_US.UTF-8"
-        aptinstall git
+        aptinstall $pkgname
     fi
 fi
 
-git config --global user.email "abarabasz@gmail.com"
-git config --global user.name "Andrzej Barabasz"
-git config --global core.pager cat
-git config --global core.editor code
-git --version
+if [[ -z "$(git config --global user.email)" ]]; then
+    git config --global user.email "abarabasz@gmail.com"
+    git config --global user.name "Andrzej Barabasz"
+    git config --global core.pager bat
+    git config --global core.editor code
+fi
+
+verinf $cliname "$appname"

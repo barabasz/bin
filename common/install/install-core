@@ -1,14 +1,15 @@
 #!/bin/bash
 
+# set variables
 github="https://raw.githubusercontent.com/barabasz/bin/main/common/install"
+
+# sudo password forcing
 sudo echo > /dev/null
 
 # load functions
-
-zshpath=https://raw.githubusercontent.com/barabasz/resources/refs/heads/main/zsh
-source /dev/stdin <<< "$(curl -fsSL $zshpath/.zshenv)"
-source /dev/stdin <<< "$(curl -fsSL $zshpath/.zsh_functions)"
-echo 'OK'
+echo 'Loading install environment and functions...'
+scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+source /dev/stdin <<< "$(curl -fsSL $scrpath)"
 
 # create config directory
 mkdir -p $CONFDIR
@@ -23,7 +24,20 @@ fi
 printhead 'Installing git...'
 extscript $github/install-git
 
-# clone setup repositories
+# brew
+printhead 'Installing brew...'
+extscript $github/install-brew
+if [[ -f /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+# gh - GitHub CLI
+printhead 'Installing gh...'
+extscript $github/install-gh
+
+# clone main repositories
 printhead 'Cloning setup repositories...'
 extscript $github/install-repos
 
@@ -32,7 +46,7 @@ printhead 'Creating symlinks...'
 extscript $github/install-symlinks
 
 # set temporary path and locale
-export PATH=$HOME/bin:$HOME/bin/install:$HOME/binc:$HOME/bin/test:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/bin/install:$HOME/binos:/usr/local/bin:$PATH
 export LC_ALL="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 
@@ -46,15 +60,6 @@ fi
 if [[ "$(osname)" != "macos" ]]; then
     printhead 'Setting locale...'
     set-locale
-fi
-
-# brew
-printhead 'Installing brew...'
-install-brew
-if [[ -f /opt/homebrew/bin/brew ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 # certificates
