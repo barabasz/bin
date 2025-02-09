@@ -21,8 +21,6 @@ if [[ "$(osname)" == "ubuntu" ]]; then
     extscript $github/install-locales 2>/dev/null | grep "done"
 fi
 
-return 0
-
 # Update and upgrade
 if [[ ! "$(osname)" == "macos" ]]; then
     printhead 'Updating system...'
@@ -33,6 +31,8 @@ fi
 # Git
 printhead 'Installing git...'
 extscript $github/install-git
+
+return 0
 
 # brew
 printhead 'Installing brew...'

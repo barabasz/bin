@@ -3,7 +3,6 @@
 # THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
 
 # load functions
-echo 'Loading install environment and functions...'
 loadfnurl="https://raw.githubusercontent.com/barabasz/bin/main/common/loadfn"
 if command -v loadfn &> /dev/null; then loadfn
 else source <(curl -fsSL $loadfnurl); fi

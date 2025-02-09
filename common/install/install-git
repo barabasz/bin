@@ -7,8 +7,6 @@ loadfnurl="https://raw.githubusercontent.com/barabasz/bin/main/common/loadfn"
 if command -v loadfn &> /dev/null; then loadfn
 else source <(curl -fsSL $loadfnurl); fi
 
-loadfn
-
 appname=git
 cliname=$appname
 dirname=$appname

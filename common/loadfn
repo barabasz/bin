@@ -16,7 +16,6 @@ export GHBINDIR=$GHDIR/bin
 export GHCONFDIR=$GHDIR/config
 export CONFDIR=$XDG_CONFIG_HOME
 export PATH=$BINDIR:$BINDIR/install:$BINDIR/test:$HOME/binos:/usr/local/bin:$PATH
-export PS1="[%{%F{cyan}%}%n%{%f%}@%{%F{green}%}%m:%{%F{yellow}%}%~%{%f%}%]]$ "
 
 test -f $HOME/.zshenv && source $_
 test -f $ZDOTDIR/.zsh_functions && source $_ || test -f $GHCONFDIR/zsh/.zsh_functions && source $_
