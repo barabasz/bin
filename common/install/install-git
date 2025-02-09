@@ -3,13 +3,11 @@
 # THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
 
 # load functions
-test -f ~/.zshenv && source "$_"
-if [[ -f $GHCONFDIR/zsh/.zsh_functions ]]; then
-    source $GHDIR/resources/install.sh
-else
-    f="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
-    source /dev/stdin <<< "$(curl -fsSL $f)"
-fi
+loadfnurl="https://raw.githubusercontent.com/barabasz/bin/main/common/loadfn"
+if command -v loadfn &> /dev/null; then loadfn
+else source <(curl -fsSL $loadfnurl); fi
+
+loadfn
 
 appname=git
 cliname=$appname

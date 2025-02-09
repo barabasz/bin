@@ -2,26 +2,19 @@
 
 # THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
 
-# set variables
-github="https://raw.githubusercontent.com/barabasz/bin/main/common/install"
-
-# sudo password forcing
-sudo echo > /dev/null
-
 # load functions
 echo 'Loading install environment and functions...'
+loadfnurl="https://raw.githubusercontent.com/barabasz/bin/main/common/loadfn"
+if command -v loadfn &> /dev/null; then loadfn
+else source <(curl -fsSL $loadfnurl); fi
 
-
-if command -v loadfn &> /dev/null; then
-    echo 'LOCAL'
-    loadfn
-else
-    echo 'REMOTE'
-    source <(curl -fsSL https://raw.githubusercontent.com/barabasz/bin/main/common/loadfn)
-fi
-
+printhead 'Test...'
 exit 1
 
+# set variables
+github="https://raw.githubusercontent.com/barabasz/bin/main/common/install"
+# sudo password forcing
+sudo echo > /dev/null
 # create config directory
 mkdir -p $CONFDIR
 

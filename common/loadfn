@@ -1,6 +1,26 @@
+export ZDOTDIR=$HOME/.config/zsh
+export HISTFILE=$ZDOTDIR/.zsh_history
+export HISTSIZE=1000
+export HISTFILESIZE=1000
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
+export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
+export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
+export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-$HOME/.xdg}
+export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
+export BINDIR=$HOME/bin
+export HOMEDIR=$HOME
+export LIBDIR=$HOME/lib
+export GHDIR=$HOME/GitHub
+export GHBINDIR=$GHDIR/bin
+export GHCONFDIR=$GHDIR/config
+export CONFDIR=$XDG_CONFIG_HOME
+export PATH=$BINDIR:$BINDIR/install:$BINDIR/test:$HOME/binos:/usr/local/bin:$PATH
+export PS1="[%{%F{cyan}%}%n%{%f%}@%{%F{green}%}%m:%{%F{yellow}%}%~%{%f%}%]]$ "
+
 test -f $HOME/.zshenv && source $_
 test -f $ZDOTDIR/.zsh_functions && source $_ || test -f $GHCONFDIR/zsh/.zsh_functions && source $_
 if [[ -z $ZSH_FUNCTIONS_LOADED ]]; then
     f="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions"
-    source <(curl -fsSL $f)
+    source <$(curl -fsSL $f)
 fi
