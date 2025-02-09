@@ -5,9 +5,7 @@
 echo "osname from install-git (before loading): $(osname)"
 
 # load functions
-loadfnurl="https://raw.githubusercontent.com/barabasz/bin/main/common/loadfn"
-if command -v loadfn &> /dev/null; then loadfn
-else source <(curl -fsSL $loadfnurl); fi
+source <(curl -fsSL "https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions")
 
 echo "osname from install-git (after loading): $(osname)"
 
