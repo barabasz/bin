@@ -33,4 +33,4 @@ if [[ -z "$(git config --global user.email)" ]]; then
     git config --global core.editor code
 fi
 
-verinf $cliname "$appname"
+verinfo $cliname "$appname"

@@ -10,7 +10,17 @@ sudo echo > /dev/null
 
 # load functions
 echo 'Loading install environment and functions...'
-source <(curl -fsSL https://raw.githubusercontent.com/barabasz/bin/main/common/loadfn)
+
+
+if command -v loadfn &> /dev/null; then
+    echo 'LOCAL'
+    loadfn
+else
+    echo 'REMOTE'
+    source <(curl -fsSL https://raw.githubusercontent.com/barabasz/bin/main/common/loadfn)
+fi
+
+exit 1
 
 # create config directory
 mkdir -p $CONFDIR
