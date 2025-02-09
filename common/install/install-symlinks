@@ -16,3 +16,6 @@ fi
 
 # Library
 ln -sF $GHBINDIR/lib $HOME/lib
+
+# zsh
+ln -sF $GHCONFDIR/zsh $CONFDIR/zsh
