@@ -15,7 +15,7 @@ if [[ -f $GHCONFDIR/zsh/.zsh_functions ]]; then
     source $GHDIR/resources/install.sh
 else
     f="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
-    source /dev/stdin <<< "$(curl -fsSL $f)"
+    source /dev/stdin <<< "$(curl -fsSL $f)" 2>/dev/null
 fi
 
 # create config directory
@@ -24,7 +24,7 @@ mkdir -p $CONFDIR
 # Generatle locale (Ubuntu)
 if [[ "$(osname)" == "ubuntu" ]]; then
     printhead 'Installing locales...'
-    extscript $github/install-locales > /dev/null 2>&1
+    extscript $github/install-locales | geep "done"
 fi
 
 # Update and upgrade

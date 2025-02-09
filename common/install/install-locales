@@ -12,7 +12,7 @@ else
 fi
 
 if [[ "$(osname)" == "ubuntu" ]]; then
-    sudo apt install -yq locales
+    sudo apt install -yq locales > /dev/null 2>&1
     sudo locale-gen en_US.UTF-8
     sudo locale-gen pl_PL.UTF-8
     sudo update-locale
