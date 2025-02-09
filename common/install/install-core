@@ -9,6 +9,7 @@ source <(curl -fsSL $functions)
 
 # set variables
 github="https://raw.githubusercontent.com/barabasz/bin/main/common/install"
+update="https://raw.githubusercontent.com/barabasz/bin/main/common/update"
 # sudo password forcing
 sudo echo > /dev/null
 # create config directory
@@ -18,13 +19,16 @@ mkdir -p ~/.config
 if [[ "$(osname)" == "ubuntu" ]]; then
     printhead 'Installing locales...'
     #extscript $github/install-locales 2>/dev/null | grep "done"
+    source <(curl -fsSL $github/install-locales) 2>/dev/null | grep "done"
+    echo "${green}Locales installed.${clear}"
 fi
 
 # Update and upgrade
 if [[ ! "$(osname)" == "macos" ]]; then
     printhead 'Updating system...'
     #extscript $(echo $github | sed 's/\/install//')/update
-    #echo "System updated."
+    source <(curl -fsSL $update)
+    echo "${green}System updated.${clear}"
 fi
 
 # Git
