@@ -1,0 +1,8 @@
+test -f $HOME/.zshenv && source $_
+test -f $ZDOTDIR/.zsh_functions && source $_ || test -f $GHCONFDIR/zsh/.zsh_functions && source $_
+
+if [[ -z $ZSH_FUNCTIONS_LOADED ]]; then
+    f="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+    source /dev/stdin <<< "$(curl -fsSL $f)"
+fi
+

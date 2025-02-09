@@ -5,18 +5,23 @@
 # https://cli.github.com
 
 # load functions
-scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
-source /dev/stdin <<< "$(curl -fsSL $scrpath)"
+# scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+# source /dev/stdin <<< "$(curl -fsSL $scrpath)"
 
-appname="GitHub CLI"
-cliname=gh
-dirname=$cliname
-pkgname=$cliname
-
-if [[ "$(isinstalled $cliname)" == "no" ]]; then
-    brew install -q $pkgname
+if [[ "$(isinstalled gh)" == "no" ]]; then
+    if [[ "$(osname)" == "ubuntu" ]]; then
+        sudo mkdir -p -m 755 /etc/apt/keyrings \
+        && out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+        && cat $out | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+        && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+        && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+        && sudo apt update 2>/dev/null  \
+        && sudo apt install gh -qy
+    else
+        echo "Unsupported OS"
+    fi
 else
-    verinf $cliname "$appname"
+    verinf gh "GitHub CLI"
 fi
 
 if [[ "$(gh auth status | grep -o 'Logged')" == "Logged" ]]; then

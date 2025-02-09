@@ -14,10 +14,6 @@ else
     echo "Oh My Zsh version: $(omz version)"
 fi
 
-ln -sf ~/GitHub/config/zsh/.zprofile ~/
-ln -sf ~/GitHub/config/zsh/.zshrc ~/
-ln -sf ~/GitHub/config/zsh/.p10k.zsh ~/
-
 # Powerlevel10k theme
 powerlevel10k=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 if [[ ! -d $powerlevel10k ]]; then

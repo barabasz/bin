@@ -9,13 +9,14 @@ export GHCONFDIR=$HOME/GitHub/config
 export CONFDIR=$HOME/.config
 
 # symbolic link
-ln -sF $GHCONFDIR/zsh $CONFDIR/zsh
+lnf $GHCONFDIR/zsh $CONFDIR/zsh
+lnf $GHCONFDIR/zsh/.zshenv_root $HOME/.zshenv
 
 # load aliases & functions
 source $ZDOTDIR/.zshenv
 source $ZDOTDIR/.zsh_functions
 source $ZDOTDIR/.zsh_aliases
-source $ZDOTDIR/.zsh_locale
+#source $ZDOTDIR/.zsh_locale
 
 # fallback for bash's shopt
 if [[ ! "$(osname)" == "macos" ]]; then

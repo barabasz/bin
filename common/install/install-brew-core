@@ -7,7 +7,7 @@ scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
 source /dev/stdin <<< "$(curl -fsSL $scrpath)"
 
 if [[ "$(isinstalled brew)" == "yes" ]]; then
-    brew install -q gmp isl mpfr libmpc lz4 xz bzip2 zlib zstd binutils m4 pkgconf
+    brew install -q gmp isl mpfr libmpc lz4 xz bzip2 zlib zstd binutils m4 pkgconf openssl@3 readline libxcrypt sqlite
 else
     echo "Brew is not installed"
 fi

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# gh - GitHub CLI
+# GitHub CLI brings GitHub to your terminal
+# https://cli.github.com
+
+# load functions
+scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+source /dev/stdin <<< "$(curl -fsSL $scrpath)"
+
+appname="GitHub CLI"
+cliname=gh
+dirname=$cliname
+pkgname=$cliname
+
+if [[ "$(isinstalled $cliname)" == "no" ]]; then
+    brew install -q $pkgname
+else
+    verinf $cliname "$appname"
+fi
+
+if [[ "$(gh auth status | grep -o 'Logged')" == "Logged" ]]; then
+    gh auth status | grep 'Logged'
+else
+    gh auth login
+fi
