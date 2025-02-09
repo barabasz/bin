@@ -8,9 +8,6 @@ loadfnurl="https://raw.githubusercontent.com/barabasz/bin/main/common/loadfn"
 if command -v loadfn &> /dev/null; then loadfn
 else source <(curl -fsSL $loadfnurl); fi
 
-printhead 'Test...'
-exit 1
-
 # set variables
 github="https://raw.githubusercontent.com/barabasz/bin/main/common/install"
 # sudo password forcing
@@ -23,6 +20,8 @@ if [[ "$(osname)" == "ubuntu" ]]; then
     printhead 'Installing locales...'
     extscript $github/install-locales 2>/dev/null | grep "done"
 fi
+
+return 0
 
 # Update and upgrade
 if [[ ! "$(osname)" == "macos" ]]; then

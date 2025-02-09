@@ -3,19 +3,17 @@
 # THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
 
 # load functions
-test -f ~/.zshenv && source "$_"
-if [ -z "${ZDOTDIR}" ]; then
-    source $ZDOTDIR/.zsh_functions
-else
-    f="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
-    source /dev/stdin <<< "$(curl -fsSL $f)"
-fi
+echo 'Loading install environment and functions...'
+loadfnurl="https://raw.githubusercontent.com/barabasz/bin/main/common/loadfn"
+if command -v loadfn &> /dev/null; then loadfn
+else source <(curl -fsSL $loadfnurl); fi
 
 if [[ "$(osname)" == "ubuntu" ]]; then
     sudo apt install -yq locales > /dev/null 2>&1
     sudo locale-gen en_US.UTF-8
     sudo locale-gen pl_PL.UTF-8
     sudo update-locale
+    echo "Locales updated."
 else
     echo "Unsupported OS: $(osname)"
     exit 1
