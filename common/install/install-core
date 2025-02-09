@@ -10,8 +10,13 @@ sudo echo > /dev/null
 
 # load functions
 echo 'Loading install environment and functions...'
-scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
-source /dev/stdin <<< "$(curl -fsSL $scrpath)"
+test -f ~/.zshenv && source "$_"
+if [[ -f $GHCONFDIR/zsh/.zsh_functions ]]; then
+    source $GHDIR/resources/install.sh
+else
+    f="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+    source /dev/stdin <<< "$(curl -fsSL $f)"
+fi
 
 # create config directory
 mkdir -p $CONFDIR

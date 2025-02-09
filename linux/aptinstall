@@ -1,6 +1,11 @@
 #!/bin/bash
 
 # load functions
-source $ZDOTDIR/.zsh_functions
+test -f ~/.zshenv && source "$_"
+if [ -z "${ZDOTDIR}" ]; then
+    source $ZDOTDIR/.zsh_functions
+else
+    source <(curl -fsSL https://raw.githubusercontent.com/barabasz/resources/main/install.sh)
+fi
 
 aptinstall $*

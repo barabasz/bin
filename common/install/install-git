@@ -1,8 +1,15 @@
 #!/bin/bash
 
+# THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
+
 # load functions
-scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
-source /dev/stdin <<< "$(curl -fsSL $scrpath)"
+test -f ~/.zshenv && source "$_"
+if [[ -f $GHCONFDIR/zsh/.zsh_functions ]]; then
+    source $GHDIR/resources/install.sh
+else
+    f="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+    source /dev/stdin <<< "$(curl -fsSL $f)"
+fi
 
 appname=git
 cliname=$appname

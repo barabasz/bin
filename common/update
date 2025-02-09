@@ -1,8 +1,15 @@
 #!/bin/bash
 
+# THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
+
 # load functions
-scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
-source /dev/stdin <<< "$(curl -fsSL $scrpath)"
+test -f ~/.zshenv && source "$_"
+if [ -z "${ZDOTDIR}" ]; then
+    source $ZDOTDIR/.zsh_functions
+else
+    f="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+    source /dev/stdin <<< "$(curl -fsSL $f)"
+fi
 
 if [[ ! "$(osname)" == "macos" ]]; then
     envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"

@@ -1,21 +1,32 @@
 #!/bin/bash
 
+# THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
+
 # load functions
-scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
-source /dev/stdin <<< "$(curl -fsSL $scrpath)"
+test -f ~/.zshenv && source "$_"
+if [[ -f $GHCONFDIR/zsh/.zsh_functions ]]; then
+    source $GHDIR/resources/install.sh
+else
+    f="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+    source /dev/stdin <<< "$(curl -fsSL $f)"
+fi
 
 # Common scripts
-ln -sF $GHBINDIR/common $HOME/bin
+lnf $GHBINDIR/common $HOME/bin
 
 # OS-specific scripts
 if [[ "$(osname)" == "macos" ]]; then
-    ln -sF $GHBINDIR/macos $HOME/binos
+    lnf $GHBINDIR/macos $HOME/binos
 else
-    ln -sF $GHBINDIR/linux $HOME/binos
+    lnf $GHBINDIR/linux $HOME/binos
 fi
 
 # Library
-ln -sF $GHBINDIR/lib $HOME/lib
+lnf $GHBINDIR/lib $HOME/lib
 
 # zsh
-ln -sF $GHCONFDIR/zsh $CONFDIR/zsh
+lnf -sF $GHCONFDIR/zsh $CONFDIR/zsh
+
+# bash
+lnf $GHCONFDIR/bash/.bashrc $HOME/.bashrc
+lnf $GHCONFDIR/bash/.bash_profile $HOME/.bash_profile

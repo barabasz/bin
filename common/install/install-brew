@@ -1,11 +1,17 @@
 #!/bin/bash
 
 # load functions
-scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
-source /dev/stdin <<< "$(curl -fsSL $scrpath)"
+test -f ~/.zshenv && source "$_"
+if [ -z "${ZDOTDIR}" ]; then
+    source $ZDOTDIR/.zsh_functions
+else
+    f="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+    source /dev/stdin <<< "$(curl -fsSL $f)"
+fi
 
 export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_NO_EMOJI=1
+export NONINTERACTIVE=1
 
 if [[ "$(isinstalled brew)" == "no" ]]; then
     # Ubuntu/Debian fix
@@ -15,7 +21,8 @@ if [[ "$(isinstalled brew)" == "no" ]]; then
     fi
 
     # Brew (unattended installation)
-    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    b="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
+    /bin/bash -c "$(curl -fsSL $b)"
 
     # Execute shellenv
     if [[ -f /opt/homebrew/bin/brew ]]; then
