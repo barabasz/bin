@@ -2,10 +2,16 @@
 
 # THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
 
+echo "GHCONFDIR from install-git (before loading): $GHCONFDIR"
+
+
 # load functions
 loadfnurl="https://raw.githubusercontent.com/barabasz/bin/main/common/loadfn"
 if command -v loadfn &> /dev/null; then loadfn
 else source <(curl -fsSL $loadfnurl); fi
+
+echo "GHCONFDIR from install-git (after loading): $GHCONFDIR"
+
 
 appname=git
 cliname=$appname

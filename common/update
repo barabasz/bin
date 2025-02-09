@@ -2,14 +2,17 @@
 
 # THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
 
+echo "GHCONFDIR from update (before loading): $GHCONFDIR"
+
+
 # load functions
-test -f ~/.zshenv && source "$_"
-if [ -z "${ZDOTDIR}" ]; then
-    source $ZDOTDIR/.zsh_functions
-else
-    f="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
-    source /dev/stdin <<< "$(curl -fsSL $f)"
-fi
+loadfnurl="https://raw.githubusercontent.com/barabasz/bin/main/common/loadfn"
+if command -v loadfn &> /dev/null; then loadfn
+else source <(curl -fsSL $loadfnurl); fi
+
+echo "GHCONFDIR from update (after loading): $GHCONFDIR"
+
+
 
 if [[ ! "$(osname)" == "macos" ]]; then
     envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"

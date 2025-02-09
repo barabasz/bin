@@ -2,11 +2,15 @@
 
 # THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
 
+echo "GHCONFDIR from install-core (before loading): $GHCONFDIR"
+
 # load functions
 echo 'Loading install environment and functions...'
 loadfnurl="https://raw.githubusercontent.com/barabasz/bin/main/common/loadfn"
 if command -v loadfn &> /dev/null; then loadfn
 else source <(curl -fsSL $loadfnurl); fi
+
+echo "GHCONFDIR from install-core (after loading): $GHCONFDIR"
 
 # set variables
 github="https://raw.githubusercontent.com/barabasz/bin/main/common/install"
