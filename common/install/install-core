@@ -48,15 +48,11 @@ source <(curl -fsSL $github/install-gh)
 printhead 'Cloning setup repositories...'
 source <(curl -fsSL $github/install-repos)
 
-echo "LIBDIR = $LIBDIR"
-
-return 2> /dev/null; exit
-
 # symlinks
 printhead 'Creating symlinks...'
 source <(curl -fsSL $github/install-symlinks)
 
-
+return 2> /dev/null; exit
 
 # brew
 printhead 'Installing brew...'

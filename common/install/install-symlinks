@@ -12,7 +12,7 @@
 #fi
 
 # Common scripts
-lnf $GHBINDIR/common $HOME/bin
+lnf $GHBINDIR/common $BINDIR
 
 # OS-specific scripts
 if [[ "$(osname)" == "macos" ]]; then
@@ -22,10 +22,10 @@ else
 fi
 
 # Library
-lnf $GHBINDIR/lib $HOME/lib
+lnf $GHBINDIR/lib $LIBDIR
 
 # zsh
-lnf $GHCONFDIR/zsh $CONFDIR/zsh
+lnf $GHCONFDIR/zsh $ZDOTDIR
 
 # bash
 lnf $GHCONFDIR/bash/.bashrc $HOME/.bashrc
