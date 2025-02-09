@@ -12,24 +12,25 @@ github="https://raw.githubusercontent.com/barabasz/bin/main/common/install"
 # sudo password forcing
 sudo echo > /dev/null
 # create config directory
-mkdir -p $CONFDIR
+mkdir -p ~/.config
 
 # Generatle locale (Ubuntu)
 if [[ "$(osname)" == "ubuntu" ]]; then
     printhead 'Installing locales...'
-    extscript $github/install-locales 2>/dev/null | grep "done"
+    #extscript $github/install-locales 2>/dev/null | grep "done"
 fi
 
 # Update and upgrade
 if [[ ! "$(osname)" == "macos" ]]; then
     printhead 'Updating system...'
-    extscript $(echo $github | sed 's/\/install//')/update
-    echo "System updated."
+    #extscript $(echo $github | sed 's/\/install//')/update
+    #echo "System updated."
 fi
 
 # Git
 printhead 'Installing git...'
-extscript $github/install-git
+#extscript $github/install-git
+source <(curl -fsSL $github/install-git)
 
 exit 0
 return 0
