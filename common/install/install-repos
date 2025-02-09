@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# load functions
-scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
-source /dev/stdin <<< "$(curl -fsSL $scrpath)"
-
 mkdir -p ~/GitHub && cd $_
 
 if [[ ! -d ~/GitHub/bin ]]; then
@@ -35,5 +31,3 @@ if [[ ! -d ~/GitHub/scripts ]]; then
 else
     echo '"scripts" repo already cloned.'
 fi
-
-

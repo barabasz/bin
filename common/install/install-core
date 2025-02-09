@@ -4,7 +4,7 @@
 
 # set variables
 fnfile="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions"
-colors=""
+colors="https://raw.githubusercontent.com/barabasz/bin/main/lib/colors.sh"
 github="https://raw.githubusercontent.com/barabasz/bin/main/common/install"
 update="https://raw.githubusercontent.com/barabasz/bin/main/common/update"
 yellowb='\e[1;33m'
@@ -17,6 +17,7 @@ sudo echo > /dev/null
 
 # sourcing functions
 printf "\n${yellowb}Loading install environment${clear}\n"
+source <(curl -fsSL $colors)
 source <(curl -fsSL $fnfile)
 printinfo 'Functions loaded.'
 
@@ -42,6 +43,10 @@ source <(curl -fsSL $github/install-git)
 # gh - GitHub CLI
 printhead 'Installing gh...'
 source <(curl -fsSL $github/install-gh)
+
+# clone main repositories
+printhead 'Cloning setup repositories...'
+source <(curl -fsSL $github/install-repos)
 
 return 2> /dev/null; exit
 
@@ -70,9 +75,7 @@ extscript $github/install-ncurses
 printhead 'Installing gcc...'
 extscript $github/install-gcc
 
-# clone main repositories
-printhead 'Cloning setup repositories...'
-extscript $github/install-repos
+
 
 # symlinks
 printhead 'Creating symlinks...'
