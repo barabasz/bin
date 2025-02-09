@@ -3,9 +3,11 @@
 # THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
 
 # load functions
-echo 'Loading install environment and functions...'
-functions="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions"
-source <(curl -fsSL $functions)
+#echo 'Loading install environment and functions...'
+#functions="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions"
+#source <(curl -fsSL $functions)
+
+echo "sdsdsdsdsdsdsdssdsdsdsd"
 
 if [[ ! "$(osname)" == "macos" ]]; then
     envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"

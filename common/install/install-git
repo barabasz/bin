@@ -7,7 +7,6 @@
 #functions="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions"
 #source <(curl -fsSL $functions)
 
-
 appname=git
 cliname=$appname
 dirname=$appname

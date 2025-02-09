@@ -21,7 +21,7 @@ if [[ "$(isinstalled gh)" == "no" ]]; then
         echo "Unsupported OS"
     fi
 else
-    verinf gh "GitHub CLI"
+    verinfo gh "GitHub CLI"
 fi
 
 if [[ "$(gh auth status | grep -o 'Logged')" == "Logged" ]]; then

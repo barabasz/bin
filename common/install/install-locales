@@ -3,9 +3,9 @@
 # THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
 
 # load functions
-echo 'Loading install environment and functions...'
-functions="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions"
-source <(curl -fsSL $functions)
+#echo 'Loading install environment and functions...'
+#functions="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions"
+#source <(curl -fsSL $functions)
 
 if [[ "$(osname)" == "ubuntu" ]]; then
     sudo apt install -yq locales > /dev/null 2>&1
