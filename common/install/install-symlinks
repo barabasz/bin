@@ -25,7 +25,7 @@ fi
 lnf $GHBINDIR/lib $HOME/lib
 
 # zsh
-lnf -sF $GHCONFDIR/zsh $CONFDIR/zsh
+lnf $GHCONFDIR/zsh $CONFDIR/zsh
 
 # bash
 lnf $GHCONFDIR/bash/.bashrc $HOME/.bashrc

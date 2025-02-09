@@ -24,13 +24,14 @@ mkdir -p $CONFDIR
 # Generatle locale (Ubuntu)
 if [[ "$(osname)" == "ubuntu" ]]; then
     printhead 'Installing locales...'
-    extscript $github/install-locales | geep "done"
+    extscript $github/install-locales 2>/dev/null | grep "done"
 fi
 
 # Update and upgrade
 if [[ ! "$(osname)" == "macos" ]]; then
     printhead 'Updating system...'
     extscript $(echo $github | sed 's/\/install//')/update
+    echo "System updated."
 fi
 
 # Git

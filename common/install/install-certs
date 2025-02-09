@@ -11,6 +11,6 @@ source /dev/stdin <<< "$(curl -fsSL $scrpath)"
 if [[ "$(isinstalledbybrew ca-certificates)" == "no" ]]; then
     brew install -q ca-certificates
 else
-    
-    brew list ca-certificates
+    ver=$(brew list ca-certificates | grep -oE '\b[0-9]{4}-[0-9]{2}-[0-9]{2}\b' | head -1)
+    echo "ca-certificates from $ver is installed."
 fi
