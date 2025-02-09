@@ -6,8 +6,9 @@ echo "osname from update (before loading): $(osname)"
 
 # load functions
 loadfnurl="https://raw.githubusercontent.com/barabasz/bin/main/common/loadfn"
-if command -v loadfn &> /dev/null; then loadfn
-else source <(curl -fsSL $loadfnurl); fi
+source <(curl -fsSL $loadfnurl)
+#if command -v loadfn &> /dev/null; then loadfn
+#else source <(curl -fsSL $loadfnurl); fi
 
 echo "osname from update (after loading): $(osname)"
 
