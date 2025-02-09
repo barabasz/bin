@@ -3,13 +3,13 @@
 # THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
 
 # load functions
-test -f ~/.zshenv && source "$_"
-if [[ -f $GHCONFDIR/zsh/.zsh_functions ]]; then
-    source $GHDIR/resources/install.sh
-else
-    f="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
-    source /dev/stdin <<< "$(curl -fsSL $f)"
-fi
+#test -f ~/.zshenv && source "$_"
+#if [[ -f $GHCONFDIR/zsh/.zsh_functions ]]; then
+#    source $GHDIR/resources/install.sh
+#else
+#    f="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+#    source /dev/stdin <<< "$(curl -fsSL $f)"
+#fi
 
 # Common scripts
 lnf $GHBINDIR/common $HOME/bin
