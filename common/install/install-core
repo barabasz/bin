@@ -2,17 +2,10 @@
 
 # THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
 
-echo "osname from install-core (before loading): $(osname)"
-
 # load functions
 echo 'Loading install environment and functions...'
-#loadfnurl="https://raw.githubusercontent.com/barabasz/bin/main/common/loadfn"
-#if command -v loadfn &> /dev/null; then loadfn
-#else source <(curl -fsSL $loadfnurl); fi
-
-source <(curl -fsSL "https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions")
-
-echo "osname from install-core (after loading): $(osname)"
+functions="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions"
+source <(curl -fsSL $functions)
 
 # set variables
 github="https://raw.githubusercontent.com/barabasz/bin/main/common/install"

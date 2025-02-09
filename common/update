@@ -2,12 +2,10 @@
 
 # THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
 
-echo "osname from update (before loading): $(osname)"
-
 # load functions
-source <(curl -fsSL "https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions")
-
-echo "osname from update (after loading): $(osname)"
+echo 'Loading install environment and functions...'
+functions="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions"
+source <(curl -fsSL $functions)
 
 if [[ ! "$(osname)" == "macos" ]]; then
     envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"

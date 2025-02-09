@@ -2,12 +2,10 @@
 
 # THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
 
-echo "osname from install-locales (before loading): $(osname)"
-
 # load functions
-source <(curl -fsSL "https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions")
-
-echo "osname from install-locales (after loading): $(osname)"
+echo 'Loading install environment and functions...'
+functions="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions"
+source <(curl -fsSL $functions)
 
 if [[ "$(osname)" == "ubuntu" ]]; then
     sudo apt install -yq locales > /dev/null 2>&1
