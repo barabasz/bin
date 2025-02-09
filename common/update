@@ -2,17 +2,14 @@
 
 # THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
 
-echo "GHCONFDIR from update (before loading): $GHCONFDIR"
-
+echo "osname from update (before loading): $(osname)"
 
 # load functions
 loadfnurl="https://raw.githubusercontent.com/barabasz/bin/main/common/loadfn"
 if command -v loadfn &> /dev/null; then loadfn
 else source <(curl -fsSL $loadfnurl); fi
 
-echo "GHCONFDIR from update (after loading): $GHCONFDIR"
-
-
+echo "osname from update (after loading): $(osname)"
 
 if [[ ! "$(osname)" == "macos" ]]; then
     envopt="NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive"

@@ -2,7 +2,7 @@
 
 # THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
 
-echo "GHCONFDIR from install-core (before loading): $GHCONFDIR"
+echo "osname from install-core (before loading): $(osname)"
 
 # load functions
 echo 'Loading install environment and functions...'
@@ -10,7 +10,7 @@ loadfnurl="https://raw.githubusercontent.com/barabasz/bin/main/common/loadfn"
 if command -v loadfn &> /dev/null; then loadfn
 else source <(curl -fsSL $loadfnurl); fi
 
-echo "GHCONFDIR from install-core (after loading): $GHCONFDIR"
+echo "osname from install-core (after loading): $(osname)"
 
 # set variables
 github="https://raw.githubusercontent.com/barabasz/bin/main/common/install"
@@ -36,7 +36,7 @@ fi
 printhead 'Installing git...'
 extscript $github/install-git
 
-return 0
+exit 0 || return 0
 
 # brew
 printhead 'Installing brew...'

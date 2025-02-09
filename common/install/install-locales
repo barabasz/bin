@@ -2,10 +2,14 @@
 
 # THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
 
+echo "osname from install-locales (before loading): $(osname)"
+
 # load functions
 loadfnurl="https://raw.githubusercontent.com/barabasz/bin/main/common/loadfn"
 if command -v loadfn &> /dev/null; then loadfn
 else source <(curl -fsSL $loadfnurl); fi
+
+echo "osname from install-locales (after loading): $(osname)"
 
 if [[ "$(osname)" == "ubuntu" ]]; then
     sudo apt install -yq locales > /dev/null 2>&1
