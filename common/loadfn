@@ -20,7 +20,4 @@ export PS1="[%{%F{cyan}%}%n%{%f%}@%{%F{green}%}%m:%{%F{yellow}%}%~%{%f%}%]]$ "
 
 test -f $HOME/.zshenv && source $_
 test -f $ZDOTDIR/.zsh_functions && source $_ || test -f $GHCONFDIR/zsh/.zsh_functions && source $_
-if [[ -z $ZSH_FUNCTIONS_LOADED ]]; then
-    f="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions"
-    source <$(curl -fsSL $f)
-fi
+[[ -z $ZSH_FUNCTIONS_LOADED ]] && source <(curl -fsSL "https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions")
