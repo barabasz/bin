@@ -17,16 +17,16 @@ export GHCONFDIR=$GHDIR/config
 export CONFDIR=$XDG_CONFIG_HOME
 export PATH=$BINDIR:$BINDIR/install:$BINDIR/test:$HOME/binos:/usr/local/bin:$PATH
 
-echo "WERSJA A"
+echo "WERSJA B"
 echo "osname from loadfn (before loading): $(osname)"
 
 #test -f $HOME/.zshenv && source $_
 #test -f $ZDOTDIR/.zsh_functions && source $_ || test -f $GHCONFDIR/zsh/.zsh_functions && source $_
 #[[ -z $ZSH_FUNCTIONS_LOADED ]] && source <(curl -fsSL "https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions")
 
-if [[ -f $ZDOTDIR/.zsh_functions ]]; then
+if [[ -f "$ZDOTDIR/.zsh_functions" ]]; then
     source $ZDOTDIR/.zsh_functions
-elif [[ -f $GHCONFDIR/zsh/.zsh_functions ]]; then
+elif [[ -f "$GHCONFDIR/zsh/.zsh_functions" ]]; then
     source $GHCONFDIR/zsh/.zsh_functions
 else
     source <(curl -fsSL "https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions")
