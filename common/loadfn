@@ -17,6 +17,7 @@ export GHCONFDIR=$GHDIR/config
 export CONFDIR=$XDG_CONFIG_HOME
 export PATH=$BINDIR:$BINDIR/install:$BINDIR/test:$HOME/binos:/usr/local/bin:$PATH
 
+echo "WERSJA A"
 echo "osname from loadfn (before loading): $(osname)"
 
 #test -f $HOME/.zshenv && source $_
