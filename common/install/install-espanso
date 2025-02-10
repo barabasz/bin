@@ -10,4 +10,4 @@ else
     espanso --version
 fi
 
-ln -sF $GHCONFPRIVDIR/espanso ~/Library/Application\ Support/espanso
+lnf $GHCONFPRIVDIR/espanso ~/Library/Application\ Support/espanso
