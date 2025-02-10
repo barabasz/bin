@@ -1,11 +1,8 @@
-#!/bin/bash
+#!/bin/zsh
 
-# THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
-
-# load functions
-#echo 'Loading install environment and functions...'
-#functions="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions"
-#source <(curl -fsSL $functions)
+# git
+# distributed version control system
+# https://git-scm.com
 
 appname=git
 cliname=$appname
