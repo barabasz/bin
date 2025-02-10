@@ -5,7 +5,7 @@
 # https://curl.se/docs/caextract.html
 
 # load functions
-scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
+scrpath="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions"
 source /dev/stdin <<< "$(curl -fsSL $scrpath)"
 
 if [[ "$(isinstalledbybrew ca-certificates)" == "no" ]]; then
