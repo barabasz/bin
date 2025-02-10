@@ -18,6 +18,10 @@ elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+echo 'isinstalled brew'
+isinstalled brew
+echo '----------'
+
 if [[ "$(isinstalled brew)" == "no" ]]; then
     # Ubuntu/Debian fix
     if [[ "$(osname)" != "macos" ]]; then
