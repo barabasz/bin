@@ -7,14 +7,16 @@ else
     source <(curl -fsSL "$MYGH/config/main/zsh/.zsh_functions")
 fi
 
-if [[ -z $(osname) ]]; then
-    echo "functions not present, exiting..."
-    return 2> /dev/null; exit
-fi
-
 export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_NO_EMOJI=1
 export NONINTERACTIVE=1
+
+# Execute shellenv
+if [[ -f /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
 if [[ "$(isinstalled brew)" == "no" ]]; then
     # Ubuntu/Debian fix
@@ -26,13 +28,6 @@ if [[ "$(isinstalled brew)" == "no" ]]; then
     # Brew (unattended installation)
     b="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
     /bin/bash -c "$(curl -fsSL $b)"
-
-    # Execute shellenv
-    if [[ -f /opt/homebrew/bin/brew ]]; then
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-    elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
-        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    fi
 
     # Disable analytics
     brew analytics off
