@@ -1,6 +1,6 @@
 #!/bin/zsh
 
 # load functions
-source $ZDOTDIR/.zshrc
+source $ZDOTDIR/.zsh_load
 
 verinfo $*
