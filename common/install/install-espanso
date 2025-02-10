@@ -4,7 +4,8 @@
 # A Privacy-first, Cross-platform Text Expander
 # https://espanso.org
 
- [[ ! -z $ZSH_FUNCTIONS_LOADED ]] && [[ -f $ZFNFILE ]] && source $ZFNFILE
+# load functions for non-interactive mode
+[[ -z $ZSH_FUNCTIONS_LOADED ]] && (([[ -f $ZFNFILE ]] && source $ZFNFILE) || source <(curl -fsSL bit.ly/zsh-functions))
 
 if [[ "$(isinstalled espanso)" == "no" ]]; then
     brew install espanso
