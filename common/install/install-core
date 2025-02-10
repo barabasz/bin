@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-# THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
-
 # set variables
 varbls="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zshenv"
 fnfile="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions"
