@@ -5,12 +5,16 @@ mkdir -p ~/GitHub && cd $_
 if [[ ! -d ~/GitHub/bin ]]; then
     gh repo clone barabasz/bin
 else
+    rm -rf ~/GitHub/bin
+    gh repo clone barabasz/bin
     echo '"bin" repo already cloned.'
 fi
 
 if [[ ! -d ~/GitHub/config ]]; then
     gh repo clone barabasz/config
 else
+    rm -rf ~/GitHub/config
+    gh repo clone barabasz/config
     echo '"config" repo already cloned.'
 fi
 
