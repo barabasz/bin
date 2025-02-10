@@ -7,6 +7,12 @@
 # load functions for non-interactive mode
 [[ -z $ZSH_FUNCTIONS_LOADED ]] && (([[ -f $ZFNFILE ]] && source $ZFNFILE) || source <(curl -fsSL bit.ly/zsh-functions))
 
+echo "ZSH_FUNCTIONS_LOADED (1st attempt): $ZSH_FUNCTIONS_LOADED"
+
+[[ -z $ZSH_FUNCTIONS_LOADED ]] && [[ -f $ZFNFILE ]] && source $ZFNFILE
+
+echo "ZSH_FUNCTIONS_LOADED (2nd attempt): $ZSH_FUNCTIONS_LOADED"
+
 if [[ "$(isinstalled espanso)" == "no" ]]; then
     brew install espanso
 else
