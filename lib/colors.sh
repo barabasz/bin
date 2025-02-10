@@ -2,6 +2,15 @@
 
 # ANSI colors for functions
 
+# http://jafrog.com/2013/11/23/colors-in-terminal.html
+# https://gist.github.com/JBlond/2fea43a3049b38287e5e9cefc87b2124
+
+# To list all colors available in 256 color mode with their codes run
+# 256-color mode — foreground: ESC[38;5;#m   background: ESC[48;5;#m
+# for code in {0..255}
+#     do echo -e "\e[38;5;${code}m"'\\e[38;5;'"$code"m"\e[0m"
+# done
+
 ## clear all
 clear='\e[0m'
 

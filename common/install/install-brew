@@ -1,12 +1,15 @@
 #!/bin/bash
 
 # load functions
-test -f ~/.zshenv && source "$_"
-if [ -z "${ZDOTDIR}" ]; then
+if [[ -f $ZDOTDIR/.zsh_functions ]]; then
     source $ZDOTDIR/.zsh_functions
 else
-    f="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
-    source /dev/stdin <<< "$(curl -fsSL $f)"
+    source <(curl -fsSL "$MYGH/config/main/zsh/.zsh_functions")
+fi
+
+if [[ -z $(osname) ]]; then
+    echo "functions not present, exiting..."
+    return 2> /dev/null; exit
 fi
 
 export HOMEBREW_NO_ENV_HINTS=1
