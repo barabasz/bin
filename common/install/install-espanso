@@ -4,23 +4,10 @@
 # A Privacy-first, Cross-platform Text Expander
 # https://espanso.org
 
-# load functions for non-interactive mode
-[[ -z $ZSH_FUNCTIONS_LOADED ]] && (([[ -f $ZFNFILE ]] && source $ZFNFILE) || source <(curl -fsSL bit.ly/zsh-functions))
-
-echo "ZSH_FUNCTIONS_LOADED (1st attempt): $ZSH_FUNCTIONS_LOADED"
-echo "lnf abcd: $(lnf abcd)\n"
-echo "osname: $(osname)\n"
-
-[[ -z $ZSH_FUNCTIONS_LOADED ]] && [[ -f $ZFNFILE ]] && source $ZFNFILE
-
-echo "ZSH_FUNCTIONS_LOADED (2nd attempt): $ZSH_FUNCTIONS_LOADED"
-echo "lnf abcd: $(lnf abcd)\n"
-echo "osname: $(osname)\n"
-
 if [[ "$(isinstalled espanso)" == "no" ]]; then
     brew install espanso
 else
-    espanso --version
+    verinfo espanso
 fi
 
 lnf $GHCONFPRIVDIR/espanso ~/Library/Application\ Support/espanso
