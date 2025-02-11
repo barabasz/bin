@@ -1,8 +1,12 @@
 #!/bin/zsh
 
+# load variables and functions
+source $ZDOTDIR/.zsh_load
+
 for repo in $(git-repos)
 do
-    printhead $repo
-    cd ~/GitHub/$repo
+    printhead $(basename $repo)
+    cd $repo
+    echo "${cyan}$(git remote get-url origin)${reset}"
     git status
 done

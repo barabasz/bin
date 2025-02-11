@@ -1,8 +1,0 @@
-#!/bin/zsh
-
-for repo in $(git-repos)
-do
-    printhead $repo
-    cd ~/GitHub/$repo
-    git status -s
-done

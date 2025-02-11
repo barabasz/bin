@@ -13,6 +13,7 @@
 
 ## clear all
 clear='\e[0m'
+reset='\e[0m'
 
 ## text standard
 black='\e[0;30m'
