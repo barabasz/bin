@@ -2,6 +2,10 @@
 
 # load variables and functions
 source $ZDOTDIR/.zsh_load
+source $LIBDIR/prompt_continue.sh
+
+echo "${red}This will reset all repositories to the latest commit on the main branch.${reset}"
+prompt_continue
 
 for repo in $(git-repos)
 do
