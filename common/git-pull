@@ -3,6 +3,8 @@
 # load variables and functions
 source $ZDOTDIR/.zsh_load
 
+echo "☁️ 👉 🖥️ ${redb}Pulling all repositories from the remote.${reset}"
+
 for repo in $(git-repos)
 do
     printhead $(basename $repo)
@@ -10,3 +12,4 @@ do
     echo "${cyan}$(git remote get-url origin)${reset}"
     git pull --rebase
 done
+

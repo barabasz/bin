@@ -4,16 +4,19 @@
 source $ZDOTDIR/.zsh_load
 source $LIBDIR/prompt_continue.sh
 
-echo "${red}This will reset all repositories to the latest commit on the main branch.${reset}"
+echo "⚠️ ${redb}This will reset all repositories to the latest commit on the main branch.${reset}"
 prompt_continue
+if [ $? -ne 0 ]; then
+    return 1
+fi
 
 for repo in $(git-repos)
 do
     printhead $(basename $repo)
     cd $repo
     echo "${cyan}$(git remote get-url origin)${reset}"
-    git fetch origin
-    git checkout main
-    git reset --hard origin/main
-    git pull
+    #git fetch origin
+    #git checkout main
+    #git reset --hard origin/main
+    #git pull
 done
