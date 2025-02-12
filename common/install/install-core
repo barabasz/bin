@@ -7,22 +7,21 @@ colors="https://raw.githubusercontent.com/barabasz/bin/main/lib/colors.sh"
 printf="https://raw.githubusercontent.com/barabasz/bin/main/lib/print.sh"
 github="https://raw.githubusercontent.com/barabasz/bin/main/common/install"
 update="https://raw.githubusercontent.com/barabasz/bin/main/common/update"
-source <(curl -fsSL $varbls)
-source <(curl -fsSL $colors)
-source <(curl -fsSL $printf)
+source <(curl -fsSL $varbls > /dev/null 2>&1) && echo "Variables loaded." || { echo "Error loading variables."; return 1; }
+source <(curl -fsSL $fnfile > /dev/null 2>&1) && echo "Functions loaded." || { echo "Error loading functions."; return 1; 
+source <(curl -fsSL $colors > /dev/null 2>&1) && echo "Colors loaded." || { echo "Error loading colors."; return 1; }
+source <(curl -fsSL $printf > /dev/null 2>&1) && echo "Print loaded." || { echo "Error loading print."; return 1; }
 
 printf "\n${redbi}Automatic environment configuration script${clear}\n"
+
 # sudo password forcing
 sudo echo > /dev/null
 
-# sourcing functions
-printf "\n${yellowb}Loading install environment${clear}\n"
-
-source <(curl -fsSL $fnfile)
-printinfo 'Functions loaded.'
-
-# create config directory
-mkdir -p ~/.config
+# create base directories
+mkdir -p $HOME/.cache
+mkdir -p $HOME/.config
+mkdir -p $HOME/.local
+mkdir -p $HOME/.tmp
 
 # Generatle locale (Ubuntu)
 if [[ "$(osname)" == "ubuntu" ]]; then
