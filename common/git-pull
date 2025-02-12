@@ -1,9 +1,9 @@
 #!/bin/zsh
 
 # load variables and functions
-zshload="$ZDOTDIR/.zsh_load"; pref="❌ \e[1;91m"; suff="\e[0m"
+zshload="$ZDOTDIR/.zsh_loadx"; pref="\e[1;91m"; suff="\e[0m"
 loaderr="${pref}Error loading $zshload: file not found.${suff}"
-[[ -f $zshload ]] && source $zshload || { echo $loaderr; return 1; }
+[[ -f $zshload ]] && source $zshload || { echo -e $loaderr; return 1; }
 
 echo "${redb}Pulling all repositories from the remote.${reset}"
 
@@ -14,4 +14,3 @@ do
     echo "${cyan}$(git remote get-url origin)${reset}"
     git pull --rebase
 done
-
