@@ -4,7 +4,7 @@
 source $ZDOTDIR/.zsh_load
 source $LIBDIR/prompt_continue.sh
 
-echo "⚠️ ${redb}This will reset all repositories to the latest commit on the main branch.${reset}"
+echo "⚠️ ${redbi}This will reset all repositories to the latest commit on the main branch.${reset}"
 prompt_continue
 if [ $? -ne 0 ]; then
     return 1

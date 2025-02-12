@@ -1,9 +1,11 @@
 #!/bin/zsh
 
 # load variables and functions
-source $ZDOTDIR/.zsh_load
+zshload="$ZDOTDIR/.zsh_load"; pref="❌ \e[1;91m"; suff="\e[0m"
+loaderr="${pref}Error loading $zshload: file not found.${suff}"
+[[ -f $zshload ]] && source $zshload || { echo $loaderr; return 1; }
 
-echo "☁️ 👉 🖥️ ${redb}Pulling all repositories from the remote.${reset}"
+echo "${redb}Pulling all repositories from the remote.${reset}"
 
 for repo in $(git-repos)
 do

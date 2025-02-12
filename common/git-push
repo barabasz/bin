@@ -3,7 +3,7 @@
 # load variables and functions
 source $ZDOTDIR/.zsh_load
 
-echo "🖥️ 👉 ☁️ ${redb}Pushing all repositories to the remote.${reset}"
+echo "  ${redb}Pushing all repositories to the remote.${reset}"
 
 for repo in $(git-repos)
 do
