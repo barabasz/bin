@@ -7,7 +7,7 @@ loaderr="${pref}Error loading $zshload: file not found.${suff}"
 
 source $LIBDIR/prompt_continue.sh
 
-echo "⚠️ ${redbi}This will reset all repositories to the latest commit on the main branch.${reset}"
+printe "This will reset all repositories to the latest commit on the main branch."
 prompt_continue
 if [ $? -ne 0 ]; then
     return 1
