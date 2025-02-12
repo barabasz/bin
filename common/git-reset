@@ -1,7 +1,10 @@
 #!/bin/zsh
 
 # load variables and functions
-source $ZDOTDIR/.zsh_load
+zshload="$ZDOTDIR/.zsh_load"; pref="\e[1;91m"; suff="\e[0m"
+loaderr="${pref}Error loading $zshload: file not found.${suff}"
+[[ -f $zshload ]] && source $zshload || { echo -e $loaderr; return 1; }
+
 source $LIBDIR/prompt_continue.sh
 
 echo "⚠️ ${redbi}This will reset all repositories to the latest commit on the main branch.${reset}"
