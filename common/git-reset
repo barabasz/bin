@@ -17,9 +17,9 @@ for repo in $(git-repos)
 do
     printhead $(basename $repo)
     cd $repo
-    echo "${cyan}$(git remote get-url origin)${reset}"
-    #git fetch origin
-    #git checkout main
-    #git reset --hard origin/main
-    #git pull
+    printc $(git remote get-url origin)
+    git fetch origin
+    git checkout main
+    git reset --hard origin/main
+    git pull
 done

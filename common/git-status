@@ -9,6 +9,6 @@ for repo in $(git-repos)
 do
     printhead $(basename $repo)
     cd $repo
-    echo "${cyan}$(git remote get-url origin)${reset}"
+    printc $(git remote get-url origin)
     git status
 done
