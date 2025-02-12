@@ -4,10 +4,12 @@
 varbls="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zshenv"
 fnfile="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions"
 colors="https://raw.githubusercontent.com/barabasz/bin/main/lib/colors.sh"
+printf="https://raw.githubusercontent.com/barabasz/bin/main/lib/print.sh"
 github="https://raw.githubusercontent.com/barabasz/bin/main/common/install"
 update="https://raw.githubusercontent.com/barabasz/bin/main/common/update"
 source <(curl -fsSL $varbls)
 source <(curl -fsSL $colors)
+source <(curl -fsSL $printf)
 
 printf "\n${redbi}Automatic environment configuration script${clear}\n"
 # sudo password forcing
