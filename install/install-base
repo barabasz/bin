@@ -14,7 +14,7 @@ source <(curl -fsSL $printf > /dev/null 2>&1) && echo "Print loaded." || { echo 
 
 printf "\n${redbi}System base installation script${clear}\n"
 
-# sudo password forcing
+# forcing sudo password
 sudo echo > /dev/null
 
 # create base directories
