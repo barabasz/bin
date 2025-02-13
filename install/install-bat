@@ -12,7 +12,7 @@ pkgname=$appname
 if [[ "$(isinstalled $cliname)" == "no" ]]; then
     brew install -q $pkgname
 else
-    verinf $cliname "$appname"
+    verinf $cliname "$appname" "-V"
 fi
 
 makeconfln $dirname
