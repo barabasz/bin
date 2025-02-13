@@ -11,11 +11,10 @@ if [[ "$(osname)" == "ubuntu" ]]; then
     sudo apt install -yq locales > /dev/null 2>&1
 
     locale=$(locale -a | tr '[:upper:]' '[:lower:]' | grep pl_pl.utf8)
-    [[ $locale != "pl_pl.utf8" ]] && sudo locale-gen pl_PL.UTF-8 || echo "Locale pl_PL.UTF-8 already exists."
+    [[ $locale != "pl_pl.utf8" ]] && sudo locale-gen pl_PL.UTF-8 | grep 'done' || echo "Locale pl_PL.UTF-8 already exists."
     locale=$(locale -a | tr '[:upper:]' '[:lower:]' | grep en_us.utf8)
-    [[ $locale != "en_us.utf8" ]] && sudo locale-gen en_US.UTF-8 || echo "Locale en_US.UTF-8 already exists."
+    [[ $locale != "en_us.utf8" ]] && sudo locale-gen en_US.UTF-8 | grep 'done' || echo "Locale en_US.UTF-8 already exists."
     sudo update-locale
-    printinfo "Locales updated."
 else
     echo "Unsupported OS: $(osname)"
     exit 1

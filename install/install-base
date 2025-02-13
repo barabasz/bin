@@ -26,7 +26,7 @@ mkdir -p $HOME/.tmp
 # Generatle locale (Ubuntu)
 if [[ "$(osname)" == "ubuntu" ]]; then
     printhead 'Installing locales...'
-    source <(curl -fsSL $github/install-locales) 2>/dev/null | grep "done"
+    source <(curl -fsSL $github/install-locales) 2>/dev/null
     printinfo 'Locales installed.'
 fi
 
