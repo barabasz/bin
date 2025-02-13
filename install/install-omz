@@ -5,6 +5,7 @@ source ~/.zsh_functions
 
 if [[ "$(echo $ZSH | grep -o 'oh-my-zsh')" != "oh-my-zsh" ]]; then
     omzinstall=https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    export ZSH="$CONFDIR/omz"
     sh -c "$(curl -fsSL $omzinstall)" "" --unattended
     rm -f ~/.zshrc.pre-oh-my-zsh
     rm -f ~/.shell.pre-oh-my-zsh
@@ -12,12 +13,6 @@ else
     source ~/.zshrc
     omz update
     echo "Oh My Zsh version: $(omz version)"
-fi
-
-# Powerlevel10k theme
-powerlevel10k=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-if [[ ! -d $powerlevel10k ]]; then
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $powerlevel10k
 fi
 
 # Fish-like fast/unobtrusive autosuggestions

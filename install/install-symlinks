@@ -1,24 +1,16 @@
 #!/bin/zsh
 
-# THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
-
-# load functions
-#test -f ~/.zshenv && source "$_"
-#if [[ -f $GHCONFDIR/zsh/.zsh_functions ]]; then
-#    source $GHDIR/resources/install.sh
-#else
-#    f="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
-#    source /dev/stdin <<< "$(curl -fsSL $f)"
-#fi
-
 # Common scripts
-lnf $GHBINDIR/common $BINDIR
+[[ -d $BINDIR ]] && mkdir -p $BINDIR
+lnf $GHBINDIR/common $$BINDIR/common
+lnf $GHBINDIR/install $$BINDIR/install
+lnf $GHBINDIR/test $$BINDIR/test
 
 # OS-specific scripts
 if [[ "$(osname)" == "macos" ]]; then
-    lnf $GHBINDIR/macos $HOME/binos
+    lnf $GHBINDIR/macos $$BINDIR/thisos
 else
-    lnf $GHBINDIR/linux $HOME/binos
+    lnf $GHBINDIR/linux $HOME/thisos
 fi
 
 # Library
@@ -27,6 +19,6 @@ lnf $GHBINDIR/lib $LIBDIR
 # zsh
 lnf $GHCONFDIR/zsh $ZDOTDIR
 
-# bash
+# bash fallback
 lnf $GHCONFDIR/bash/.bashrc $HOME/.bashrc
 lnf $GHCONFDIR/bash/.bash_profile $HOME/.bash_profile

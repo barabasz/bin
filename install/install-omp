@@ -1,8 +1,9 @@
 #!/bin/zsh
 
-# Karabiner-Elements
-# A powerful and stable keyboard customizer for macOS
-# https://karabiner-elements.pqrs.org
+# Oh My Posh
+# A prompt theme engine for any shell
+# https://ohmyposh.dev
+# https://github.com/JanDeDobbeleer/oh-my-posh
 
 # load variables and functions
 zshload="$ZDOTDIR/.zsh_load"; pref="\e[1;91m"; suff="\e[0m"
@@ -12,12 +13,15 @@ loaderr="${pref}Error loading $zshload: file not found.${suff}"
 appname='Oh My Posh'
 cliname=oh-my-posh
 dirname=omp
-# pkgname=karabiner-elements
+iscript='https://ohmyposh.dev/install.sh'
 
 if [[ "$(isinstalled $cliname)" == "no" ]]; then
-    brew install --cask $pkgname
-else
+    [[ ! -d ~/bin ]] && mkdir ~/bin
+    curl -s $iscript | bash -s -- -d ~/bin
     verinfo $cliname "$appname"
 fi
 
 makeconfln $dirname
+
+verinfo $cliname "$appname"
+
