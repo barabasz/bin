@@ -7,19 +7,24 @@ loaderr="${pref}Error loading $zshload: file not found.${suff}"
 
 source $LIBDIR/prompt_continue.sh
 
+repos=($(git-repos))
+[[ -z $repos ]] && { printe "No repositories found."; return 1; }
+count=$(echo $repos | wc -w | tr -d ' ')
 printe "\nThis will reset all repositories to the latest commit on the main branch."
 prompt_continue
 if [ $? -ne 0 ]; then
     return 1
 fi
 
+i=1
 for repo in $(git-repos)
 do
-    printhead $(basename $repo)
+    printhead "$i/$count $(basename $repo)"
     cd $repo
     printc $(git remote get-url origin)
     git fetch origin
     git checkout main
     git reset --hard origin/main
     git pull
+    ((i++))
 done
