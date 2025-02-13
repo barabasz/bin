@@ -146,5 +146,9 @@ fi
 printhead 'Installing oh-my-zsh...'
 install-omz
 
+# omp
+printhead 'Installing Oh My Posh..'
+install-omp
+
 printhead 'Core installation completed.'
 printhead 'Reload terminal to apply changes.'
