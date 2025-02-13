@@ -12,7 +12,7 @@ source <(curl -fsSL $fnfile > /dev/null 2>&1) && echo "Functions loaded." || { e
 source <(curl -fsSL $colors > /dev/null 2>&1) && echo "Colors loaded." || { echo "Error loading colors."; return 1; }
 source <(curl -fsSL $printf > /dev/null 2>&1) && echo "Print loaded." || { echo "Error loading print."; return 1; }
 
-printf "\n${redbi}Automatic environment configuration script${clear}\n"
+printf "\n${redbi}System base installation script${clear}\n"
 
 # sudo password forcing
 sudo echo > /dev/null
