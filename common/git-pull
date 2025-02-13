@@ -5,12 +5,17 @@ zshload="$ZDOTDIR/.zsh_load"; pref="\e[1;91m"; suff="\e[0m"
 loaderr="${pref}Error loading $zshload: file not found.${suff}"
 [[ -f $zshload ]] && source $zshload || { echo -e $loaderr; return 1; }
 
-printh "Pulling all repositories from the remote."
+repos=($(git-repos))
+[[ -z $repos ]] && { printe "No repositories found."; return 1; }
+count=$(echo $repos | wc -w | tr -d ' ')
+printh "Pulling $count repositories from the remote."
 
-for repo in $(git-repos)
+i=1
+for repo in $repos;
 do
-    printhead $(basename $repo)
+    printhead "$i/$count $(basename $repo)"
     cd $repo
     printc $(git remote get-url origin)
     git pull --rebase
+    ((i++))
 done
