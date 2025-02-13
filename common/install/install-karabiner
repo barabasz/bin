@@ -4,6 +4,11 @@
 # A powerful and stable keyboard customizer for macOS
 # https://karabiner-elements.pqrs.org
 
+# load variables and functions
+zshload="$ZDOTDIR/.zsh_load"; pref="\e[1;91m"; suff="\e[0m"
+loaderr="${pref}Error loading $zshload: file not found.${suff}"
+[[ -f $zshload ]] && source $zshload || { echo -e $loaderr; return 1; }
+
 appname='Karabiner-Elements'
 cliname=karabiner_cli
 dirname=karabiner
@@ -15,7 +20,10 @@ else
     echo "$appname $($cliname --version)"
 fi
 
-if [[ -d $CONFDIR/$appname ]]; then
-    rm -r $CONFDIR/$appname
-    ln -sfF $GHCONFDIR/$appname $CONFDIR/$appname
+[[ -d $CONFDIR/$dirname ]] && rm -r $CONFDIR/$dirname
+
+if [[ -d $GHCONFDIR/$dirname ]]; then
+    ln -sfF $GHCONFDIR/$dirname $CONFDIR/$dirname
+else
+    echo "Error: $GHCONFDIR/$dirname not found."
 fi
