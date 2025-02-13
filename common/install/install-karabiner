@@ -17,13 +17,7 @@ pkgname=karabiner-elements
 if [[ "$(isinstalled $cliname)" == "no" ]]; then
     brew install --cask $pkgname
 else
-    echo "$appname $($cliname --version)"
+    verinfo $cliname "$appname"
 fi
 
-[[ -d $CONFDIR/$dirname ]] && rm -r $CONFDIR/$dirname
-
-if [[ -d $GHCONFDIR/$dirname ]]; then
-    ln -sfF $GHCONFDIR/$dirname $CONFDIR/$dirname
-else
-    echo "Error: $GHCONFDIR/$dirname not found."
-fi
+makeconfln $dirname
