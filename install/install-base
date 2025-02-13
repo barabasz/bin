@@ -7,10 +7,10 @@ colors="https://raw.githubusercontent.com/barabasz/bin/main/lib/colors.sh"
 printf="https://raw.githubusercontent.com/barabasz/bin/main/lib/print.sh"
 github="https://raw.githubusercontent.com/barabasz/bin/main/install"
 update="https://raw.githubusercontent.com/barabasz/bin/main/common/update"
-source <(curl -fsSL $varbls > /dev/null 2>&1) && echo "Variables loaded." || { echo "Error loading variables."; return 1; }
-source <(curl -fsSL $fnfile > /dev/null 2>&1) && echo "Functions loaded." || { echo "Error loading functions."; return 1; }
-source <(curl -fsSL $colors > /dev/null 2>&1) && echo "Colors loaded." || { echo "Error loading colors."; return 1; }
-source <(curl -fsSL $printf > /dev/null 2>&1) && echo "Print loaded." || { echo "Error loading print."; return 1; }
+source <(curl -fsSL $varbls) && echo "Variables loaded." || { echo "Error loading variables."; return 1; }
+source <(curl -fsSL $fnfile) && echo "Functions loaded." || { echo "Error loading functions."; return 1; }
+source <(curl -fsSL $colors) && echo "Colors loaded." || { echo "Error loading colors."; return 1; }
+source <(curl -fsSL $printf) && echo "Print loaded." || { echo "Error loading print."; return 1; }
 
 printf "\n${redbi}System base installation script${clear}\n"
 
