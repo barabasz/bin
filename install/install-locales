@@ -15,7 +15,7 @@ if [[ "$(osname)" == "ubuntu" ]]; then
     locale=$(locale -a | tr '[:upper:]' '[:lower:]' | grep en_us.utf8)
     [[ $locale != "en_us.utf8" ]] && sudo locale-gen en_US.UTF-8 || echo "Locale en_US.UTF-8 already exists."
     sudo update-locale
-    echo "Locales updated."
+    printinfo "Locales updated."
 else
     echo "Unsupported OS: $(osname)"
     exit 1
