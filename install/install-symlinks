@@ -2,13 +2,13 @@
 
 # Common scripts
 [[ -d $BINDIR ]] && mkdir -p $BINDIR
-lnf $GHBINDIR/common $$BINDIR/common
-lnf $GHBINDIR/install $$BINDIR/install
-lnf $GHBINDIR/test $$BINDIR/test
+lnf $GHBINDIR/common $BINDIR/common
+lnf $GHBINDIR/install $BINDIR/install
+lnf $GHBINDIR/test $BINDIR/test
 
 # OS-specific scripts
 if [[ "$(osname)" == "macos" ]]; then
-    lnf $GHBINDIR/macos $$BINDIR/thisos
+    lnf $GHBINDIR/macos $BINDIR/thisos
 else
     lnf $GHBINDIR/linux $HOME/thisos
 fi
