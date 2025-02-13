@@ -1,30 +1,40 @@
 #!/bin/zsh
 
-# load functions
-source ~/.zsh_functions
+# load variables and functions
+zshload="$ZDOTDIR/.zsh_load"; pref="\e[1;91m"; suff="\e[0m"
+loaderr="${pref}Error loading $zshload: file not found.${suff}"
+[[ -f $zshload ]] && source $zshload || { echo -e $loaderr; return 1; }
 
 if [[ "$(echo $ZSH | grep -o 'oh-my-zsh')" != "oh-my-zsh" ]]; then
+    [[ -f $TMPDIR/.zshrc ]] && rm -f $TMPDIR/.zshrc
+    cp $ZDOTDIR/.zshrc $TMPDIR/.zshrc
     omzinstall=https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
     export ZSH="$CONFDIR/omz"
     sh -c "$(curl -fsSL $omzinstall)" "" --unattended
-    rm -f ~/.zshrc.pre-oh-my-zsh
-    rm -f ~/.shell.pre-oh-my-zsh
+
+    #rm -f ~/.zshrc.pre-oh-my-zsh
+    #rm -f ~/.shell.pre-oh-my-zsh
 else
-    source ~/.zshrc
     omz update
     echo "Oh My Zsh version: $(omz version)"
 fi
 
 # Fish-like fast/unobtrusive autosuggestions
+printhead "Installing zsh-autosuggestions"
 autosuggestions=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 if [[ ! -d $autosuggestions ]]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions.git $autosuggestions
 fi
 
 # Fish shell-like syntax highlighting
+printhead "Installing zsh-syntax-highlighting"
 syntaxhighlighting=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 if [[ ! -d $syntaxhighlighting ]]; then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $syntaxhighlighting
 fi
 
-source ~/.zshrc
+echo "KURWA!!!"
+
+rm -f $ZDOTDIR/.zshrc
+rm -f $ZDOTDIR/.zshrc.pre-oh-my-zsh
+cp $TMPDIR/.zshrc $ZDOTDIR/.zshrc
