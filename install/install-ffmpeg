@@ -4,7 +4,7 @@
 # Play, record, convert, and stream audio and video
 # https://ffmpeg.org/
 
-if [[ "$(isinstalled ffmpeg)" == "no" ]]; then
+if [[ ! $(isinstalled ffmpeg) ]]; then
     brew install -q ffmpeg
 else
     ffmpeg -version | grep "ffmpeg version"

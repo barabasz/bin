@@ -4,7 +4,7 @@
 # C-style arbitrary precision calculator with custom functions
 # http://www.isthe.com/chongo/tech/comp/calc/
 
-if [[ "$(isinstalled calc)" == "no" ]]; then
+if [[ ! $(isinstalled calc) ]]; then
     brew install -q calc
 else
     calc -v

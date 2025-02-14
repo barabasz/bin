@@ -9,7 +9,7 @@ cliname=$appnamem
 dirname=$cliname
 pkgname=$cliname
 
-if [[ "$(isinstalled $cliname)" == "no" ]]; then
+if [[ ! $(isinstalled $cliname) ]]; then
     if [[ "$(osname)" == "macos" ]]; then
         brew install -q $pkgname
     else

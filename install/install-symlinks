@@ -18,6 +18,7 @@ lnf $GHBINDIR/lib $LIBDIR
 
 # zsh
 lnf $GHCONFDIR/zsh $ZDOTDIR
+lnf $GHCONFDIR/zsh/.zshenv_root $HOME/.zshenv
 
 # bash fallback
 lnf $GHCONFDIR/bash/.bashrc $HOME/.bashrc

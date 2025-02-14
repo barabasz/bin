@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ "$(isinstalled cmake)" == "no" ]]; then
+if [[ ! $(isinstalled cmake) ]]; then
     brew install -q cmake
 else
     cmake --version | grep version

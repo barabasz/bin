@@ -8,7 +8,7 @@ else
     source <(curl -fsSL https://raw.githubusercontent.com/barabasz/resources/main/install.sh)
 fi
 
-if [[ "$(isinstalled snap)" == "yes" ]]; then
+if [[ $(isinstalled snap) ]]; then
     sudo snap remove --purge lxd
     sudo snap remove --purge core20
     sudo snap remove --purge snapd

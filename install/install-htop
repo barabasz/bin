@@ -4,7 +4,7 @@
 # Improved top (interactive process viewer)
 # https://htop.dev/
 
-if [[ "$(isinstalled htop)" == "no" ]]; then
+if [[ ! $(isinstalled htop) ]]; then
     brew install -q htop
 else
     htop --version

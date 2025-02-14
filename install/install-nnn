@@ -10,7 +10,7 @@ dirname=$appname
 pkgname=$appname
 vercmmd="-V"
 
-if [[ "$(isinstalled $cliname)" == "no" ]]; then
+if [[ ! $(isinstalled $cliname) ]]; then
     if [[ "$(osname)" == "macos" ]]; then
         brew install -q $pkgname
     else

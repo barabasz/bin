@@ -23,7 +23,7 @@ if [[ ! "$(osname)" == "macos" ]]; then
     sudo sync
 fi
 
-if [[ "$(isinstalled brew)" == "yes" ]]; then
+if [[ $(isinstalled brew) ]]; then
     brew update --auto-update
     brew upgrade
     brew cleanup

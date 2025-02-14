@@ -4,7 +4,7 @@
 # Perl lib for reading and writing EXIF metadata
 # https://exiftool.org
 
-if [[ "$(isinstalled exiftool)" == "no" ]]; then
+if [[ ! $(isinstalled exiftool) ]]; then
     brew install -q exiftool
 else
     echo exiftool $(exiftool -ver)

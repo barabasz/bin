@@ -2,12 +2,12 @@
 
 luaver="5.4"
 
-if [[ "$(isinstalled lua)" == "no" ]]; then
+if [[ ! $(isinstalled lua) ]]; then
     if [[ "$(osname)" == "macos" ]]; then
         brew install -q lua luarocks luv luajit luacheck
     else
         aptinstall lua$luaver
     fi
 else
-    lua -v
+    verinfo lua "Lua" -v
 fi

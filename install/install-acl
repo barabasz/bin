@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ "$(osname)" != "macos" ]]; then
-    if [[ "$(isinstalled getfacl)" == "no" ]]; then
+    if [[ ! $(isinstalled getfacl) ]]; then
         # brew install -q acl
         aptinstall acl
     else

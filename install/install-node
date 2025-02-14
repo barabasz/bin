@@ -4,7 +4,7 @@
 # JavaScript runtime environment
 # https://github.com/jarun/nnn
 
-if [[ "$(isinstalled node)" == "no" ]]; then
+if [[ ! $(isinstalled node) ]]; then
     brew install -q node
 else
     echo "Node.js version $(node --version)"

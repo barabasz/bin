@@ -4,7 +4,7 @@
 # fd is a program to find entries in your filesystem
 # https://github.com/sharkdp/fd
 
-if [[ "$(isinstalled fd)" == "no" ]]; then
+if [[ ! $(isinstalled fd) ]]; then
     brew install -q fd
 else
     fd --version

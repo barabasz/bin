@@ -8,7 +8,7 @@
 scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
 source /dev/stdin <<< "$(curl -fsSL $scrpath)"
 
-if [[ "$(isinstalledbybrew ncurses)" == "no" ]]; then
+if [[ ! $(isinstalledbybrew ncurses) ]]; then
     brew install -q ncurses
 else
     brew list ncurses | grep "bin/ncurses"

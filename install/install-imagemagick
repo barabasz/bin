@@ -4,8 +4,13 @@
 # collection of tools to modify and manipulate images
 # https://imagemagick.org
 
-if [[ "$(isinstalled magick)" == "no" ]]; then
-    brew install -q imagemagick
+appname=ImageMagick
+cliname=magick
+dirname=$appname
+pkgname=imagemagick
+
+if [[ ! $(isinstalled $cliname) ]]; then
+    brew install -q $pkgname
 else
-    magick --version | grep "Version"
+    verinfo $cliname "$appname"
 fi

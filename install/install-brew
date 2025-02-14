@@ -22,7 +22,7 @@ echo 'isinstalled brew'
 isinstalled brew
 echo '----------'
 
-if [[ "$(isinstalled brew)" == "no" ]]; then
+if [[ ! $(isinstalled brew) ]]; then
     # Ubuntu/Debian fix
     if [[ "$(osname)" != "macos" ]]; then
         sudo mkdir -p /home/linuxbrew/

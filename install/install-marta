@@ -4,7 +4,7 @@
 # Native, extensible and fast File Manager for macOS.
 # https://marta.sh
 
-if [[ "$(isinstalledbybrew marta)" == "no" ]]; then
+if [[ $(isinstalledbybrew marta) ]]; then
     brew install -q -force marta
 else
     brew info marta | grep Caskroom

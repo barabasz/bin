@@ -4,7 +4,7 @@
 # line-oriented search tool for files
 # https://github.com/BurntSushi/ripgrep
 
-if [[ "$(isinstalled rg)" == "no" ]]; then
+if [[ ! $(isinstalled rg) ]]; then
     brew install -q ripgrep
 else
     rg --version | grep ripgrep

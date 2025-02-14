@@ -8,7 +8,7 @@
 scrpath="https://raw.githubusercontent.com/barabasz/resources/main/install.sh"
 source /dev/stdin <<< "$(curl -fsSL $scrpath)"
 
-if [[ "$(isinstalled gcc)" == "no" ]]; then
+if [[ ! $(isinstalled gcc) ]]; then
     brew install -q gcc
 else
     gcc --version | grep version

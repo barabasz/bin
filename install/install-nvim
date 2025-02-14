@@ -4,7 +4,7 @@
 # hyperextensible Vim-based text editor
 # https://neovim.io/
 
-if [[ "$(isinstalled nvim)" == "no" ]]; then
+if [[ ! $(isinstalled nvim) ]]; then
     brew install -q nvim
 
     if [[ ! "$(osname)" == "macos" ]]; then
