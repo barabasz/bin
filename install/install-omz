@@ -14,10 +14,9 @@ loaderr="${pref}Error loading $zshload: file not found.${suff}"
 [[ ! -n $ZSH_CUSTOM ]] && ZSH_CUSTOM=$ZSH/custom
 
 function installplugin() {
-    pname=$1
-    prepo=https://github.com/zsh-users/$pname.git
-    pdir=$ZSH_CUSTOM/plugins/$pname
-    printhead "Installing $pname"
+    prepo=https://github.com/zsh-users/$1.git
+    pdir=$ZSH_CUSTOM/plugins/$1
+    printhead "Installing $1"
     [[ -d $pdir ]] && rm -rf $pdir
     git clone $prepo $pdir
 }
