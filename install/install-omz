@@ -13,26 +13,6 @@ loaderr="${pref}Error loading $zshload: file not found.${suff}"
 [[ ! -n $ZSH ]] && ZSH=$HOME/.config/omz
 [[ ! -n $ZSH_CUSTOM ]] && ZSH_CUSTOM=$ZSH/custom
 
-function installplugin() {
-    prepo=https://github.com/zsh-users/$1.git
-    pdir=$ZSH_CUSTOM/plugins/$1
-    printhead "Installing $1"
-    [[ -d $pdir ]] && rm -rf $pdir
-    git clone $prepo $pdir
-}
-
-function isomzinstalled() {
-    if [[ -d $ZSH ]] && [[ $(omz version | grep -o 'master' | head -1) = 'master' ]]; then
-        echo 1
-    else
-        echo 0
-    fi
-}
-
-function omzversion() {
-    printf "${green}oh-my-zsh ${yellow}$(omz version)$reset is installed in ${purple}$ZSH${reset}\n"
-}
-
 if [[ ! $(isomzinstalled) ]]; then
     [[ -f $TMPDIR/.zshrc ]] && rm -f $TMPDIR/.zshrc
     cp $ZDOTDIR/.zshrc $TMPDIR/.zshrc
@@ -46,10 +26,10 @@ else
 fi
 
 # Fish-like fast/unobtrusive autosuggestions
-installplugin zsh-autosuggestions
+installomzplugin zsh-autosuggestions
 
 # Fish shell-like syntax highlighting
-installplugin zsh-syntax-highlighting
+installomzplugin zsh-syntax-highlighting
 
 rm -f $ZDOTDIR/.zshrc
 rm -f $ZDOTDIR/.zshrc.pre-oh-my-zsh
