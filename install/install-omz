@@ -1,40 +1,58 @@
 #!/bin/zsh
 
+# oh-my-zsh (omz)
+# an open source framework for managing zsh configuration
+# https://ohmyz.sh
+# https://github.com/ohmyzsh/ohmyzsh
+
 # load variables and functions
 zshload="$ZDOTDIR/.zsh_load"; pref="\e[1;91m"; suff="\e[0m"
 loaderr="${pref}Error loading $zshload: file not found.${suff}"
 [[ -f $zshload ]] && source $zshload || { echo -e $loaderr; return 1; }
 
-if [[ "$(echo $ZSH | grep -o 'oh-my-zsh')" != "oh-my-zsh" ]]; then
+[[ ! -n $ZSH ]] && ZSH=$HOME/.config/omz
+[[ ! -n $ZSH_CUSTOM ]] && ZSH_CUSTOM=$ZSH/custom
+
+function installplugin() {
+    pname=$1
+    prepo=https://github.com/zsh-users/$pname.git
+    pdir=$ZSH_CUSTOM/plugins/$pname
+    printhead "Installing $pname"
+    [[ -d $pdir ]] && rm -rf $pdir
+    git clone $prepo $pdir
+}
+
+function isomzinstalled() {
+    if [[ -d $ZSH ]] && [[ $(omz version | grep -o 'master' | head -1) = 'master' ]]; then
+        echo 1
+    else
+        echo 0
+    fi
+}
+
+function omzversion() {
+    printf "${green}oh-my-zsh ${yellow}$(omz version)$reset is installed in ${purple}$ZSH${reset}\n"
+}
+
+if [[ ! $(isomzinstalled) ]]; then
     [[ -f $TMPDIR/.zshrc ]] && rm -f $TMPDIR/.zshrc
     cp $ZDOTDIR/.zshrc $TMPDIR/.zshrc
+    printinfo ".zshrc backed up to $TMPDIR/.zshrc"
     omzinstall=https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
     export ZSH="$CONFDIR/omz"
     sh -c "$(curl -fsSL $omzinstall)" "" --unattended
-
-    #rm -f ~/.zshrc.pre-oh-my-zsh
-    #rm -f ~/.shell.pre-oh-my-zsh
 else
     omz update
-    echo "Oh My Zsh version: $(omz version)"
+    omzversion
 fi
 
 # Fish-like fast/unobtrusive autosuggestions
-printhead "Installing zsh-autosuggestions"
-autosuggestions=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-if [[ ! -d $autosuggestions ]]; then
-    git clone https://github.com/zsh-users/zsh-autosuggestions.git $autosuggestions
-fi
+installplugin zsh-autosuggestions
 
 # Fish shell-like syntax highlighting
-printhead "Installing zsh-syntax-highlighting"
-syntaxhighlighting=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-if [[ ! -d $syntaxhighlighting ]]; then
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $syntaxhighlighting
-fi
-
-echo "KURWA!!!"
+installplugin zsh-syntax-highlighting
 
 rm -f $ZDOTDIR/.zshrc
 rm -f $ZDOTDIR/.zshrc.pre-oh-my-zsh
 cp $TMPDIR/.zshrc $ZDOTDIR/.zshrc
+printinfo ".zshrc restored from $TMPDIR/.zshrc"

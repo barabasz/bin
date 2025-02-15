@@ -58,3 +58,4 @@ function printy() {
 
 alias printhead=printh
 alias printinfo=printi
+alias printerror=printe
