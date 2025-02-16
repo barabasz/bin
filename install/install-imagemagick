@@ -9,7 +9,7 @@ cliname=magick
 dirname=$appname
 pkgname=imagemagick
 
-if [[ ! $(isinstalled $cliname) ]]; then
+if [[ $(isinstalled $cliname) -eq 0 ]]; then
     brew install -q $pkgname
 else
     verinfo $cliname "$appname"

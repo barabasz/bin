@@ -15,7 +15,7 @@ cliname=oh-my-posh
 dirname=omp
 iscript='https://ohmyposh.dev/install.sh'
 
-if [[ $(isinstalled $cliname) ]]; then
+if [[ $(isinstalled $cliname) -eq 0 ]]; then
     [[ ! -d ~/bin ]] && mkdir ~/bin
     curl -s $iscript | bash -s -- -d ~/bin
     verinfo $cliname "$appname"

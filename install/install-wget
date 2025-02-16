@@ -4,7 +4,7 @@
 # Internet file retriever
 # https://www.gnu.org/software/wget/
 
-if [[ ! $(isinstalled wget) ]]; then
+if [[ $(isinstalled wget) -eq 0 ]]; then
     brew install -q wget
 else
     wget -V | grep "GNU Wget"

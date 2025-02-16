@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ ! $(isinstalled composer) ]]; then
+if [[ $(isinstalled composer) -eq 0 ]]; then
     if [[ "$(osname)" == "macos" ]]; then
         brew install -q composer
     else

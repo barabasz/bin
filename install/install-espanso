@@ -4,7 +4,7 @@
 # A Privacy-first, Cross-platform Text Expander
 # https://espanso.org
 
-if [[ ! $(isinstalled espanso) ]]; then
+if [[ $(isinstalled espanso) -eq 0 ]]; then
     brew install espanso
 else
     verinfo espanso

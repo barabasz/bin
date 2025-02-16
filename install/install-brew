@@ -18,11 +18,7 @@ elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-echo 'isinstalled brew'
-isinstalled brew
-echo '----------'
-
-if [[ ! $(isinstalled brew) ]]; then
+if [[ $(isinstalled brew) -eq 0 ]]; then
     # Ubuntu/Debian fix
     if [[ "$(osname)" != "macos" ]]; then
         sudo mkdir -p /home/linuxbrew/
@@ -36,7 +32,7 @@ if [[ ! $(isinstalled brew) ]]; then
     # Disable analytics
     brew analytics off
 else
-    brew --version
+    verinfo brew
 fi
 
 

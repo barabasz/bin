@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if [[ ! $(isinstalled python3) ]]; then
+if [[ $(isinstalled python3) -eq 0 ]]; then
     if [[ "$(osname)" == "macos" ]]; then
         brew install -q python3
     else
@@ -11,7 +11,7 @@ else
     python3 --version
 fi
 
-if [[ ! $(isinstalled pip) ]]; then
+if [[ $(isinstalled pip) -eq 0 ]]; then
     if [[ "$(osname)" != "macos" ]]; then
         aptinstall python3-pip
     fi

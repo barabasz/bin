@@ -4,7 +4,7 @@
 # Programmatically correct mistyped console commands
 # https://github.com/nvbn/thefuck
 
-if [[ ! $(isinstalled thefuck) ]]; then
+if [[ $(isinstalled thefuck) -eq 0 ]]; then
     brew install -q thefuck
 else
     thefuck --version

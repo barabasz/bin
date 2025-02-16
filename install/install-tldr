@@ -4,7 +4,7 @@
 # tlrc is a tldr client written in Rust
 # https://github.com/tldr-pages/tlrc
 
-if [[ ! $(isinstalled tldr) ]]; then
+if [[ $(isinstalled tldr) -eq 0 ]]; then
     brew install -q tlrc
 else
     tldr --version

@@ -14,7 +14,7 @@ cliname=karabiner_cli
 dirname=karabiner
 pkgname=karabiner-elements
 
-if [[ ! $(isinstalled $cliname) ]]; then
+if [[ $(isinstalled $cliname) -eq 0 ]]; then
     brew install --cask $pkgname
 else
     verinfo $cliname "$appname"

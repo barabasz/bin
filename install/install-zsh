@@ -18,7 +18,7 @@ if [[ ! "$(osname)" == "macos" ]]; then
 fi
 
 # install zsh
-if [[ ! $(isinstalled zsh) ]]; then
+if [[ $(isinstalled zsh) -eq 0 ]]; then
     if [[ ! "$(osname)" == "macos" ]]; then
         export LC_ALL="en_US.UTF-8"
         export LC_CTYPE="en_US.UTF-8"
