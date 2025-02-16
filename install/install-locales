@@ -1,19 +1,28 @@
-#!/bin/bash
+#!/bin/zsh
 
-# THIS SCRIPT IS INTENTIONALLY WRITTEN IN BASH
-
-# load functions
-#echo 'Loading install environment and functions...'
-#functions="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions"
-#source <(curl -fsSL $functions)
-
-if [[ "$(osname)" == "ubuntu" ]]; then
+if [[ "$(osname)" != "macos" ]]; then
     sudo apt install -yq locales > /dev/null 2>&1
-    locale=$(locale -a | tr '[:upper:]' '[:lower:]' | grep pl_pl.utf8)
+    locale=$(locale -a | tr '[:upper:]' '[:lower:]' | grep pl_pl.utf8) 2> /dev/null
     [[ $locale != "pl_pl.utf8" ]] && sudo locale-gen pl_PL.UTF-8 | grep 'done' || echo "Locale pl_PL.UTF-8 already exists."
-    locale=$(locale -a | tr '[:upper:]' '[:lower:]' | grep en_us.utf8)
+    locale=$(locale -a | tr '[:upper:]' '[:lower:]' | grep en_us.utf8) 2> /dev/null
     [[ $locale != "en_us.utf8" ]] && sudo locale-gen en_US.UTF-8 | grep 'done' || echo "Locale en_US.UTF-8 already exists."
     sudo update-locale
+    # English language
+    sudo localectl set-locale LANG=en_US.UTF-8
+    sudo localectl set-locale LANGUAGE=en_US:en:C
+    sudo localectl set-locale LC_MESSAGES=en_US.UTF-8
+    # Polish regiional settings
+    sudo localectl set-locale LC_ADDRESS=pl_PL.UTF-8
+    sudo localectl set-locale LC_COLLATE=pl_PL.UTF-8
+    sudo localectl set-locale LC_CTYPE=pl_PL.UTF-8
+    sudo localectl set-locale LC_IDENTIFICATION=pl_PL.UTF-8
+    sudo localectl set-locale LC_MEASUREMENT=pl_PL.UTF-8
+    sudo localectl set-locale LC_MONETARY=pl_PL.UTF-8
+    sudo localectl set-locale LC_NAME=pl_PL.UTF-8
+    sudo localectl set-locale LC_NUMERIC=pl_PL.UTF-8
+    sudo localectl set-locale LC_PAPER=pl_PL.UTF-8
+    sudo localectl set-locale LC_TELEPHONE=pl_PL.UTF-8
+    sudo localectl set-locale LC_TIME=pl_PL.UTF-8
 else
     echo "Unsupported OS: $(osname)"
     exit 1

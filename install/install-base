@@ -1,44 +1,59 @@
 #!/bin/zsh
 
-# set variables
-varbls="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zshenv"
+# remote files
+varbls="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_env"
 fnfile="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions"
 colors="https://raw.githubusercontent.com/barabasz/bin/main/lib/colors.sh"
 printf="https://raw.githubusercontent.com/barabasz/bin/main/lib/print.sh"
 github="https://raw.githubusercontent.com/barabasz/bin/main/install"
+
+# loading variables and functions
 source <(curl -fsSL $varbls) && echo "Variables loaded." || { echo "Error loading variables."; return 1; }
 source <(curl -fsSL $fnfile) && echo "Functions loaded." || { echo "Error loading functions."; return 1; }
 source <(curl -fsSL $colors) && echo "Colors loaded." || { echo "Error loading colors lib."; return 1; }
 source <(curl -fsSL $printf) && echo "Print loaded." || { echo "Error loading print lib."; return 1; }
 
-printf "\n${redbi}System base installation script${clear}\n"
+printf "\n\n-------------------------------\n"
+printf "${redbi}System base installation script${clear}"
+printf "\n-------------------------------\n\n"
 
 # forcing sudo password
 sudo echo > /dev/null
 
 # create base directories
+printhead 'Creating base directories...'
 mkdir -p $HOME/.cache
 mkdir -p $HOME/.config
 mkdir -p $HOME/.local
 mkdir -p $HOME/.tmp
 
-# Generatle locale (Ubuntu)
-if [[ "$(osname)" == "ubuntu" ]]; then
+# generate locale (Ubuntu/Debian)
+if [[ "$(osname)" != "macos" ]]; then
     printhead 'Installing locales...'
     source <(curl -fsSL $github/install-locales) 2>/dev/null
-    printinfo 'Locales installed.'
 fi
 
-# Update and upgrade
+# setting timezone
+if [[ "$(osname)" != "macos" ]]; then
+    printhead 'Setting timezone...'
+    if [[ "$(cat /etc/timezone | grep -o 'Warsaw')" != "Warsaw" ]]; then
+        sudo timedatectl set-timezone Europe/Warsaw
+        sudo dpkg-reconfigure -f noninteractive tzdata
+    else
+        echo "Timezone: $(cat /etc/timezone)"
+    fi
+fi
+
+# update and upgrade
 printhead 'Updating system...'
-source <(curl -fsSL $update)
+sysupdate
 printinfo 'System updated.'
 
 # Git
 printhead 'Installing git...'
 source <(curl -fsSL $github/install-git)
 
-# gh - GitHub CLI
+# GitHub CLI (gh)
 printhead 'Installing gh...'
 source <(curl -fsSL $github/install-gh)
 
@@ -69,8 +84,6 @@ fi
 printhead 'Installing certificates...'
 install-certs
 
-return 2> /dev/null; exit
-
 # Basic brew libraries
 printhead 'Installing brew core packages...'
 extscript $github/install-brew-core
@@ -82,13 +95,6 @@ extscript $github/install-ncurses
 # gcc  - GNU compiler collection
 printhead 'Installing gcc...'
 extscript $github/install-gcc
-
-
-
-
-
-# set temporary path and locale
-export PATH=$HOME/bin:$HOME/bin/install:$HOME/binos:/usr/local/bin:$PATH
 
 # disable NEEDRESTART prompt
 if [[ "$(osname)" == "ubuntu" ]]; then
@@ -125,11 +131,11 @@ install-archivers
 # minimize login info
 if [[ ! "$(osname)" == "macos" ]]; then
     printhead 'Minimizing login info...'
-    fix-login-info
+    minimize-login-info
     echo 'Done.'
 fi
 
-# remove snap
+# remove snap (Ubuntu)
 if [[ "$(osname)" == "ubuntu" ]]; then
     printhead 'Removing snap...'
     remove-snap
