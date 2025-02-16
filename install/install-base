@@ -33,7 +33,7 @@ fi
 # forcing sudo password for the rest of the script
 sudo echo > /dev/null
 
-# create base directories
+# creating base directories
 printhead 'Creating base directories...'
 mkdir -p $HOME/.cache
 mkdir -p $HOME/.config
