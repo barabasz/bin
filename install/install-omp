@@ -6,9 +6,8 @@
 # https://github.com/JanDeDobbeleer/oh-my-posh
 
 # load variables and functions
-zshload="$ZDOTDIR/.zsh_load"; pref="\e[1;91m"; suff="\e[0m"
-loaderr="${pref}Error loading $zshload: file not found.${suff}"
-[[ -f $zshload ]] && source $zshload || { echo -e $loaderr; return 1; }
+zlf=$ZSH_LOAD_FILE; err="$0: unable to load ZSH_LOAD_FILE"
+[[ -f $zlf ]] && source $zlf || { printf "$err\n";  exit 1 }
 
 appname='Oh My Posh'
 cliname=oh-my-posh

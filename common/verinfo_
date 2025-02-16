@@ -1,0 +1,51 @@
+#!/bin/zsh
+
+# load functions
+# source $ZSH_LOAD_FILE
+# verinfo $*
+
+function verinfo() {
+    if [[ -z "$1" ]]; then
+        echo -e "usage:$green verinf$reset cliname appname versioncommand"
+        return 1
+    elif [[ ! -z "$4" ]]; then
+        echo -e "too many parameters"
+        return 1
+    elif [[ -z "$2" ]]; then
+        cliname=$1
+        appname=$1
+        vercmmd="--version"
+    elif [[ -z "$3" ]]; then
+        cliname=$1
+        appname=$2
+        vercmmd="--version"
+    else
+        cliname=$1
+        appname=$2
+        vercmmd=$3
+    fi
+    type=$(utype $cliname)
+    if [[ $type = 'file' || "$(which $cliname)" == /* ]]; then
+        msg='is installed in'
+        reg='\b[0-9]{1,}\.[0-9]{1,}(\.[0-9]{1,}){0,}\b'
+        app="${green}${appname}${reset}"
+        ver="$yellow$($cliname $vercmmd | grep -Eo $reg | head -1)$reset"
+        pth="$purple$(whereis -b $cliname | sed 's/.*: //')$reset"
+        echo -e "$app $ver $msg $pth"
+    fi
+    if [[ $type = 'alias' ]]; then
+        msg='is an alias for'
+        als="${green}$cliname${reset} $msg ${purple}$(alias $cliname | sed "s/.*=//")${reset}"
+        echo -e "$als"
+    fi
+    if [[ $type = 'function' || $type = 'keyword' || $type = 'builtin' ]]; then
+        msg='is a'
+        als="${green}$cliname${reset} $msg ${purple}$type${reset}"
+        echo -e "$als"
+    fi    
+    if [[ -z $type ]]; then
+        msg="is not available"
+        echo -e "${red}$cliname${reset} $msg"
+        return 2
+    fi
+}

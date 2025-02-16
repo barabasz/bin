@@ -1,3 +1,4 @@
 #!/bin/zsh
 
 brew install --cask iterm2
+lnf $GHCONFDIR/iterm2/com.googlecode.iterm2.plist $CONFDIR/iterm2/com.googlecode.iterm2.plist

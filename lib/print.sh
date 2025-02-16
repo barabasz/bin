@@ -2,6 +2,16 @@
 
 # Print library
 
+# Print title in frame
+function printt() {
+    local str=$1; local len=${#str}; local lc="─"
+    local tl="┌──"; local tr="──┐";
+    local ml="│  "; local mr="  │"
+    local bl="└──"; local br="──┘";
+    local ll=$(printf "%${len}s" | sed "s/ /${lc}/g")
+    printf "$tl$ll$tr\n$ml$redi$str$reset$mr\n$bl$ll$br\n"
+}
+
 # Print yellow header
 function printh() {
     output="\n${yellowb}"$*"${reset}\n"
@@ -57,5 +67,6 @@ function printy() {
 }
 
 alias printhead=printh
+alias printtitle=printt
 alias printinfo=printi
 alias printerror=printe

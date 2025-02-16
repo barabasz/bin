@@ -1,22 +1,27 @@
-#!/bin/bash
+#!/bin/zsh
 
 # mc (Midnight Commander)
 # feature rich full-screen text mode visual file manager
 # https://midnight-commander.org/
+
+# load variables and functions
+zlf=$ZSH_LOAD_FILE; err="$0: unable to load ZSH_LOAD_FILE"
+[[ -f $zlf ]] && source $zlf || { printf "$err\n";  exit 1 }
 
 appname='Midnight Commander'
 cliname=mc
 dirname=$cliname
 pkgname=midnight-commander
 
-if [[ ! $(isinstalled $cliname) ]]; then
+if [[ $(isinstalled $cliname) == 0 ]]; then
+echo "Installing $appname..."
     if [[ "$(osname)" == "macos" ]]; then
         brew install -q $pkgname
     else
         aptinstall $cliname
     fi
 else
-    verinf $cliname "$appname"
+    verinfo $cliname "$appname"
 fi
 
 makeconfln $dirname

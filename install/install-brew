@@ -1,11 +1,8 @@
 #!/bin/zsh
 
-# load functions
-if [[ -f $ZDOTDIR/.zsh_functions ]]; then
-    source $ZDOTDIR/.zsh_functions
-else
-    source <(curl -fsSL "$MYGH/config/main/zsh/.zsh_functions")
-fi
+# load variables and functions
+zlf=$ZSH_LOAD_FILE; err="$0: unable to load ZSH_LOAD_FILE"
+[[ -f $zlf ]] && source $zlf || { printf "$err\n";  exit 1 }
 
 export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_NO_EMOJI=1
