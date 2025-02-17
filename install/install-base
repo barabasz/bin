@@ -15,23 +15,30 @@ source <(wget -q -O - $printf) && echo "Print loaded." || { echo "Error loading 
 
 printtitle 'Installation of base system components'
 
-# installing sudo & culr if not installed (Linux)
+# installing sudo & culr if not installed (Debian)
 if [[ "$(osname)" != "macos" ]]; then
     if [[ $(isinstalled "sudo") -eq 0 ]]; then
         printhead 'Installing sudo...'
-        su -c "apt-get install -qq sudo"
-        su -c "echo 'ALL ALL=(ALL:ALL) ALL' | sudo EDITOR='tee -a' visudo"
+        su -c "apt-get install -qq sudo 2> /dev/null"
+        local sudostr="$(whoami) ALL=(ALL:ALL) ALL"
+        su -c "echo '$sudostr' | sudo EDITOR='tee -a' visudo"
         verinfo "sudo"
-    fi
-    if [[ $(isinstalled "curl") -eq 0 ]]; then
-        printhead 'Installing curl...'
-        aptinstall "curl"
-        verinfo "curl"
     fi
 fi
 
 # forcing sudo password for the rest of the script
 sudo echo > /dev/null
+
+# installing sudo & culr if not installed (Debian)
+if [[ "$(osname)" != "macos" ]]; then    
+    if [[ $(isinstalled "curl") -eq 0 ]]; then
+        printhead 'Installing curl...'
+        aptinstall "curl" > /dev/null 2>&1
+        verinfo "curl"
+    fi
+fi
+
+
 
 # creating base directories
 printhead 'Creating base directories...'
