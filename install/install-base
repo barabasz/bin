@@ -146,6 +146,7 @@ if [[ ! "$(osname)" == "macos" ]]; then
     minimize-login-info
     echo 'Done.'
 fi
+touch "$HOME/.hushlogin"
 
 # remove snap (Ubuntu)
 if [[ "$(osname)" == "ubuntu" ]]; then

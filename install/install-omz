@@ -31,7 +31,5 @@ installomzplugin zsh-autosuggestions
 # Fish shell-like syntax highlighting
 installomzplugin zsh-syntax-highlighting
 
-rm -f $ZDOTDIR/.zshrc
-rm -f $ZDOTDIR/.zshrc.pre-oh-my-zsh
-cp $TMPDIR/.zshrc $ZDOTDIR/.zshrc
-printinfo ".zshrc restored from $TMPDIR/.zshrc"
+lns "$GHCONFDIR/zsh" "$ZDOTDIR"
+lns "$GHCONFDIR/zsh/.zshenv" "$HOME/.zshenv"
