@@ -48,7 +48,7 @@ mkdir -p $HOME/.tmp
 # generate locale (Ubuntu/Debian)
 if [[ "$(osname)" != "macos" ]]; then
     printhead 'Installing locales...'
-    source <(curl -fsSL $github/install-locales) 2>/dev/null
+    source <(curl -fsSL $github/install-locales)
 fi
 
 # setting timezone
@@ -120,12 +120,6 @@ if [[ "$(osname)" == "ubuntu" ]]; then
     disable-needrestart
 fi
 
-# set locale
-if [[ "$(osname)" != "macos" ]]; then
-    printhead 'Setting locale...'
-    set-locale
-fi
-
 # acl - Commands for manipulating POSIX access control lists
 if [[ "$(osname)" != "macos" ]]; then
     printhead 'Installing acl...'
@@ -157,12 +151,6 @@ fi
 if [[ "$(osname)" == "ubuntu" ]]; then
     printhead 'Removing snap...'
     remove-snap
-fi
-
-# zsh
-if [[ ! "$(osname)" == "macos" ]]; then
-    printhead 'Installing zsh...'
-    install-zsh
 fi
 
 # omz
