@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+# load variables and functions
+zlf=$ZSH_LOAD_FILE; err="$0: unable to load ZSH_LOAD_FILE"
+[[ -f $zlf ]] && source $zlf || { printf "$err\n";  exit 1 }
+
 # Common scripts
 [[ -d $BINDIR ]] && mkdir -p $BINDIR
 lnf $GHBINDIR/common $BINDIR/common
