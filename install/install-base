@@ -38,8 +38,6 @@ if [[ "$(osname)" != "macos" ]]; then
     fi
 fi
 
-
-
 # creating base directories
 printhead 'Creating base directories...'
 mkdir -p $HOME/.cache
