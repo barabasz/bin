@@ -10,7 +10,7 @@ export CONFDIR=$HOME/.config
 
 # symbolic link
 makeconfln zsh
-lnf $GHCONFDIR/zsh/.zshenv $HOME/.zshenv
+lns "$GHCONFDIR/zsh/.zshenv" "$HOME/.zshenv"
 
 # fallback for bash's shopt
 if [[ ! "$(osname)" == "macos" ]]; then

@@ -6,24 +6,24 @@ zlf=$ZSH_LOAD_FILE; err="$0: unable to load ZSH_LOAD_FILE"
 
 # Common scripts
 [[ -d $BINDIR ]] && mkdir -p $BINDIR
-lnf $GHBINDIR/common $BINDIR/common
-lnf $GHBINDIR/install $BINDIR/install
-lnf $GHBINDIR/test $BINDIR/test
+lns "$GHBINDIR/common" "$BINDIR/common"
+lns "$GHBINDIR/install" "$BINDIR/install"
+lns "$GHBINDIR/test" "$BINDIR/test"
 
 # OS-specific scripts
 if [[ "$(osname)" == "macos" ]]; then
-    lnf $GHBINDIR/macos $BINDIR/thisos
+    lns "$GHBINDIR/macos" "$BINDIR/thisos"
 else
-    lnf $GHBINDIR/linux $HOME/thisos
+    lns "$GHBINDIR/linux" "$HOME/thisos"
 fi
 
 # Library
-lnf $GHBINDIR/lib $LIBDIR
+lns "$GHBINDIR/lib" "$LIBDIR"
 
 # zsh
-lnf $GHCONFDIR/zsh $ZDOTDIR
-lnf $GHCONFDIR/zsh/.zshenv $HOME/.zshenv
+lns "$GHCONFDIR/zsh" "$ZDOTDIR"
+lns "$GHCONFDIR/zsh/.zshenv" "$HOME/.zshenv"
 
 # bash fallback
-lnf $GHCONFDIR/bash/.bashrc $HOME/.bashrc
-lnf $GHCONFDIR/bash/.bash_profile $HOME/.bash_profile
+lns "$GHCONFDIR/bash/.bashrc" "$HOME/.bashrc"
+lns "$GHCONFDIR/bash/.bash_profile" "$HOME/.bash_profile"
