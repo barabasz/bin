@@ -5,8 +5,9 @@
 # https://midnight-commander.org/
 
 # load variables and functions
-zlf=$ZSH_LOAD_FILE; err="$0: unable to load ZSH_LOAD_FILE"
-[[ -f $zlf ]] && source $zlf || { printf "$err\n";  exit 1 }
+[[ -z $ZSH_FUNCTIONS_LOADED ]] && [[ ! -z $ZSH_LOAD_FILE ]] && source $ZSH_LOAD_FILE
+[[ -z $ZSH_FUNCTIONS_LOADED ]] && source $HOME/.config/zsh/.zsh_functions
+[[ -z $ZSH_FUNCTIONS_LOADED ]] && { printf "\n$0: Error loading ZSH_LOAD_FILE.\n"; return 1 }
 
 appname='Midnight Commander'
 cliname=mc
