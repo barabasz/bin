@@ -15,12 +15,13 @@ dirname=$cliname
 pkgname=midnight-commander
 
 if [[ $(isinstalled $cliname) == 0 ]]; then
-echo "Installing $appname..."
+    printhead "Installing $appname..."
     if [[ "$(osname)" == "macos" ]]; then
         brew install -q $pkgname
     else
         aptinstall $cliname
     fi
+    verinfo $cliname "$appname"
 else
     verinfo $cliname "$appname"
 fi
