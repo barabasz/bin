@@ -1,9 +1,9 @@
 #!/bin/zsh
 
 # load variables and functions
-zshload="$ZDOTDIR/.zsh_load"; pref="\e[1;91m"; suff="\e[0m"
-loaderr="${pref}Error loading $zshload: file not found.${suff}"
-[[ -f $zshload ]] && source $zshload || { echo -e $loaderr; return 1; }
+# zshload="$ZDOTDIR/.zsh_load"; pref="\e[1;91m"; suff="\e[0m"
+# loaderr="${pref}Error loading $zshload: file not found.${suff}"
+# [[ -f $zshload ]] && source $zshload || { echo -e $loaderr; return 1; }
 
 repos=($(git-repos))
 [[ -z $repos ]] && { printe "No repositories found."; return 1; }
