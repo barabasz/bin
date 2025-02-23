@@ -67,31 +67,37 @@ EOF
 
 ansi::example() {
     ansi::info
-    echo "Styles:"
-    echo "  • $(ansi bold)bold$(ansi reset bold)"
-    echo "  • $(ansi italic)italic$(ansi reset italic)"
-    echo "  • $(ansi reverse)reverse$(ansi reset reverse)"
-    echo "  • $(ansi underline)underline$(ansi reset underline)"
-    echo "  • $(ansi strikethrough)strikethrough$(ansi reset strikethrough)"
-    echo "  • $(ansi overline)overline$(ansi reset overline)"
-    echo "  • $(ansi dim)dim$(ansi reset dim)"
-    echo "  • $(ansi blink)blink$(ansi reset blink)"
-    echo "  • $(ansi invisible)red$(ansi reset invisible) (invisible)"
-    echo "  • $(ansi default)default$(ansi reset)"
-    echo "Foreground:"
-    echo "  • $(ansi red)red$(ansi default)"
-    echo "  • $(ansi bright red)bright red $(ansi default)"
-    echo "  • $(ansi 8bit 196)8bit 196$(ansi default)"
-    echo "  • $(ansi rgb 255 0 0)rgb 255 0 0$(ansi default)"
-    echo "Background:"
-    echo "  • $(ansi bg green)bg green$(ansi bg default)"
-    echo "  • $(ansi bg 8bit 196)bg 8bit 196$(ansi bg default)"
-    echo "  • $(ansi bg rgb 0 0 255)bg rgb 0 0 255$(ansi bg default)"
-    echo "Compound expression:"
-    echo "  • $(ansi bold yellow)bold yellow$(ansi reset)"
-    echo "  • $(ansi italic cyan)italic cyan $(ansi reset)"
-    echo "  • $(ansi bg rgb 0 255 0 red)bg rgb 0 255 red$(ansi reset)"
-    echo "  • $(ansi italic yellow bg blue)italic yellow bg blue$(ansi reset)"
+    \cat << EOF
+$(ansi bold)Styles$(ansi reset):
+  • $(ansi bold)bold$(ansi reset bold)
+  • $(ansi italic)italic$(ansi reset italic)
+  • $(ansi reverse)reverse$(ansi reset reverse)
+  • $(ansi underline)underline$(ansi reset underline)
+  • $(ansi strikethrough)strikethrough$(ansi reset strikethrough)
+  • $(ansi overline)overline$(ansi reset overline)
+  • $(ansi dim)dim$(ansi reset dim)
+  • $(ansi blink)blink$(ansi reset blink)
+  • $(ansi invisible)red$(ansi reset invisible) (invisible)
+  • $(ansi default)default$(ansi reset)
+
+$(ansi bold)Foreground$(ansi reset):
+  • $(ansi red)red$(ansi default)
+  • $(ansi bright red)bright red $(ansi default)
+  • $(ansi 8bit 196)8bit 196$(ansi default)
+  • $(ansi rgb 255 0 0)rgb 255 0 0$(ansi default)
+
+$(ansi bold)Background$(ansi reset)
+  • $(ansi bg green)bg green$(ansi bg default)
+  • $(ansi bg 8bit 196)bg 8bit 196$(ansi bg default)
+  • $(ansi bg rgb 0 0 255)bg rgb 0 0 255$(ansi bg default)
+
+$(ansi bold)Compound expression$(ansi reset):
+  • $(ansi bold yellow)bold yellow$(ansi reset)
+  • $(ansi italic cyan)italic cyan $(ansi reset)
+  • $(ansi bg rgb 0 255 0 red)bg rgb 0 255 red$(ansi reset)
+  • $(ansi italic yellow bg blue)italic yellow bg blue$(ansi reset)
+
+EOF
 }
 
 ansi::style() {
