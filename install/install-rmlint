@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+# rmlint
+# Extremely fast tool to remove dupes and other lint from your filesystem
+# https://github.com/sahib/rmlint
+
+local appname='rmlint'
+local cliname='rmlint'
+local brewname='rmlint'
+local aptname='rmlint'
+
+installapp $cliname $brewname $aptname $appname
+

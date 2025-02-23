@@ -1,17 +1,12 @@
 #!/bin/zsh
 
-appname=ACL
-cliname=getfacl
-pkgname=$appname
+# acl (POSIX Access Control Lists)
+# acl are used to define more fine-grained discretionary access rights
+# https://manpages.ubuntu.com/manpages/trusty/man5/acl.5.html
 
-if [[ "$(osname)" != "macos" ]]; then
-    if [[ $(isinstalled $cliname) -eq 0 ]]; then
-        printhead "Installing $appname..."
-        aptinstall acl
-    else
-        verinfo $cliname
-    fi
-else
-    printe "Linux is required for $appname software."
-    exit 1
-fi
+appname='Access Control Lists'
+cliname='getfacl'
+brewname=null
+aptname='acl'
+
+installapp $cliname $brewname $aptname $appname

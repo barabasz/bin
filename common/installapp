@@ -1,0 +1,49 @@
+#!/bin/zsh
+
+if [[ -z $1 ]]; then
+    log::error "No arguments provided."
+    printinfo "Usage: installapp <cli-name> [brew-name] [pkg-name] [app-name]"
+    exit 1
+elif [[ $# -gt 4 ]]; then
+    log::error "Too many arguments."
+    printinfo "Usage: installapp <cli-name> [brew-name] [pkg-name] [app-name]"
+    exit 1
+fi
+
+cliname=$1
+brewname=${2:-$1}
+aptname=${3:-$1}
+appname=${4:-$1}
+osname=$(osname)
+isapp=$(isinstalled $cliname)
+isbrew=$(isinstalled brew)
+
+if [[ "$brewname" == "null" && "$aptname" == "null" ]]; then
+    log::error "No package name provided."
+    exit 1
+elif [[ "$brewname" == "null" && "$osname" == "macos" ]]; then
+    log::error "$appname is not available for macOS."
+    exit 1
+elif [[ "$aptname" == "null" && "$brewname" != "null" && "$osname" != "macos" && "$isbrew" -eq 0 ]]; then
+    log::error "$appname is not available for Linux without brew."
+    exit 1
+fi
+
+if [[ "$isapp" -eq 0 ]]; then
+    printhead "Installing $appname..."
+    if [[ "$osname" == "macos" ]]; then
+        brew install -q $brewname
+    else
+        aptinstall $aptname
+    fi
+    if [[ $? -eq 0 ]]; then
+        log::ok "$appname successfully installed."
+    else
+        log::error "Failed to install $appname."
+        exit 1
+    fi
+else
+    log::info "$appname is already installed."
+fi
+
+verinfo $cliname

@@ -4,23 +4,11 @@
 # feature rich full-screen text mode visual file manager
 # https://midnight-commander.org/
 
-# load variables and functions
-export ZSH_LOAD_FILE=${ZSH_LOAD_FILE:-"~/.config/zsh/.zsh_load"}
-[[ -f $ZSH_LOAD_FILE ]] && source "$ZSH_LOAD_FILE" || { echo "$0: Error loading ZSH_LOAD_FILE."; exit 1; }
-
+cliname='mc'
+brewname='midnight-commander'
+aptname='mc'
 appname='Midnight Commander'
-cliname=mc
-dirname=$cliname
-pkgname=midnight-commander
+dirname='mc'
 
-if [[ $(isinstalled $cliname) == 0 ]]; then
-    printhead "Installing $appname..."
-    if [[ "$(osname)" == "macos" ]]; then
-        brew install -q $pkgname
-    else
-        aptinstall $cliname
-    fi
-fi
-
-verinfo $cliname "$appname"
-makeconfln $dirname
+installapp $cliname $brewname $aptname $appname
+makeconfln $cliname

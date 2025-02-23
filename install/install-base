@@ -136,9 +136,8 @@ if [[ ! "$(osname)" == "macos" ]]; then
     install-util-linux
 fi
 
-# archivers
-printhead 'Installing archivers...'
-install-archivers
+install-gzip
+install-7zip
 
 # minimize login info
 if [[ ! "$(osname)" == "macos" ]]; then

@@ -8,12 +8,4 @@ appname=lsd
 cliname=$appname
 pkgname=$appname
 
-if [[ $(isinstalled $cliname) -eq 0 ]]; then
-    if [[ "$(osname)" == "macos" ]]; then
-        brew install -q $pkgname
-    else
-        aptinstall $cliname
-    fi
-fi
-
-verinfo $cliname "$appname"
+installapp $cliname $pkgname $appname

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# 7zip
+# file archiver with a high compression ratio
+# https://7-zip.org
+
+appname='7-zip'
+cliname='7zz'
+brewname='sevenzip'
+aptname='sevenzip'
+
+installapp $cliname $brewname $aptname $appname

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# gzip
+# Popular GNU data compression program
+# https://www.gnu.org/software/gzip/
+
+appname='gzip'
+cliname='gzip'
+brewname='gzip'
+aptname='gzip'
+
+installapp $cliname $brewname $aptname $appname

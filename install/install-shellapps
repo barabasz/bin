@@ -107,4 +107,8 @@ install-ripgrep
 printhead 'Installing zoxide...'
 install-zoxide
 
+install-lsd
+
+install-rmlint
+
 printinfo 'Shell apps installation completed.'
