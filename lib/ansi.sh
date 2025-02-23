@@ -5,6 +5,7 @@
 # SGR (Select Graphic Rendition) parameters of ANSI escape codes
 # man: https://man7.org/linux/man-pages/man4/console_codes.4.html
 
+# Function to display information about the script
 ansi::info() {
     \cat << EOF
 $(ansi bold yellow)ANSI escape code warper$(ansi reset)
@@ -22,6 +23,7 @@ $(ansi bold)Usage$(ansi reset):
 EOF
 }
 
+# Function to display help information
 ansi::help() {
     ansi::info
     \cat << EOF
@@ -65,6 +67,7 @@ $(ansi bold)Examples$(ansi reset):
 EOF
 }
 
+# Function to display examples
 ansi::example() {
     ansi::info
     \cat << EOF
@@ -100,6 +103,7 @@ $(ansi bold)Compound expression$(ansi reset):
 EOF
 }
 
+# Function to set style
 ansi::style() {
     case "$1" in
         regular) mod=0 ;;
@@ -117,11 +121,11 @@ ansi::style() {
     esac
 }
 
+# Function to reset style
 ansi::reset() {
     case "$1" in
         all) mod=0 ;;
-        bold) mod=22 ;;
-        dim) mod=22 ;;
+        bold|dim) mod=22 ;;
         italic) mod=23 ;;
         underline) mod=24 ;;
         blink) mod=25 ;;
@@ -134,7 +138,7 @@ ansi::reset() {
     esac
 }
 
-# foreground colors {30..37}
+# Function to set foreground color {30..37}
 ansi::foreground() {
     shift=1
     case "$1" in
@@ -143,8 +147,7 @@ ansi::foreground() {
         green) color=32 ;;
         yellow) color=33 ;;
         blue) color=34 ;;
-        magenta) color=35 ;;
-        purple) color=35 ;;
+        magenta|purple) color=35 ;;4
         cyan) color=36 ;;
         white) color=37 ;;
         rgb) color="38;2;$2;$3;$4"; shift=4 ;;
@@ -156,7 +159,7 @@ ansi::foreground() {
     shift $shift
 }
 
-# background colors {40..47}
+# Function to set background color {40..47}
 ansi::background() {
     shift=1
     case "$1" in
@@ -165,8 +168,7 @@ ansi::background() {
         green) bcolor=42 ;;
         yellow) bcolor=43 ;;
         blue) bcolor=44 ;;
-        magenta) bcolor=45 ;;
-        purple) bcolor=45 ;;
+        magenta|purple) bcolor=45 ;;
         cyan) bcolor=46 ;;
         white) bcolor=47 ;;
         default) bcolor=49 ;;
@@ -176,7 +178,7 @@ ansi::background() {
     esac
 }
 
-# foreground bright colors {90..97}
+# Function to set bright foreground color {90..97}
 ansi::bright() {
     case "$1" in
         black) color=90 ;;
@@ -184,14 +186,14 @@ ansi::bright() {
         green) color=92 ;;
         yellow) color=93 ;;
         blue) color=94 ;;
-        magenta) color=95 ;;
-        purple) color=95 ;;
+        magenta|purple) color=95 ;;
         cyan) color=96 ;;
         white) color=97 ;;
         *) echo "Invalid bright color name: $1"; return 1 ;;
     esac
 }
 
+# Function to generate ANSI code
 ansi::code() {
     prefix="\e["
     mod=${mod:+$mod}
@@ -208,6 +210,7 @@ ansi::code() {
     fi
 }
 
+# Function to process arguments
 ansi::make() {
     # reset
     if [[ "$*" == "reset"* ]]; then
@@ -275,9 +278,10 @@ ansi::make() {
     fi
 }
 
+# Main function to handle user input
 ansi() {
     unset mod color bcolor show shift
-    if [[ $# == 0 ]]; then
+    if [[ $# == 0 || $1 == "info" ]]; then
         ansi::info
         return 0
     elif [[ "$1" == "help" ]]; then
