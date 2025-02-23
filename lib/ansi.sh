@@ -147,7 +147,7 @@ ansi::foreground() {
         green) color=32 ;;
         yellow) color=33 ;;
         blue) color=34 ;;
-        magenta|purple) color=35 ;;4
+        magenta|purple) color=35 ;;
         cyan) color=36 ;;
         white) color=37 ;;
         rgb) color="38;2;$2;$3;$4"; shift=4 ;;
@@ -195,18 +195,26 @@ ansi::bright() {
 
 # Function to generate ANSI code
 ansi::code() {
-    prefix="\e["
+    # ANSI escape code prefix and suffix
+    local prefix="\e["
+    local suffix="m"
+
+    # ANSI code components
     mod=${mod:+$mod}
-    s1=${mod:+${${color:-${bcolor:+;}}:+;}}
     bcolor=${bcolor:+$bcolor}
-    s2=${color:+${bcolor:+;}}
     color=${color:+$color}
-    sufix="m"
+
+    # Determine the separator for each component
+    local sep1=${mod:+${${color:-${bcolor:+;}}:+;}}
+    local sep2=${color:+${bcolor:+;}}
+    
+    # Output the ANSI code
+    local ansi_code="${prefix}${mod}${sep1}${bcolor}${sep2}${color}${suffix}"
+    unset mod color bcolor
     if [[ $show -eq 1 ]]; then
-        echo -n "\\"
-        echo "${prefix:1}${mod}$s1${bcolor}$s2${color}$sufix"
+        echo -n "\\" && echo "${ansi_code:1}"
     else
-        echo -n "${prefix}${mod}$s1${bcolor}$s2${color}$sufix"
+        echo -n "$ansi_code"
     fi
 }
 
