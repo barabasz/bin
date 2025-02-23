@@ -218,7 +218,7 @@ ansi::code() {
     fi
 }
 
-# Function to process arguments
+# Function to process styling arguments
 ansi::make() {
     # reset
     if [[ "$*" == "reset"* ]]; then
@@ -286,8 +286,8 @@ ansi::make() {
     fi
 }
 
-# Main function to handle user input
-ansi() {
+# Function process main arguments
+ansi::args() {
     unset mod color bcolor show shift
     if [[ $# == 0 || $1 == "info" ]]; then
         ansi::info
@@ -305,3 +305,8 @@ ansi() {
     ansi::make "$@" || return 1
     ansi::code
 }   
+
+# Main function to handle user input
+ansi() {
+    eval "ansi::args $*"
+}

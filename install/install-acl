@@ -1,17 +1,17 @@
 #!/bin/zsh
 
-# load variables and functions
-export ZSH_LOAD_FILE=${ZSH_LOAD_FILE:-"~/.config/zsh/.zsh_load"}
-loaderror="$0: \e[0;91mError loading ZSH_LOAD_FILE.\e[0m\n"
-[[ -f $ZSH_LOAD_FILE ]] && source "$ZSH_LOAD_FILE" || { printf $loaderror; exit 1; }
+appname=ACL
+cliname=getfacl
+pkgname=$appname
 
 if [[ "$(osname)" != "macos" ]]; then
-    if [[ $(isinstalled getfacl) -eq 0 ]]; then
-        # brew install -q acl
+    if [[ $(isinstalled $cliname) -eq 0 ]]; then
+        printhead "Installing $appname..."
         aptinstall acl
     else
-        getfacl --version
+        verinfo $cliname
     fi
 else
-    echo "Linux is required for this software."
+    printe "Linux is required for $appname software."
+    exit 1
 fi
