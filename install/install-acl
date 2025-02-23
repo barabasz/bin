@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/zsh
 
 # load variables and functions
-zshload="$ZDOTDIR/.zsh_load"; pref="\e[1;91m"; suff="\e[0m"
-loaderr="${pref}Error loading $zshload: file not found.${suff}"
-[[ -f $zshload ]] && source $zshload || { echo -e $loaderr; return 1; }
+export ZSH_LOAD_FILE=${ZSH_LOAD_FILE:-"~/.config/zsh/.zsh_load"}
+loaderror="$0: \e[0;91mError loading ZSH_LOAD_FILE.\e[0m\n"
+[[ -f $ZSH_LOAD_FILE ]] && source "$ZSH_LOAD_FILE" || { printf $loaderror; exit 1; }
 
 if [[ "$(osname)" != "macos" ]]; then
     if [[ $(isinstalled getfacl) -eq 0 ]]; then

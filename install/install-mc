@@ -5,9 +5,8 @@
 # https://midnight-commander.org/
 
 # load variables and functions
-[[ -z $ZSH_FUNCTIONS_LOADED ]] && [[ ! -z $ZSH_LOAD_FILE ]] && source $ZSH_LOAD_FILE
-[[ -z $ZSH_FUNCTIONS_LOADED ]] && source $HOME/.config/zsh/.zsh_functions
-[[ -z $ZSH_FUNCTIONS_LOADED ]] && { printf "\n$0: Error loading ZSH_LOAD_FILE.\n"; return 1 }
+export ZSH_LOAD_FILE=${ZSH_LOAD_FILE:-"~/.config/zsh/.zsh_load"}
+[[ -f $ZSH_LOAD_FILE ]] && source "$ZSH_LOAD_FILE" || { echo "$0: Error loading ZSH_LOAD_FILE."; exit 1; }
 
 appname='Midnight Commander'
 cliname=mc
@@ -21,9 +20,7 @@ if [[ $(isinstalled $cliname) == 0 ]]; then
     else
         aptinstall $cliname
     fi
-    verinfo $cliname "$appname"
-else
-    verinfo $cliname "$appname"
 fi
 
+verinfo $cliname "$appname"
 makeconfln $dirname
