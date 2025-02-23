@@ -10,6 +10,14 @@ else
     echo '"bin" repo already cloned.'
 fi
 
+if [[ ! -d ~/GitHub/lib ]]; then
+    gh repo clone barabasz/bin
+else
+    rm -rf ~/GitHub/bin
+    gh repo clone barabasz/bin
+    echo '"lib" repo already cloned.'
+fi
+
 if [[ ! -d ~/GitHub/config ]]; then
     gh repo clone barabasz/config
 else
