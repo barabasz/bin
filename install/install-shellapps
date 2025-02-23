@@ -3,10 +3,6 @@
 # read su password
 sudo printf ''
 
-# gh
-printhead 'Installing GitHub CLI...'
-install-gh
-
 # mc (Midnight Commander)
 # feature rich full-screen text mode visual file manager
 # https://midnight-commander.org/

@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+# lsd
+# a rewrite of GNU ls with lots of added features
+# https://github.com/lsd-rs/lsd
+
+appname=lsd
+cliname=$appname
+pkgname=$appname
+
+if [[ $(isinstalled $cliname) -eq 0 ]]; then
+    if [[ "$(osname)" == "macos" ]]; then
+        brew install -q $pkgname
+    else
+        aptinstall $cliname
+    fi
+fi
+
+verinfo $cliname "$appname"

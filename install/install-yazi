@@ -16,7 +16,7 @@ if [[ $(isinstalled $cliname) -eq 0 ]]; then
         aptinstall $cliname
     fi
 else
-    verinf $cliname "$appname"
+    verinfo $cliname "$appname"
 fi
 
 makeconfln $dirname

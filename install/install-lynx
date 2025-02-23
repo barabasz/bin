@@ -12,5 +12,5 @@ pkgname=$cliname
 if [[ $(isinstalled $cliname) -eq 0 ]]; then
     brew install -q $pkgname
 else
-    verinf $cliname "$appname"
+    verinfo $cliname "$appname"
 fi

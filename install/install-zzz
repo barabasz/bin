@@ -13,5 +13,5 @@ if [[ $(isinstalled $cliname) -eq 0 ]]; then
     brew install -q $pkgname
 else
     # zzz does not have a version option
-    # verinf $cliname "$appname"
+    # verinfo $cliname "$appname"
 fi

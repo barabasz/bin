@@ -11,7 +11,7 @@ pkgname=$appname
 if [[ $(isinstalled $cliname) -eq 0 ]]; then
     brew install -q $pkgname
 else
-    verinf $cliname "$appname"
+    verinfo $cliname "$appname"
 fi
 
 # 7zip
@@ -26,6 +26,6 @@ vercmmd="i"
 if [[ $(isinstalled $cliname) -eq 0 ]]; then
     brew install -q $pkgname
 else
-    verinf $cliname "$appname" "$vercmmd"
+    verinfo $cliname "$appname" "$vercmmd"
 fi
 

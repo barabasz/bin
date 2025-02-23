@@ -19,7 +19,7 @@ if [[ $(isinstalled $cliname) -eq 0 ]]; then
     echo "==> Installing nnn plugins..."
     sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)" &>/dev/null
 else
-    verinf $cliname "$appname" $vercmmd
+    verinfo $cliname "$appname" $vercmmd
 fi
 
 # Symlink bookmarks

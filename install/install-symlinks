@@ -18,7 +18,7 @@ else
 fi
 
 # Library
-lns "$GHBINDIR" "$LIBDIR"
+lns "$GHLIBDIR" "$LIBDIR"
 
 # zsh
 lns "$GHCONFDIR/zsh" "$ZDOTDIR"
