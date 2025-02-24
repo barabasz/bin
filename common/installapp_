@@ -22,6 +22,7 @@ if [[ "$brewname" == "null" && "$aptname" == "null" ]]; then
     log::error "No package name provided."
     exit 1
 elif [[ "$brewname" == "null" && "$osname" == "macos" ]]; then
+    log::info "No brew package name provided."
     log::error "$appname is not available for macOS."
     exit 1
 elif [[ "$aptname" == "null" && "$brewname" != "null" && "$osname" != "macos" && "$isbrew" -eq 0 ]]; then
@@ -34,7 +35,14 @@ if [[ "$isapp" -eq 0 ]]; then
     if [[ "$osname" == "macos" ]]; then
         brew install -q $brewname
     else
-        aptinstall $aptname
+        if [[ "$aptname" != "null" ]]; then
+            aptinstall $aptname
+        elif [[ "$brewname" != "null" && "$isbrew" -eq 1 ]]; then
+            brew install -q $brewname
+        else
+            log::error "Brew is not installed."
+            exit 1
+        fi
     fi
     if [[ $? -eq 0 ]]; then
         log::ok "$appname successfully installed."
