@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# coreutils
+# GNU core utilities
+# https://www.gnu.org/software/coreutils/
+
+appname='GNU core utilities'
+cliname='gdate'
+brewname='coreutils'
+aptname=''
+
+installapp $cliname $brewname $aptname $appname
+
+

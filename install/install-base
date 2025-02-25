@@ -1,19 +1,31 @@
 #!/bin/zsh
 
 # remote files
-varbls="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_env"
-fnfile="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_functions"
-colors="https://raw.githubusercontent.com/barabasz/bin/main/lib/colors.sh"
-printf="https://raw.githubusercontent.com/barabasz/bin/main/lib/print.sh"
-github="https://raw.githubusercontent.com/barabasz/bin/main/install"
+env_file="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_env"
+lib_file="https://raw.githubusercontent.com/barabasz/lib/main/_all.sh"
+lin_file="https://raw.githubusercontent.com/barabasz/lib/main/_linux.sh"
+ghub_dir="https://raw.githubusercontent.com/barabasz/bin/main/install"
+
+# main loading function
+function source_remote() {
+    local url=$1 name=$2 file_content=""
+    file_content=$(wget -q -O - $url)
+    [[ $? -ne 0 ]] && { echo "Error getting $name ($url)."; return 1; }
+    source /dev/stdin <<< "$file_content"
+    [[ $? -ne 0 ]] && { echo "Error sourcing $name."; return 1; }
+    echo "$name successfully loaded."
+}
 
 # loading variables and functions (using wget for compatibility)
-source <(wget -q -O - $varbls) && echo "Variables loaded." || { echo "Error loading variables."; return 1; }
-source <(wget -q -O - $fnfile) && echo "Functions loaded." || { echo "Error loading functions."; return 1; }
-source <(wget -q -O - $colors) && echo "Colors loaded." || { echo "Error loading colors lib."; return 1; }
-source <(wget -q -O - $printf) && echo "Print loaded." || { echo "Error loading print lib."; return 1; }
+source_remote $env_file "Environment variables" || { echo "Aborting installation." && exit 1 }
+source_remote $lib_file "Library functions" || { echo "Aborting installation." && exit 1 }
+source_remote $lin_file "Linux functions" || { echo "Aborting installation." && exit 1 }
 
 printtitle 'Installation of base system components'
+log::warn "This script will install base system components."
+prompt_continue || exit 0
+
+exit 1
 
 # installing sudo if not installed (Debian)
 if [[ "$(osname)" != "macos" ]]; then
