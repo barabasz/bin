@@ -1,8 +1,10 @@
-#!/bin/bash
+#!/bin/zsh
 
 # coreutils
 # GNU core utilities
 # https://www.gnu.org/software/coreutils/
+
+loginfiles
 
 appname='GNU core utilities'
 cliname='gdate'

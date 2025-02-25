@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # nvim (neovim)
 # hyperextensible Vim-based text editor

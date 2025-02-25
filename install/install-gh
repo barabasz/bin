@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # gh - GitHub CLI
 # GitHub CLI brings GitHub to your terminal

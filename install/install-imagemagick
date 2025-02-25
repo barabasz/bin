@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # ImageMagick (magick)
 # collection of tools to modify and manipulate images

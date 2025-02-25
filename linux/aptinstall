@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # load functions
 test -f ~/.zshenv && source "$_"

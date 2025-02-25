@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Collection of Linux utilities
 # util-linux is keg-only, which means it was not symlinked

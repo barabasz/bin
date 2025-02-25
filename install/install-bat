@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # bat
 # A cat clone with syntax highlighting

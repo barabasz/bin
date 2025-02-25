@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # fd
 # fd is a program to find entries in your filesystem

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # zsh
 # Zsh is an extended Bourne shell with many improvements,

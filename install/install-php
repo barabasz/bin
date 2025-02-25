@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 if [[ $(isinstalled php) -eq 0 ]]; then
     if [[ "$(osname)" == "macos" ]]; then

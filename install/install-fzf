@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # fzf
 # Command-line fuzzy finder written in Go

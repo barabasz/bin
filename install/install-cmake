@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 if [[ $(isinstalled cmake) -eq 0 ]]; then
     brew install -q cmake

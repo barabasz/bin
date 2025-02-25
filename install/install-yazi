@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # yazi
 # terminal file manager written in Rust
