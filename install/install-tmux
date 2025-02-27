@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+# tmux
+# A terminal multiplexer
+# https://github.com/tmux/tmux/wiki
+
+name='tmux'
+cli='tmux'
+brew='tmux'
+apt='tmux'
+ver='-V'
+
+installapp $cli $brew $apt $name $ver

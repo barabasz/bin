@@ -173,5 +173,7 @@ install-omz
 printhead 'Installing Oh My Posh..'
 install-omp
 
+install-tmux
+
 printhead 'Core installation completed.'
 printhead 'Reload terminal to apply changes.'
