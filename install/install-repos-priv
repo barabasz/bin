@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+mkdir -p ~/GitHub && cd $_
+
+if [[ ! -d ~/GitHub/confpriv ]]; then
+    gh repo clone barabasz/confpriv
+else
+    echo '"confpriv" repo already cloned.'
+fi

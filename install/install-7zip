@@ -8,5 +8,7 @@ appname='7-zip'
 cliname='7zz'
 brewname='sevenzip'
 aptname='sevenzip'
+verswitch='help'
 
-installapp $cliname $brewname $aptname $appname
+installapp $cliname $brewname $aptname "$appname"
+verinfo $cliname "$appname" "$verswitch"

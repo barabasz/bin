@@ -4,20 +4,23 @@
 # distributed version control system
 # https://git-scm.com
 
-appname=git
-cliname=$appname
-dirname=$appname
-pkgname=$appname
+appname='git'
+cliname='git'
+brewname=null
+aptname='git'
 
-if [[ $(isinstalled $cliname) -eq 0 ]]; then
-    if [[ "$(osname)" == "macos" ]]; then
+
+if [[ "$(osname)" == "macos" ]]; then
+    if [[ $(isinstalled $cliname) -eq 0 ]]; then
         xcode-select --install
-    else
-        export LC_ALL="en_US.UTF-8"
-        export LC_CTYPE="en_US.UTF-8"
-        aptinstall $pkgname
     fi
+else
+    export LC_ALL="en_US.UTF-8"
+    export LC_CTYPE="en_US.UTF-8"
+    installapp $cliname $brewname $aptname $appname
 fi
+
+verinfo $cliname "$appname" "$verswitch"
 
 if [[ -z "$(git config --global user.email)" ]]; then
     git config --global user.email "abarabasz@gmail.com"
@@ -25,5 +28,3 @@ if [[ -z "$(git config --global user.email)" ]]; then
     git config --global core.pager bat
     git config --global core.editor code
 fi
-
-verinfo $cliname "$appname"

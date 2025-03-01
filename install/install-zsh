@@ -5,34 +5,22 @@
 # including some features of Bash, ksh, and tcsh.
 # https://www.zsh.org/
 
+# directory variables
+export ZDOTDIR=$HOME/.config/zsh
 export GHCONFDIR=$HOME/GitHub/config
 export CONFDIR=$HOME/.config
 
-# symbolic link
-makeconfln zsh
+# zsh symbolic links
+lns "$GHCONFDIR/zsh" "$ZDOTDIR"
 lns "$GHCONFDIR/zsh/.zshenv" "$HOME/.zshenv"
 
-# fallback for bash's shopt
-if [[ ! "$(osname)" == "macos" ]]; then
-    sudo ln -sf ~/GitHub/bin/common/shopt /usr/bin/shopt
-fi
+appname='zsh shell'
+cliname='zsh'
+brewname='zsh'
+aptname='zsh'
 
-# install zsh
-if [[ $(isinstalled zsh) -eq 0 ]]; then
-    if [[ "$(osname)" != "macos" ]]; then
-        export LC_ALL="en_US.UTF-8"
-        export LC_CTYPE="en_US.UTF-8"
-        aptinstall zsh
-    fi
-fi
-
-verinfo zsh
+installapp $cliname $brewname $aptname "$appname"
+verinfo $cliname "$appname" "$verswitch"
 
 printhead 'Setting zsh as default shell...'
-# set default shell
-if [[ "$(echo $SHELL | grep -o 'zsh')" != "zsh" ]]; then
-    sudo sed -i 's/required/sufficient/g' /etc/pam.d/chsh
-    sudo chsh -s $(which zsh) $(whoami)
-    sudo sed -i 's/sufficient/required/g' /etc/pam.d/chsh
-fi
-
+set_default_shell zsh

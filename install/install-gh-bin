@@ -1,0 +1,38 @@
+#!/bin/zsh
+
+# gh - GitHub CLI
+# GitHub CLI brings GitHub to your terminal
+# https://cli.github.com
+
+if [[ $(isinstalled gh) -eq 0 ]]; then
+    if [[ "$(osname)" != "macos" ]]; then
+        sudo mkdir -p -m 755 /etc/apt/keyrings \
+        && out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+        && cat $out | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+        && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+        && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+        && sudo apt update 2>/dev/null  \
+        && sudo apt install gh -qy
+    else
+        if [[ $(isinstalled brew) -eq 1 ]]; then
+            [[ -f /usr/local/bin/gh ]] && sudo rm /usr/local/bin/gh
+            brew install -q gh
+        else
+            ghzip="https://github.com/cli/cli/releases/download/v2.66.1/gh_2.66.1_macOS_amd64.zip"
+            dldir=$HOME/.tmp/gh
+            ghdir=$(dlunzip $ghzip $dldir)
+            ghfile="$ghdir/bin/gh"
+            cudo cp $ghfile /usr/local/bin/gh
+        fi
+    fi
+fi
+
+verinfo gh "GitHub CLI"
+
+printhead 'Authorizing GitHub CLI...'
+
+if [[ "$(gh auth status | grep -o 'Logged')" == "Logged" ]]; then
+    gh auth status | grep 'Logged'
+else
+    gh auth login
+fi

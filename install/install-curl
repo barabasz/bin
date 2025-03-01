@@ -9,4 +9,5 @@ cliname='curl'
 brewname='curl'
 aptname='curl'
 
-installapp $cliname $brewname $aptname $appname
+installapp $cliname $brewname $aptname "$appname"
+verinfo $cliname "$appname" "$verswitch"

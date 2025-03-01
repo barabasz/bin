@@ -10,5 +10,7 @@ aptname='mc'
 appname='Midnight Commander'
 dirname='mc'
 
-installapp $cliname $brewname $aptname $appname
-makeconfln $cliname
+installapp $cliname $brewname $aptname "$appname"
+verinfo $cliname "$appname" "$verswitch"
+makeconfln $dirname
+
