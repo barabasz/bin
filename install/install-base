@@ -1,13 +1,13 @@
 #!/bin/zsh
 
 # remote files
-env_file="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zsh_env"
+env_file="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zvars"
 lib_file="https://raw.githubusercontent.com/barabasz/lib/main/_all.sh"
 lin_file="https://raw.githubusercontent.com/barabasz/lib/main/_linux.sh"
 ghub_dir="https://raw.githubusercontent.com/barabasz/bin/main/install"
 
 # main loading function
-function source_remote() {
+function source_remote_lib() {
     local url=$1 name=$2 file_content=""
     file_content=$(wget -q -O - $url)
     [[ $? -ne 0 ]] && { echo "Error getting $name ($url)."; return 1; }
@@ -17,9 +17,9 @@ function source_remote() {
 }
 
 # loading variables and functions (using wget for compatibility)
-source_remote $env_file "Environment variables" || { echo "Aborting installation." && exit 1 }
-source_remote $lib_file "Library functions" || { echo "Aborting installation." && exit 1 }
-source_remote $lin_file "Linux functions" || { echo "Aborting installation." && exit 1 }
+source_remote_lib $env_file "Environment variables" || { echo "Aborting installation." && exit 1 }
+source_remote_lib $lib_file "Library functions" || { echo "Aborting installation." && exit 1 }
+source_remote_lib $lin_file "Linux functions" || { echo "Aborting installation." && exit 1 }
 
 printtitle 'Installation of base system components'
 log::warn "This script will install base system components."
@@ -41,15 +41,6 @@ fi
 # forcing sudo password for the rest of the script
 sudo echo > /dev/null
 
-# installing culr if not installed (Debian)
-if [[ "$(osname)" != "macos" ]]; then    
-    if [[ $(isinstalled "curl") -eq 0 ]]; then
-        printhead 'Installing curl...'
-        aptinstall "curl" > /dev/null 2>&1
-    fi
-    verinfo "curl"
-fi
-
 # creating base directories
 printhead 'Creating base directories...'
 mkdir -p $HOME/.cache
@@ -60,7 +51,7 @@ mkdir -p $HOME/.tmp
 # generate locale (Ubuntu/Debian)
 if [[ "$(osname)" != "macos" ]]; then
     printhead 'Installing locales...'
-    source <(curl -fsSL $github/install-locales)
+    source_remote $ghub_dir/install-locales "Locales"
 fi
 
 # setting timezone
@@ -81,24 +72,24 @@ printinfo 'System updated.'
 
 # Git
 printhead 'Installing git...'
-source <(curl -fsSL $github/install-git)
+source <(curl -fsSL $ghub_dir/install-git)
 
 # GitHub CLI (gh)
 printhead 'Installing gh...'
-source <(curl -fsSL $github/install-gh)
+source <(curl -fsSL $ghub_dir/install-gh)
 
 # clone main repositories
 printhead 'Cloning setup repositories...'
-source <(curl -fsSL $github/install-repos)
+source <(curl -fsSL $ghub_dir/install-repos)
 
 # symlinks
 printhead 'Creating symlinks...'
-source <(curl -fsSL $github/install-symlinks)
+source <(curl -fsSL $ghub_dir/install-symlinks)
 
 # zsh
 if [[ ! "$(osname)" == "macos" ]]; then
     printhead 'Installing zsh...'
-    source <(curl -fsSL $github/install-zsh)
+    source <(curl -fsSL $ghub_dir/install-zsh)
 fi
 
 #brew
@@ -116,15 +107,15 @@ install-certs
 
 # Basic brew libraries
 printhead 'Installing brew core packages...'
-extscript $github/install-brew-core
+extscript $ghub_dir/install-brew-core
 
 # ncurses - Text-based UI library
 printhead 'Installing ncurses...'
-extscript $github/install-ncurses
+extscript $ghub_dir/install-ncurses
 
 # gcc  - GNU compiler collection
 printhead 'Installing gcc...'
-extscript $github/install-gcc
+extscript $ghub_dir/install-gcc
 
 # disable NEEDRESTART prompt
 if [[ "$(osname)" == "ubuntu" ]]; then
@@ -173,6 +164,7 @@ install-omz
 printhead 'Installing Oh My Posh..'
 install-omp
 
+install-curl
 install-bc
 install-tmux
 

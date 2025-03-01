@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+# curl
+# command line tool and library for transferring data with URLs
+# https://curl.se/
+
+appname='curl'
+cliname='curl'
+brewname='curl'
+aptname='curl'
+
+installapp $cliname $brewname $aptname $appname
