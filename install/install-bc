@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+# bc
+# Arbitrary precision calculator language
+# https://www.gnu.org/software/bc
+
+appname='bc'
+cliname='bc'
+brewname='bc'
+aptname='bc'
+
+installapp $cliname $brewname $aptname $appname
