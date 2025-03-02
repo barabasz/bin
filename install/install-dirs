@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+printhead 'Creating base directories...'
+mkdir -p $HOME/.cache
+mkdir -p $HOME/.config
+mkdir -p $HOME/.local
+mkdir -p $HOME/.tmp
+mkdir -p $HOME/.venv
+mkdir -p $HOME/bin

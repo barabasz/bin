@@ -26,86 +26,46 @@ log::warn "This script will install base system components."
 prompt_continue || exit 0
 
 # installing sudo if not installed (Debian)
-if [[ "$(osname)" != "macos" ]]; then
-    if [[ $(isinstalled "sudo") -eq 0 ]]; then
-        printhead 'Installing sudo...'
-        su -c "apt-get install -qq sudo 2> /dev/null"
-        sudostr="$(whoami) ALL=(ALL:ALL) ALL"
-        su -c "echo '$sudostr' | sudo EDITOR='tee -a' visudo"
-    fi
-    verinfo sudo
-fi
+source_remote $ghub_dir/install-sudo
 
 # forcing sudo password for the rest of the script
 sudo echo > /dev/null
 
 # creating base directories
-printhead 'Creating base directories...'
-mkdir -p $HOME/.cache
-mkdir -p $HOME/.config
-mkdir -p $HOME/.local
-mkdir -p $HOME/.tmp
+source_remote $ghub_dir/install-dirs
 
 # generate locale (Ubuntu/Debian)
-if [[ "$(osname)" != "macos" ]]; then
-    printhead 'Installing locales...'
-    source_remote $ghub_dir/install-locales
-fi
+source_remote $ghub_dir/install-locales
 
 # setting timezone
-if [[ "$(osname)" != "macos" ]]; then
-    printhead 'Setting timezone...'
-    if [[ "$(cat /etc/timezone | grep -o 'Warsaw')" != "Warsaw" ]]; then
-        sudo timedatectl set-timezone Europe/Warsaw
-        sudo dpkg-reconfigure -f noninteractive tzdata
-    else
-        echo "Timezone: $(cat /etc/timezone)"
-    fi
-fi
+set-warsaw-timezone
 
 # update and upgrade
-printhead 'Updating system...'
 sysupdate
-printinfo 'System updated.'
 
 # Git
-printhead 'Installing git...'
 source_remote $ghub_dir/install-git
 
 # clone main repositories
-printhead 'Cloning setup repositories...'
 source_remote $ghub_dir/install-repos
 
 # symlinks
-printhead 'Creating symlinks...'
 source_remote $ghub_dir/install-symlinks
 
 # zsh
-if [[ ! "$(osname)" == "macos" ]]; then
-    printhead 'Installing zsh...'
-    source <(curl -fsSL $ghub_dir/install-zsh)
-fi
+source_remote $ghub_dir/install-zsh
 
 #brew
-printhead 'Installing brew...'
 install-brew
-if [[ -f /opt/homebrew/bin/brew ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
 
 # certificates
-printhead 'Installing certificates...'
 install-certs
 
 # Basic brew libraries
-printhead 'Installing brew core packages...'
-extscript $ghub_dir/install-brew-core
+install-brew-core
 
 # ncurses - Text-based UI library
-printhead 'Installing ncurses...'
-extscript $ghub_dir/install-ncurses
+install-ncurses
 
 # gcc  - GNU compiler collection
 printhead 'Installing gcc...'

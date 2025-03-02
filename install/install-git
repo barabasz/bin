@@ -9,7 +9,7 @@ cliname='git'
 brewname=null
 aptname='git'
 
-
+printhead "Installing git..."
 if [[ "$(osname)" == "macos" ]]; then
     if [[ $(isinstalled $cliname) -eq 0 ]]; then
         xcode-select --install
@@ -17,9 +17,8 @@ if [[ "$(osname)" == "macos" ]]; then
 else
     export LC_ALL="en_US.UTF-8"
     export LC_CTYPE="en_US.UTF-8"
-    installapp $cliname $brewname $aptname $appname
+    installapp $cliname $brewname $aptname "$appname"
 fi
-
 verinfo $cliname "$appname" "$verswitch"
 
 if [[ -z "$(git config --global user.email)" ]]; then

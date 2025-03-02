@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+printhead "Creating symlinks..."
+
 # Common scripts
 [[ -d $BINDIR ]] && mkdir -p $BINDIR
 lns "$GHBINDIR/common" "$BINDIR/common"

@@ -19,6 +19,7 @@ cliname='zsh'
 brewname='zsh'
 aptname='zsh'
 
+printhead "Installing $appname..."
 installapp $cliname $brewname $aptname "$appname"
 verinfo $cliname "$appname" "$verswitch"
 

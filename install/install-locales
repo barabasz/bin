@@ -20,12 +20,15 @@ function install_locale() {
 }
 
 if [[ "$(osname)" != "macos" ]]; then
+    printhead 'Installing locales...'
     export LC_ALL=C.utf8
     sudo apt install -yq locales >/dev/null 2>&1
     lang_pl="pl_PL.UTF-8"
     lang_en="en_US.UTF-8"
     install_locale $lang_pl
     install_locale $lang_en
+    
+    printhead 'Setting locales...'
     # English language
     export LANG=$lang_en
     sudo update-locale LANG=$lang_en

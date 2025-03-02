@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+printhead 'Cloning setup repositories...'
+
 mkdir -p ~/GitHub && cd $_
 
 if [[ ! -d ~/GitHub/bin ]]; then

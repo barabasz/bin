@@ -9,4 +9,6 @@ cliname='getfacl'
 brewname=null
 aptname='acl'
 
-installapp $cliname $brewname $aptname $appname
+printhead "Installing $appname..."
+installapp $cliname $brewname $aptname "$appname"
+verinfo $cliname "$appname"

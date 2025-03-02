@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+if [[ "$(osname)" != "macos" ]]; then
+    if [[ $(isinstalled "sudo") -eq 0 ]]; then
+        printhead 'Installing sudo...'
+        su -c "apt-get install -qq sudo 2> /dev/null"
+        sudostr="$(whoami) ALL=(ALL:ALL) ALL"
+        su -c "echo '$sudostr' | sudo EDITOR='tee -a' visudo"
+    fi
+    verinfo sudo
+fi

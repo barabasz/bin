@@ -10,5 +10,6 @@ brewname='sevenzip'
 aptname='sevenzip'
 verswitch='help'
 
+printhead "Installing $appname..."
 installapp $cliname $brewname $aptname "$appname"
 verinfo $cliname "$appname" "$verswitch"
