@@ -4,44 +4,11 @@ printhead 'Cloning setup repositories...'
 
 mkdir -p ~/GitHub && cd $_
 
-if [[ ! -d ~/GitHub/bin ]]; then
-    gh repo clone barabasz/bin
-else
-    rm -rf ~/GitHub/bin
-    gh repo clone barabasz/bin
-    echo '"bin" repo already cloned.'
-fi
+repos=("bin" "config" "lib")
+for repo in "${repos[@]}"; do
+    rm -rf $repo
+    echo "Cloning $repo..."
+    git clone "https://github.com/barabasz/${repo}.git"
+    log::info "$repo successfully cloned."
+done
 
-if [[ ! -d ~/GitHub/lib ]]; then
-    gh repo clone barabasz/bin
-else
-    rm -rf ~/GitHub/bin
-    gh repo clone barabasz/bin
-    echo '"lib" repo already cloned.'
-fi
-
-if [[ ! -d ~/GitHub/config ]]; then
-    gh repo clone barabasz/config
-else
-    rm -rf ~/GitHub/config
-    gh repo clone barabasz/config
-    echo '"config" repo already cloned.'
-fi
-
-if [[ ! -d ~/GitHub/confpriv ]]; then
-    gh repo clone barabasz/confpriv
-else
-    echo '"confpriv" repo already cloned.'
-fi
-
-if [[ ! -d ~/GitHub/resources ]]; then
-    gh repo clone barabasz/resources
-else
-    echo '"resources" repo already cloned.'
-fi
-
-if [[ ! -d ~/GitHub/scripts ]]; then
-    gh repo clone barabasz/scripts
-else
-    echo '"scripts" repo already cloned.'
-fi

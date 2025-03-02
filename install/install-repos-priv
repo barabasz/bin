@@ -1,9 +1,13 @@
 #!/bin/zsh
 
+printhead 'Cloning remaining repositories...'
+
 mkdir -p ~/GitHub && cd $_
 
-if [[ ! -d ~/GitHub/confpriv ]]; then
-    gh repo clone barabasz/confpriv
-else
-    echo '"confpriv" repo already cloned.'
-fi
+repos=("confpriv" "scripts" "resources")
+for repo in "${repos[@]}"; do
+    rm -rf $repo
+    echo "Cloning $repo..."
+    gh repo clone "barabasz/$repo"
+    log::info "$repo successfully cloned."
+done
