@@ -4,11 +4,12 @@
 # A cat clone with syntax highlighting
 # https://github.com/sharkdp/bat
 
-appname='bat'
-cliname='bat'
-brewname='bat'
-aptname='bat'
-dirname='bat'
+appname="bat"
+cliname=bat
+brewname=bat
+aptname=bat
 
-installapp $cliname $brewname $aptname $appname
-makeconfln $dirname
+printhead "Installing $appname..."
+installapp $cliname $brewname $aptname "$appname"
+lnsconfdir $cliname
+verinfo $cliname "$appname" "$verswitch"

@@ -7,11 +7,6 @@
 
 printhead 'Installing oh-my-zsh...'
 
-# load variables and functions
-zshload="$ZDOTDIR/.zsh_load"; pref="\e[1;91m"; suff="\e[0m"
-loaderr="${pref}Error loading $zshload: file not found.${suff}"
-[[ -f $zshload ]] && source $zshload || { echo -e $loaderr; return 1; }
-
 [[ ! -n $ZSH ]] && ZSH=$HOME/.config/omz
 [[ ! -n $ZSH_CUSTOM ]] && ZSH_CUSTOM=$ZSH/custom
 
@@ -22,7 +17,7 @@ if [[ $(isomzinstalled) == 0 ]]; then
     omzinstall=https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
     export ZSH="$CONFDIR/omz"
     sh -c "$(curl -fsSL $omzinstall)" "" --unattended
-    rm -rf "$GHCONFDIR/zsh"
+    rm -rf "$CONFDIR/zsh"
     lns "$GHCONFDIR/zsh" "$ZDOTDIR"
     lns "$GHCONFDIR/zsh/.zshenv" "$HOME/.zshenv"
     omzversion

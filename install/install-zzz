@@ -6,12 +6,9 @@
 
 appname=Zzz
 cliname=zzz
-dirname=$appname
-pkgname=$appname
+brewname=zzz
+aptname=null
 
-if [[ $(isinstalled $cliname) -eq 0 ]]; then
-    brew install -q $pkgname
-else
-    # zzz does not have a version option
-    # verinfo $cliname "$appname"
-fi
+printhead "Installing $appname..."
+installapp $cliname $brewname $aptname "$appname"
+# verinfo $cliname "$appname" "$verswitch" # zzz does not have a version option

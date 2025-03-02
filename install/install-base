@@ -6,13 +6,14 @@ enf="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zvars"
 lbm="Functions library"
 lbf="https://raw.githubusercontent.com/barabasz/lib/main/_all.sh"
 ghd="https://raw.githubusercontent.com/barabasz/bin/main/install"
+
 # messages
 msg_title="Base system components installation"
 msg_warn="This script will install base system components."
 msg_ok="Core installation completed."
 msg_reload="Reload terminal to apply changes."
 
-# main loading function
+# initial main loading function
 function source_remote_lib() {
     local url=$1 name=$2 file_content=""
     file_content=$(wget -q -O - $url)
@@ -46,31 +47,58 @@ sr $ghd/install-zsh          # zsh
 
 # from here on, scripts are available in the PATH
 
+# Brew and basic libraries
+
 install-brew                 # Homebrew
 install-certs                # Certificates
 install-brew-core            # Basic brew libraries
 install-ncurses              # Text-based UI library
 install-gcc                  # GNU compiler collection
 install-cmake                # Cross-platform make
-install-acl                  # POSIX access control lists (Linux only)
-install-util-linux           # Brew linux utilities (Mac only)
-install-gzip                 # gzip
-install-7zip                 # 7zip
+
+# Shell enhancements
+
 install-omz                  # oh-my-zsh
 install-omp                  # oh-my-posh
-install-curl                 # curl
+
+# System utilities
+
+install-7zip                 # 7zip
+install-acl                  # POSIX access control lists (Linux only)
+install-bat                  # cat with syntax highlighting
 install-bc                   # bc
-install-tmux                 # tmux
+install-calc                 # arbitrary precision calculator
+install-curl                 # curl
+install-eza                  # modern alternative for the ls
+install-fd                   # find entries in your filesystem
+install-fzf                  # fzf fuzzy finder 
 install-gh                   # GitHub CLI
+install-gzip                 # gzip
+install-htop                 # improved top
+install-lsd                  # better GNU ls
+install-lynx                 # console web browser
+install-mc                   # Midnight Commandern
+install-navi                 # cheatsheet tool
+install-nnn                  # nnn file manager
+install-nvim                 # hyperextensible Vim-based text editor
 install-repos-priv           # private repositories
+install-ripgrep              # line-oriented search tool for files
+install-rmlint               # extremely fast tool to remove dupes
+install-thefuck              # The Fuck
+install-tldr                 # tldr
+install-tmux                 # tmux
+install-util-linux           # Brew linux utilities (Mac only)
+install-wget                 # wget
+install-zoxide               # smarter cd command, inspired by z
+install-zzz                  # put mac to sleep
 
 # post-installation tasks
 
 minimize-login-info          # disable login info
-set-warsaw-timezone          # setting timezone (Warsaw)
+set-warsaw-timezone          # setting timezone (Linux)
 remove-snap                  # remove snap (Ubuntu)
 
 log::ok $msg_ok              # success message
 log::info $msg_reload        # reload message
-exec zsh                     # attempt to auto-reload shell
 
+exec zsh                     # attempt to auto-reload shell
