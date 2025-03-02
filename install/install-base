@@ -5,8 +5,6 @@ enm="Environment variables"
 enf="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zvars"
 lbm="Functions library"
 lbf="https://raw.githubusercontent.com/barabasz/lib/main/_all.sh"
-lxm="Linux functions"
-lxf="https://raw.githubusercontent.com/barabasz/lib/main/_linux.sh"
 ghd="https://raw.githubusercontent.com/barabasz/bin/main/install"
 # messages
 msg_title="Base system components installation"
@@ -28,7 +26,6 @@ alias sr="source_remote"
 
 srl $enf "$enm" || exit 1    # loading environment variables
 srl $lbf "$lbm" || exit 1    # loading functions library
-srl $lxf "$lxm" || exit 1    # loading Linux functions
 
 printtitle "$msg_title"      # script title
 log::warn "$msg_warn"        # warning message
