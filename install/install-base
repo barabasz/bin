@@ -17,9 +17,9 @@ function source_remote_lib() {
 }
 
 # loading variables and functions (using wget for compatibility)
-source_remote_lib $env_file "Environment variables" || { echo "Aborting installation." && exit 1 }
-source_remote_lib $lib_file "Library functions" || { echo "Aborting installation." && exit 1 }
-source_remote_lib $lin_file "Linux functions" || { echo "Aborting installation." && exit 1 }
+source_remote_lib $env_file "Environment variables" || exit 1 
+source_remote_lib $lib_file "Library functions" || exit 1 
+source_remote_lib $lin_file "Linux functions" || exit 1
 
 printtitle 'Installation of base system components'
 log::warn "This script will install base system components."
@@ -55,7 +55,7 @@ source_remote $ghub_dir/install-symlinks
 # zsh
 source_remote $ghub_dir/install-zsh
 
-#brew
+# brew
 install-brew
 
 # certificates
@@ -126,3 +126,4 @@ install-repos-priv
 
 printhead 'Core installation completed.'
 printhead 'Reload terminal to apply changes.'
+
