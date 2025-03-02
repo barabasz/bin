@@ -4,11 +4,13 @@
 # acl are used to define more fine-grained discretionary access rights
 # https://manpages.ubuntu.com/manpages/trusty/man5/acl.5.html
 
-appname='Access Control Lists'
-cliname='getfacl'
-brewname=null
-aptname='acl'
+if [[ "$(osname)" != "macos" ]]; then
+    appname='Access Control Lists'
+    cliname='getfacl'
+    brewname=null
+    aptname='acl'
 
-printhead "Installing $appname..."
-installapp $cliname $brewname $aptname "$appname"
-verinfo $cliname "$appname"
+    printhead "Installing $appname..."
+    installapp $cliname $brewname $aptname "$appname"
+    verinfo $cliname "$appname"
+fi

@@ -23,5 +23,5 @@ printhead "Installing $appname..."
 installapp $cliname $brewname $aptname "$appname"
 verinfo $cliname "$appname" "$verswitch"
 
-printhead 'Setting zsh as default shell...'
-set_default_shell zsh
+printhead "Setting $cliname as default shell..."
+set_default_shell $cliname

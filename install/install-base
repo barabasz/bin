@@ -1,10 +1,18 @@
 #!/bin/zsh
 
 # remote files
-env_file="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zvars"
-lib_file="https://raw.githubusercontent.com/barabasz/lib/main/_all.sh"
-lin_file="https://raw.githubusercontent.com/barabasz/lib/main/_linux.sh"
-ghub_dir="https://raw.githubusercontent.com/barabasz/bin/main/install"
+enm="Environment variables"
+enf="https://raw.githubusercontent.com/barabasz/config/main/zsh/.zvars"
+lbm="Functions library"
+lbf="https://raw.githubusercontent.com/barabasz/lib/main/_all.sh"
+lxm="Linux functions"
+lxf="https://raw.githubusercontent.com/barabasz/lib/main/_linux.sh"
+ghd="https://raw.githubusercontent.com/barabasz/bin/main/install"
+# messages
+msg_title="Base system components installation"
+msg_warn="This script will install base system components."
+msg_ok="Core installation completed."
+msg_reload="Reload terminal to apply changes."
 
 # main loading function
 function source_remote_lib() {
@@ -15,115 +23,57 @@ function source_remote_lib() {
     [[ $? -ne 0 ]] && { echo "Error sourcing $name."; return 1; }
     echo "$name successfully loaded."
 }
+alias srl="source_remote_lib"
+alias sr="source_remote"
 
-# loading variables and functions (using wget for compatibility)
-source_remote_lib $env_file "Environment variables" || exit 1 
-source_remote_lib $lib_file "Library functions" || exit 1 
-source_remote_lib $lin_file "Linux functions" || exit 1
+srl $enf "$enm" || exit 1    # loading environment variables
+srl $lbf "$lbm" || exit 1    # loading functions library
+srl $lxf "$lxm" || exit 1    # loading Linux functions
 
-printtitle 'Installation of base system components'
-log::warn "This script will install base system components."
-prompt_continue || exit 0
+printtitle "$msg_title"      # script title
+log::warn "$msg_warn"        # warning message
+prompt_continue || exit 0    # prompt to continue
 
-# installing sudo if not installed (Debian)
-source_remote $ghub_dir/install-sudo
+sr $ghd/install-sudo         # sudo if not installed (Debian)
+sudo echo > /dev/null        # force sudo password prompt
+needrestart-quiet            # disable NEEDRESTART prompt (Ubuntu)
+sr $ghd/install-dirs         # creating base directories
+sr $ghd/install-locales      # generate locale (Ubuntu/Debian)
 
-# forcing sudo password for the rest of the script
-sudo echo > /dev/null
+sysupdate                    # update and upgrade
 
-# creating base directories
-source_remote $ghub_dir/install-dirs
+sr $ghd/install-git          # Git
+sr $ghd/install-repos        # main public repositories
+sr $ghd/install-symlinks     # symlinks
+sr $ghd/install-zsh          # zsh  
 
-# generate locale (Ubuntu/Debian)
-source_remote $ghub_dir/install-locales
+# from here on, scripts are available in the PATH
 
-# setting timezone
-set-warsaw-timezone
+install-brew                 # Homebrew
+install-certs                # Certificates
+install-brew-core            # Basic brew libraries
+install-ncurses              # Text-based UI library
+install-gcc                  # GNU compiler collection
+install-cmake                # Cross-platform make
+install-acl                  # POSIX access control lists (Linux only)
+install-util-linux           # Brew linux utilities (Mac only)
+install-gzip                 # gzip
+install-7zip                 # 7zip
+install-omz                  # oh-my-zsh
+install-omp                  # oh-my-posh
+install-curl                 # curl
+install-bc                   # bc
+install-tmux                 # tmux
+install-gh                   # GitHub CLI
+install-repos-priv           # private repositories
 
-# update and upgrade
-sysupdate
+# post-installation tasks
 
-# Git
-source_remote $ghub_dir/install-git
+minimize-login-info          # disable login info
+set-warsaw-timezone          # setting timezone (Warsaw)
+remove-snap                  # remove snap (Ubuntu)
 
-# clone main repositories
-source_remote $ghub_dir/install-repos
-
-# symlinks
-source_remote $ghub_dir/install-symlinks
-
-# zsh
-source_remote $ghub_dir/install-zsh
-
-# brew
-install-brew
-
-# certificates
-install-certs
-
-# Basic brew libraries
-install-brew-core
-
-# ncurses - Text-based UI library
-install-ncurses
-
-# gcc  - GNU compiler collection
-printhead 'Installing gcc...'
-extscript $ghub_dir/install-gcc
-
-# disable NEEDRESTART prompt
-if [[ "$(osname)" == "ubuntu" ]]; then
-    printhead 'Setting NEEDRESTART_MODE to auto...'
-    disable-needrestart
-fi
-
-# acl - Commands for manipulating POSIX access control lists
-if [[ "$(osname)" != "macos" ]]; then
-    printhead 'Installing acl...'
-    install-acl
-fi
-
-# cmake  - Cross-platform make
-printhead 'Installing cmake...'
-install-cmake
-
-# Collection of Linux utilities
-if [[ ! "$(osname)" == "macos" ]]; then
-    printhead 'Installing util-linux...'
-    install-util-linux
-fi
-
-install-gzip
-install-7zip
-
-# minimize login info
-if [[ ! "$(osname)" == "macos" ]]; then
-    printhead 'Minimizing login info...'
-    minimize-login-info
-    echo 'Done.'
-fi
-touch "$HOME/.hushlogin"
-
-# remove snap (Ubuntu)
-if [[ "$(osname)" == "ubuntu" ]]; then
-    printhead 'Removing snap...'
-    remove-snap
-fi
-
-# omz
-printhead 'Installing oh-my-zsh...'
-install-omz
-
-# omp
-printhead 'Installing Oh My Posh..'
-install-omp
-
-install-curl
-install-bc
-install-tmux
-install-gh
-install-repos-priv
-
-printhead 'Core installation completed.'
-printhead 'Reload terminal to apply changes.'
+log::ok $msg_ok              # success message
+log::info $msg_reload        # reload message
+exec zsh                     # attempt to auto-reload shell
 

@@ -7,6 +7,8 @@
 # binaries location
 # /opt/homebrew/opt/util-linux/bin
 
+printhead 'Installing util-linux...'
+
 if [[ $(isinstalledbybrew util-linux) -eq 0 ]]; then
     brew install -q util-linux
 else

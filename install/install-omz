@@ -5,6 +5,8 @@
 # https://ohmyz.sh
 # https://github.com/ohmyzsh/ohmyzsh
 
+printhead 'Installing oh-my-zsh...'
+
 # load variables and functions
 zshload="$ZDOTDIR/.zsh_load"; pref="\e[1;91m"; suff="\e[0m"
 loaderr="${pref}Error loading $zshload: file not found.${suff}"
