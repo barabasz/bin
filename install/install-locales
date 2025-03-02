@@ -1,29 +1,72 @@
 #!/bin/zsh
 
+function uncomment_locale() {
+    sudo sed -i "s/^# *\($1\)/\1/" /etc/locale.gen
+    if grep -q "^$1" /etc/locale.gen; then
+        echo "Locale $1 has been uncommented in /etc/locale.gen."
+    else
+        echo "Failed to uncomment locale $1 in /etc/locale.gen."
+        return 1
+    fi
+}
+
+function install_locale() {
+    if [[ -z "$(localectl list-locales | grep $1)" ]]; then
+        uncomment_locale $1
+        sudo locale-gen $1 | grep 'done'
+    else
+        echo "Locale $1 already exists."
+    fi
+}
+
 if [[ "$(osname)" != "macos" ]]; then
-    sudo apt install -yq locales > /dev/null 2>&1
-    locale=$(locale -a | tr '[:upper:]' '[:lower:]' | grep pl_pl.utf8) 2> /dev/null
-    [[ $locale != "pl_pl.utf8" ]] && sudo locale-gen pl_PL.UTF-8 | grep 'done' || echo "Locale pl_PL.UTF-8 already exists."
-    locale=$(locale -a | tr '[:upper:]' '[:lower:]' | grep en_us.utf8) 2> /dev/null
-    [[ $locale != "en_us.utf8" ]] && sudo locale-gen en_US.UTF-8 | grep 'done' || echo "Locale en_US.UTF-8 already exists."
-    sudo update-locale
+    export LC_ALL=C.utf8
+    sudo apt install -yq locales >/dev/null 2>&1
+    lang_pl="pl_PL.UTF-8"
+    lang_en="en_US.UTF-8"
+    install_locale $lang_pl
+    install_locale $lang_en
     # English language
-    sudo localectl set-locale LANG=en_US.UTF-8
-    sudo localectl set-locale LANGUAGE=en_US:en:C
-    sudo localectl set-locale LC_MESSAGES=en_US.UTF-8
+    export LANG=$lang_en
+    sudo update-locale LANG=$lang_en
+    export LANGUAGE=$lang_en
+    sudo update-locale LANGUAGE=$lang_en
+    export LC_MESSAGES=$lang_en
+    sudo update-locale LC_MESSAGES=$lang_en
     # Polish regiional settings
-    sudo localectl set-locale LC_ADDRESS=pl_PL.UTF-8
-    sudo localectl set-locale LC_COLLATE=pl_PL.UTF-8
-    sudo localectl set-locale LC_CTYPE=pl_PL.UTF-8
-    sudo localectl set-locale LC_IDENTIFICATION=pl_PL.UTF-8
-    sudo localectl set-locale LC_MEASUREMENT=pl_PL.UTF-8
-    sudo localectl set-locale LC_MONETARY=pl_PL.UTF-8
-    sudo localectl set-locale LC_NAME=pl_PL.UTF-8
-    sudo localectl set-locale LC_NUMERIC=pl_PL.UTF-8
-    sudo localectl set-locale LC_PAPER=pl_PL.UTF-8
-    sudo localectl set-locale LC_TELEPHONE=pl_PL.UTF-8
-    sudo localectl set-locale LC_TIME=pl_PL.UTF-8
+    export LC_ADDRESS=$lang_pl
+    sudo localectl set-locale LC_ADDRESS=$lang_pl
+    export LC_COLLATE=$lang_pl
+    sudo localectl set-locale LC_COLLATE=$lang_pl
+    export LC_CTYPE=$lang_pl
+    sudo localectl set-locale LC_CTYPE=$lang_pl
+    export LC_IDENTIFICATION=$lang_pl
+    sudo localectl set-locale LC_IDENTIFICATION=$lang_pl
+    export LC_MEASUREMENT=$lang_pl
+    sudo localectl set-locale LC_MEASUREMENT=$lang_pl
+    export LC_MONETARY=$lang_pl
+    sudo localectl set-locale LC_MONETARY=$lang_pl
+    export LC_NAME=$lang_pl
+    sudo localectl set-locale LC_NAME=$lang_pl
+    export LC_NUMERIC=$lang_pl
+    sudo localectl set-locale LC_NUMERIC=$lang_pl
+    export LC_PAPER=$lang_pl
+    sudo localectl set-locale LC_PAPER=$lang_pl
+    export LC_TELEPHONE=$lang_pl
+    sudo localectl set-locale LC_TELEPHONE=$lang_pl
+    export LC_TIME=$lang_pl
+    sudo localectl set-locale LC_TIME=$lang_pl
 else
-    echo "Unsupported OS: $(osname)"
-    exit 1
+    echo "Unsupported OS: $(osname)" && exit 1
 fi
+
+
+
+
+
+
+
+
+
+
+
