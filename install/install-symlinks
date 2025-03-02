@@ -19,9 +19,14 @@ fi
 lns "$GHLIBDIR" "$LIBDIR"
 
 # zsh
+rm -f $HOME/.zshrc
+rm -f $HOME/.zprofile
+rm -f $HOME/.zlogin
+rm -f $HOME/.zlogout
 lns "$GHCONFDIR/zsh" "$ZDOTDIR"
 lns "$GHCONFDIR/zsh/.zshenv" "$HOME/.zshenv"
 
 # bash fallback
 lns "$GHCONFDIR/bash/.bashrc" "$HOME/.bashrc"
 lns "$GHCONFDIR/bash/.bash_profile" "$HOME/.bash_profile"
+

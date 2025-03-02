@@ -5,10 +5,10 @@
 # https://7-zip.org
 
 appname="7-zip"
-cliname="7zz"
-brewname="sevenzip"
-aptname="sevenzip"
-verswitch="help"
+cliname=7zz
+brewname=sevenzip
+aptname=sevenzip
+verswitch=help
 
 printhead "Installing $appname..."
 installapp $cliname $brewname $aptname "$appname"

@@ -4,4 +4,12 @@
 # Streamlined code editor with support for development operations
 # https://code.visualstudio.com/
 
-brew install --cask visual-studio-code
+appname="Visual Studio Code"
+cliname=code
+brewname="--cask visual-studio-code"
+aptname=null
+
+printhead "Installing $appname..."
+installapp $cliname $brewname $aptname "$appname"
+lnsconfdir $cliname
+verinfo $cliname "$appname" "$verswitch"

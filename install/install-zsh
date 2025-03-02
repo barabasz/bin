@@ -5,19 +5,19 @@
 # including some features of Bash, ksh, and tcsh.
 # https://www.zsh.org/
 
-# directory variables
-export ZDOTDIR=$HOME/.config/zsh
-export GHCONFDIR=$HOME/GitHub/config
-export CONFDIR=$HOME/.config
-
-# zsh symbolic links
-lns "$GHCONFDIR/zsh" "$ZDOTDIR"
-lns "$GHCONFDIR/zsh/.zshenv" "$HOME/.zshenv"
-
 appname='zsh shell'
 cliname='zsh'
 brewname='zsh'
 aptname='zsh'
+
+# directory variables fallback
+export ZDOTDIR=$HOME/.config/zsh
+export GHCONFDIR=$HOME/GitHub/config
+export CONFDIR=$HOME/.config
+
+printhead "Making symbolic links for $appname..."
+lns "$GHCONFDIR/zsh" "$ZDOTDIR"
+lns "$GHCONFDIR/zsh/.zshenv" "$HOME/.zshenv"
 
 printhead "Installing $appname..."
 installapp $cliname $brewname $aptname "$appname"
@@ -25,3 +25,10 @@ verinfo $cliname "$appname" "$verswitch"
 
 printhead "Setting $cliname as default shell..."
 set_default_shell $cliname
+
+# final cleanup
+rm -f $HOME/.zshrc
+rm -f $HOME/.zprofile
+rm -f $HOME/.zlogin
+rm -f $HOME/.zlogout
+lns "$GHCONFDIR/zsh/.zshenv" "$HOME/.zshenv" > /dev/null 2>&1
