@@ -16,7 +16,7 @@ if [[ $(isomzinstalled) == 0 ]]; then
     printinfo ".zshrc backed up to $TMPDIR/.zshrc"
     omzinstall=https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
     export ZSH="$CONFDIR/omz"
-    sh -c "$(curl -fsSL $omzinstall)" "" --unattended
+    sh -c "$(curl -fsSL $omzinstall)" "" --unattended --keep-zshrc
     rm -rf "$CONFDIR/zsh"
     lns "$GHCONFDIR/zsh" "$ZDOTDIR"
     lns "$GHCONFDIR/zsh/.zshenv" "$HOME/.zshenv"
