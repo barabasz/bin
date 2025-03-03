@@ -10,11 +10,13 @@ cliname=oh-my-posh
 dirname=omp
 iscript='https://ohmyposh.dev/install.sh'
 
+localbin=${XDG_BIN_HOME:-$HOME/.local/bin}
+
 printhead 'Installing Oh My Posh..'
 
 if [[ $(isinstalled $cliname) -eq 0 ]]; then
     [[ ! -d ~/bin ]] && mkdir ~/bin
-    curl -s $iscript | bash -s -- -d ~/bin
+    curl -s $iscript | bash -s -- -d $localbin
 else
     $cliname upgrade --force
 fi
