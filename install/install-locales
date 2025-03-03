@@ -19,8 +19,9 @@ function install_locale() {
     fi
 }
 
+printhead 'Installing locales...'
+
 if [[ "$(osname)" != "macos" ]]; then
-    printhead 'Installing locales...'
     export LC_ALL=C.utf8
     sudo apt install -yq locales >/dev/null 2>&1
     lang_pl="pl_PL.UTF-8"
@@ -60,7 +61,7 @@ if [[ "$(osname)" != "macos" ]]; then
     export LC_TIME=$lang_pl
     sudo localectl set-locale LC_TIME=$lang_pl
 else
-    echo "Unsupported OS: $(osname)" && exit 1
+    log::info "Unsupported OS: $(osname)" && return 1
 fi
 
 
