@@ -11,6 +11,7 @@ dirname=omp
 iscript='https://ohmyposh.dev/install.sh'
 
 localbin=${XDG_BIN_HOME:-$HOME/.local/bin}
+[[ ! -d $localbin ]] && mkdir -p $localbin
 
 printhead 'Installing Oh My Posh..'
 
