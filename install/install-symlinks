@@ -3,7 +3,7 @@
 printhead "Creating symlinks..."
 
 # Common scripts
-[[ -d $BINDIR ]] && mkdir -p $BINDIR
+[[ ! -d $BINDIR ]] && mkdir -p $BINDIR
 lns "$GHBINDIR/common" "$BINDIR/common"
 lns "$GHBINDIR/install" "$BINDIR/install"
 lns "$GHBINDIR/test" "$BINDIR/test"
