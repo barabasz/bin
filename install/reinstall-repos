@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+printhead "Re-cloning all repos"...
+
+log::info "This will erase all existing repositories in ~/GitHub and clone them again."
+prompt_continue || exit 0
+
+mkdir -p ~/GitHub && cd $_
+i=0
+repos=("bin" "config" "lib" "confpriv" "scripts" "resources")
+for repo in "${repos[@]}"; do
+    rm -rf $repo
+    echo "Cloning $repo..."
+    gh repo clone "barabasz/$repo"
+    log::info "$repo successfully cloned."
+    ((i++))
+done
+
+log::ok "Successfully cloned $i repositories."

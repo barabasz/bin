@@ -6,7 +6,7 @@ mkdir -p ~/GitHub && cd $_
 
 repos=("confpriv" "scripts" "resources")
 for repo in "${repos[@]}"; do
-    rm -rf $repo
+    # rm -rf $repo # to reinstall use reinstall-repos
     echo "Cloning $repo..."
     gh repo clone "barabasz/$repo"
     log::info "$repo successfully cloned."
