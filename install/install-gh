@@ -10,6 +10,7 @@ brewname='gh'
 aptname=null
 
 installapp $cliname $brewname $aptname "$appname"
+lnsconfdir $cliname
 verinfo $cliname "$appname" "$verswitch"
 
 if [[ "$(gh auth status | grep -o 'Logged')" == "Logged" ]]; then
