@@ -14,3 +14,5 @@ installapp $cliname $brewname $aptname "$appname"
 verinfo $cliname "$appname" "$verswitch"
 makeconfln $dirname
 
+mkdir -p ~/.local/share/mc
+lns $HOME/GitHub/config/mc/skins $HOME/.local/share/mc/skins

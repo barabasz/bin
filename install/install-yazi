@@ -9,6 +9,8 @@ cliname=$appnamem
 dirname=$cliname
 pkgname=$cliname
 
+printhead "Installing $appname..."
+
 if [[ $(isinstalled $cliname) -eq 0 ]]; then
     if [[ "$(osname)" == "macos" ]]; then
         brew install -q $pkgname
@@ -40,3 +42,8 @@ ya pack -a yazi-rs/plugins:smart-filter
 
 # https://github.com/yazi-rs/plugins/tree/main/mime-ext.yazi
 ya pack -a yazi-rs/plugins:mime-ext
+
+# Theme
+
+# Dracula: https://draculatheme.com/yazi
+git clone https://github.com/dracula/yazi.git ~/.config/yazi/flavors/dracula.yazi

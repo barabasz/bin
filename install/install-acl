@@ -10,6 +10,7 @@ brewname=null
 aptname=acl
 
 printhead "Installing $appname..."
+
 if [[ "$(osname)" == "macos" ]]; then
     log::info "$appname cannot be installed on macOS."
 else

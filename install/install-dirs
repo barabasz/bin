@@ -1,9 +1,15 @@
 #!/bin/zsh
 
 printhead 'Creating base directories...'
+
 mkdir -p $HOME/.cache
+mkdir -p $HOME/.cache/.zsh_sessions
 mkdir -p $HOME/.config
+mkdir -p $HOME/.config/ssh
 mkdir -p $HOME/.local
+mkdir -p $HOME/.local/bin
+mkdir -p $HOME/.local/share
+mkdir -p $HOME/.local/state
 mkdir -p $HOME/.tmp
 mkdir -p $HOME/.venv
 mkdir -p $HOME/bin
