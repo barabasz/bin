@@ -13,3 +13,7 @@ printhead "Installing $appname..."
 installapp $cliname $brewname $aptname "$appname"
 lnsconfdir $cliname
 verinfo $cliname "$appname" "$verswitch"
+
+lns "$HOME/GitHub/config/code/keybindings.json" "$HOME/Library/Application Support/Code/User/keybindings.json"
+lns "$HOME/GitHub/config/code/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
+lns "$HOME/GitHub/config/code/snippets" "$HOME/Library/Application Support/Code/User/snippets"
