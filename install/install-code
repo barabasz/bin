@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+# alias for Visual Studio Code
+
+install-vsc
