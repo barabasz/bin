@@ -72,6 +72,7 @@ install-curl                 # curl
 install-eza                  # modern alternative for the ls
 install-fd                   # find entries in your filesystem
 install-fzf                  # fzf fuzzy finder 
+# install-fonts              # fonts 
 install-gh                   # GitHub CLI
 install-gzip                 # gzip
 install-htop                 # improved top
