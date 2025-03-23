@@ -5,26 +5,26 @@
 printhead "Installing JetBrainsMono Font..."
 brew install font-jetbrains-mono-nerd-font
 
-printhead "Installing Inconsolata Font..."
-brew install font-inconsolata-nerd-font
+# printhead "Installing Inconsolata Font..."
+# brew install font-inconsolata-nerd-font
 
-printhead "Installing Iosevka Font..."
-brew install font-iosevka-nerd-font
+# printhead "Installing Iosevka Font..."
+# brew install font-iosevka-nerd-font
 
-printhead "Installing Mononoki Font..."
-brew install font-mononoki-nerd-font
+# printhead "Installing Mononoki Font..."
+# brew install font-mononoki-nerd-font
 
-printhead "Installing Ubuntu Font..."
-brew install font-ubuntu-mono-nerd-font
-brew install font-ubuntu-nerd-font
-brew install font-ubuntu-sans-nerd-font
+# printhead "Installing Ubuntu Font..."
+# brew install font-ubuntu-mono-nerd-font
+# brew install font-ubuntu-nerd-font
+# brew install font-ubuntu-sans-nerd-font
 
-printhead "Installing Source Code Pro Font..."
-brew install font-sauce-code-pro-nerd-font
+# printhead "Installing Source Code Pro Font..."
+# brew install font-sauce-code-pro-nerd-font
 
-printhead "Installing Fira Code Font..."
-brew install font-fira-code-nerd-font
-brew install font-fira-mono-nerd-font
+# printhead "Installing Fira Code Font..."
+# brew install font-fira-code-nerd-font
+# brew install font-fira-mono-nerd-font
 
-printhead "Installing Monaspace Font..."
-brew install font-monaspace-nerd-font
+# printhead "Installing Monaspace Font..."
+# brew install font-monaspace-nerd-font
