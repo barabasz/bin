@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+str1="YourStringHere"
+str2="${str1%?}"
+echo "$str1"
+echo "$str2"

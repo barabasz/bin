@@ -4,29 +4,29 @@
 # hyperextensible Vim-based text editor
 # https://neovim.io/
 
-if [[ $(isinstalled nvim) -eq 0 ]]; then
-    brew install -q nvim
+appname="Neovim"
+cliname=nvim
+brewname=nvim
+aptname=null
+verswitch="--version"
 
-    if [[ ! "$(osname)" == "macos" ]]; then
-        sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/nvim 1000
-    fi
+printhead "Installing $appname..."
+installapp $cliname $brewname $aptname "$appname"
+verinfo $cliname "$appname" "$verswitch"
 
-    if [[ "$(osname)" == "debian" ]]; then
-        pip install pynvim --break-system-packages
-    else
-        pip install pynvim
-    fi
+# Default editor in Debian-based systems
+if [[ ! "$(osname)" == "macos" ]]; then
+    sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/nvim 1000
+fi
 
-    # Configuration files
-    mkdir -p ~/.config/nvim
-    ln -sf ~/GitHub/config/nvim/init.vim ~/.config/nvim
+# Configuration files
+mkdir -p ~/.config/nvim
+lns "$GHCONFDIR/nvim" "$CONFDIR/nvim"
 
-    # Plugin manager
-    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-    # Load plugins
-    nvim --headless +'PlugInstall' +qa
+# Plugin manager
+target_dir="${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/start/paq-nvim
+if [[ ! -d "$target_dir" ]]; then
+    git clone --depth=1 https://github.com/savq/paq-nvim.git "$target_dir"
 else
-    nvim --version | grep 'NVIM'
+    log::info "$(ansi reset)Repository paq-nvim.git already exists at $target_dir"
 fi

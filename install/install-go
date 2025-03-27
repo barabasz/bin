@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+# go
+# Go language
+# https://golang.org/
+
+appname="Go language"
+cliname=go
+brewname=go
+aptname=go
+verswitch=version
+
+printhead "Installing $appname..."
+installapp $cliname $brewname $aptname "$appname"
+verinfo $cliname "$appname" "$verswitch"

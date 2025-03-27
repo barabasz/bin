@@ -1,0 +1,32 @@
+#!/bin/zsh
+
+# nvim (neovim)
+# hyperextensible Vim-based text editor
+# https://neovim.io/
+
+if [[ $(isinstalled nvim) -eq 0 ]]; then
+    brew install -q nvim
+
+    if [[ ! "$(osname)" == "macos" ]]; then
+        sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/nvim 1000
+    fi
+
+    if [[ "$(osname)" == "debian" ]]; then
+        pip install pynvim --break-system-packages
+    else
+        pip install pynvim
+    fi
+
+    # Configuration files
+    mkdir -p ~/.config/nvim
+    ln -sf ~/GitHub/config/nvim/init.vim ~/.config/nvim
+
+    # Plugin manager
+    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+    # Load plugins
+    nvim --headless +'PlugInstall' +qa
+else
+    nvim --version | grep 'NVIM'
+fi
