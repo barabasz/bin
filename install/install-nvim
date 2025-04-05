@@ -23,10 +23,14 @@ fi
 mkdir -p ~/.config/nvim
 lns "$GHCONFDIR/nvim" "$CONFDIR/nvim"
 
-# Plugin manager
-target_dir="${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/start/paq-nvim
-if [[ ! -d "$target_dir" ]]; then
-    git clone --depth=1 https://github.com/savq/paq-nvim.git "$target_dir"
-else
-    log::info "$(ansi reset)Repository paq-nvim.git already exists at $target_dir"
-fi
+# NeoVim Python
+npm install -g neovim
+
+# LSP
+appname="Lua Language Server"
+cliname=lua-language-server
+brewname=lua-language-server
+aptname=null
+
+printhead "Installing $appname..."
+installapp $cliname $brewname $aptname "$appname"
