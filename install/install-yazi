@@ -4,24 +4,16 @@
 # terminal file manager written in Rust
 # https://github.com/sxyazi/yazi
 
-appname=yazi
-cliname=$appnamem
-dirname=$cliname
-pkgname=$cliname
+appname="Yazi"
+cliname=yazi
+dirname=yazi
+brewname=yazi
+aptname=yazi
+verswitch="--version"
 
-printhead "Installing $appname..."
-
-if [[ $(isinstalled $cliname) -eq 0 ]]; then
-    if [[ "$(osname)" == "macos" ]]; then
-        brew install -q $pkgname
-    else
-        aptinstall $cliname
-    fi
-else
-    verinfo $cliname "$appname"
-fi
-
-makeconfln $dirname
+installapp $cliname $brewname $aptname "$appname"
+verinfo $cliname "$appname" "$verswitch"
+lnsconfdir $dirname
 
 # Plugins
 
@@ -43,7 +35,15 @@ ya pack -a yazi-rs/plugins:smart-filter
 # https://github.com/yazi-rs/plugins/tree/main/mime-ext.yazi
 ya pack -a yazi-rs/plugins:mime-ext
 
+# https://github.com/boydaihungst/mediainfo.yazi
+ya pack -a boydaihungst/mediainfo
+
+# https://github.com/Reledia/glow.yazi
+ya pack -a Reledia/glow.yazi
+
 # Theme
 
 # Dracula: https://draculatheme.com/yazi
+[[ ! -d ~/.config/yazi/flavors ]] && mkdir -p ~/.config/yazi/flavors
+[[ -d ~/.config/yazi/flavors/dracula.yazi ]] && rm -rf ~/.config/yazi/flavors/dracula.yazi
 git clone https://github.com/dracula/yazi.git ~/.config/yazi/flavors/dracula.yazi

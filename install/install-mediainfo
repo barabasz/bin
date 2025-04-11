@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+# MediaInfo
+# A convenient unified display of the most relevant technical and tag data for video and audio files
+# https://mediaarea.net/en/MediaInfo
+
+appname="MediaInfo"
+cliname=mediainfo
+brewname=mediainfo
+aptname=null
+verswitch="--version"
+
+installapp $cliname $brewname $aptname "$appname"
+verinfo $cliname "$appname" "$verswitch"

@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+# glow
+# Render markdown on the CLI, with pizzazz!
+# https://github.com/charmbracelet/glow
+
+appname="Glow"
+cliname=glow
+dirname=glow
+brewname=glow
+aptname=glow
+verswitch="--version"
+
+printhead "Installing $appname..."
+installapp $cliname $brewname $aptname "$appname"
+verinfo $cliname "$appname" "$verswitch"

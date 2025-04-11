@@ -69,13 +69,17 @@ install-bat                  # cat with syntax highlighting
 install-bc                   # bc
 install-calc                 # arbitrary precision calculator
 install-curl                 # curl
+install-exiftool             # read and write EXIF metadata
 install-eza                  # modern alternative for the ls
 install-fd                   # find entries in your filesystem
-install-fzf                  # fzf fuzzy finder 
+install-fzf                  # fzf fuzzy finder
+install-ffmpeg               # ffmpeg
 # install-fonts              # fonts 
 install-gh                   # GitHub CLI
+install-glow                 # markdown reader
 install-gzip                 # gzip
 install-htop                 # improved top
+install-imagemagick          # ImageMagick
 install-lsd                  # better GNU ls
 install-lynx                 # console web browser
 install-mc                   # Midnight Commandern
@@ -90,6 +94,7 @@ install-tldr                 # tldr
 install-tmux                 # tmux
 install-util-linux           # Brew linux utilities (Mac only)
 install-wget                 # wget
+install-ytdlp                # YouTube downloader
 install-zoxide               # smarter cd command, inspired by z
 install-zzz                  # put mac to sleep
 
