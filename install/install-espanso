@@ -4,14 +4,10 @@
 # A Privacy-first, Cross-platform Text Expander
 # https://espanso.org
 
-# load variables and functions
-zlf=$ZSH_LOAD_FILE; err="$0: unable to load ZSH_LOAD_FILE"
-[[ -f $zlf ]] && source $zlf || { printf "$err\n";  exit 1 }
-
 if [[ $(isinstalled espanso) == 0 ]]; then
     brew install espanso
 else
     verinfo espanso
 fi
 
-lns "$GHCONFPRIVDIR/espanso" "$HOME/Library/Application\ Support/espanso"
+lns "$HOME/Library/Application Support/espanso" "$GHPRIVDIR/espanso"
