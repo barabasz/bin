@@ -1,10 +1,10 @@
 #!/bin/zsh
 
-# espanso
-# A Privacy-first, Cross-platform Text Expander
-# https://espanso.org
+# kitty
+# The fast, feature-rich, GPU based terminal emulator
+# https://sw.kovidgoyal.net/kitty/
 
-appname=espanso
+appname=kitty
 cliname=$appname
 brewname=$appname
 aptname=$appname
@@ -13,4 +13,4 @@ printhead "Installing $appname..."
 installapp $cliname $brewname $aptname "$appname"
 verinfo $cliname "$appname" "$verswitch"
 
-lnsconfdir -p $appname
+lnsconfdir $appname
