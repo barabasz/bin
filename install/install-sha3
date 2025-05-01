@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+# SHA-3
+# Secure Hash Algorithm 3
+# https://codeberg.org/maandree/sha3sum
+
+appname="SHA-3"
+cliname=sha3sum
+brewname=sha3sum
+aptname=sha3sum
+
+printhead "Installing $appname..."
+installapp $cliname $brewname $aptname "$appname"
+verinfo $cliname "$appname" "$verswitch"
