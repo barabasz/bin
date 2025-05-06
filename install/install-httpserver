@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+# http-server
+# Command-line http server
+# https://github.com/http-party/http-server
+
+appname="http-server"
+cliname=$appname
+dirname=$appname
+pkgname=$appname
+
+if [[ $(isinstalled $cliname) -eq 0 ]]; then
+    brew install -q $pkgname
+else
+    verinfo $cliname "$appname"
+fi

@@ -79,6 +79,7 @@ install-gh                   # GitHub CLI
 install-glow                 # markdown reader
 install-gzip                 # gzip
 install-htop                 # improved top
+install-httpserver           # command-line http server
 install-imagemagick          # ImageMagick
 install-lsd                  # better GNU ls
 install-lynx                 # console web browser
