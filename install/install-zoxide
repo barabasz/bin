@@ -15,4 +15,4 @@ else
     verinfo $cliname "$appname"
 fi
 
-makeconfln $dirname
+lnsconfdir $dirname
