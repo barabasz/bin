@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if [[ $(isinstalled php) -eq 0 ]]; then
+if ! isinstalled php; then
     if [[ "$(osname)" == "macos" ]]; then
         brew install -q php
     else

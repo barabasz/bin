@@ -13,7 +13,7 @@ fi
 
 printhead 'Installing brew...'
 
-if [[ $(isinstalled brew) -eq 0 ]]; then
+if isinstalled brew; then
     # Ubuntu/Debian fix
     if [[ "$(osname)" != "macos" ]]; then
         sudo mkdir -p /home/linuxbrew/
