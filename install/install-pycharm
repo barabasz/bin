@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-# PyCharm
-# Integrated development environment (IDE) for programming in Python
-# https://www.jetbrains.com/pycharm/
-
-brew install --cask pycharm

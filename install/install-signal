@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-# Signal
-# Instant messaging application focusing on security
-# https://signal.org/
-
-brew install --cask signal

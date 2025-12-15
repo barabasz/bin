@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-# Adobe Creative Cloud
-# Collection of apps and services for photography, design, video, web, and UX
-# https://creativecloud.adobe.com/
-
-brew install --cask adobe-creative-cloud

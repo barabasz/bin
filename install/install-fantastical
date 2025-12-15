@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-# Fantastical
-# The award-winning calendar app with powerful features
-# https://flexibits.com/fantastical
-
-brew install --cask fantastical

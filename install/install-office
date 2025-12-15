@@ -1,6 +1,0 @@
-#!/bin/zsh
-
-# Microsoft Office suite
-# https://www.microsoft.com/en-us/microsoft-365/mac/microsoft-365-for-mac/
-
-brew install --cask microsoft-office

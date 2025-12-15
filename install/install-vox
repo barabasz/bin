@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-# VOX
-# Premium Mac Music Player for Hi-Res music through the popular sources.
-# https://vox.rocks/mac-music-player
-
-brew install --cask vox

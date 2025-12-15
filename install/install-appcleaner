@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-# appcleaner
-# Free app that deletes apps and their associated files
-# https://freemacsoft.net/appcleaner/
-
-brew install --cask appcleaner

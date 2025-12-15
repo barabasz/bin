@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-if [[ -f "/Applications/qView.app/Contents/MacOS/qView" ]]; then
-    /Applications/qView.app/Contents/MacOS/qView --version
-else
-    brew install --cask qview
-fi
