@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # colors
-g='\e[32m' y='\e[33m' c='\e[36m' x='\e[0m'
+g='\e[32m' y='\e[33m' c='\e[36m' r='\e[31m' x='\e[0m'
 
 # list of git repositories from $GHDIR folder
 repos=($GHDIR/*(/))
@@ -17,6 +17,12 @@ i=1
 for repo in $repos; do
     print "\n$y$i/${#repos} $g${repo:t}$x"
     print "$c$(git -C $repo remote get-url origin)$x"
-    git -C $repo pull --rebase
+    git -C $repo pull --rebase 2>&1 | while read line; do
+        if [[ $line == *error:* ]]; then
+            print "$r$line$x"
+        else
+            print $line
+        fi
+    done
     ((i++))
 done
