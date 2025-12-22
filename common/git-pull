@@ -1,16 +1,22 @@
 #!/bin/zsh
 
-repos=($(git-repos))
-[[ -z $repos ]] && { printe "No repositories found."; return 1; }
-count=$(echo $repos | wc -w | tr -d ' ')
-printh "Pulling $count repositories from the remote."
+# colors
+g='\e[32m' y='\e[33m' c='\e[36m' x='\e[0m'
+
+# list of git repositories from $GHDIR folder
+repos=($GHDIR/*(/))
+
+if (( ${#repos} == 0 )); then
+    printe "No repositories found in $GHDIR."
+    return 1
+fi
+
+printh "Pulling ${#repos} repositories from the remote."
 
 i=1
-for repo in $repos;
-do
-    printhead "$i/$count $(basename $repo)"
-    cd $repo
-    printc $(git remote get-url origin)
-    git pull --rebase
+for repo in $repos; do
+    print "\n$y$i/${#repos} $g${repo:t}$x"
+    print "$c$(git -C $repo remote get-url origin)$x"
+    git -C $repo pull --rebase
     ((i++))
 done
