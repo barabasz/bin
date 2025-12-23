@@ -7,11 +7,11 @@ g='\e[32m' y='\e[33m' c='\e[36m' r='\e[31m' x='\e[0m'
 repos=($GHDIR/*(/))
 
 if (( ${#repos} == 0 )); then
-    printe "No repositories found in $GHDIR."
+    print "${r}No repositories found in $GHDIR.${x}"
     return 1
 fi
 
-printh "Pulling ${#repos} repositories from the remote."
+print "Pulling ${#repos} repositories from the remote."
 
 i=1
 for repo in $repos; do
