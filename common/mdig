@@ -1,0 +1,91 @@
+#!/usr/bin/env zsh
+# mdig - Multi-DNS query tool
+# Query multiple DNS servers and display results in a table
+
+# DNS servers configuration (name=ip)
+typeset -A DNS_SERVERS=(
+    CloudFlare  1.1.1.1
+    Comodo      8.26.56.26
+    DNS0EU      193.110.81.0
+    DNS4EU      86.54.11.100
+    Google      8.8.8.8
+    NextDNS     45.90.28.141
+    OpenDNS     208.67.222.222
+    Orange      194.204.152.34
+    Pi-hole     192.168.1.101
+    Play        193.47.158.254
+    Quad9       9.9.9.9
+    Unbound     192.168.1.100
+)
+
+# Color codes
+readonly r=$'\033[0;31m' g=$'\033[0;32m' y=$'\033[0;33m'
+readonly b=$'\033[1m' x=$'\033[0m'
+
+# Time limits
+readonly time_max_green=30
+readonly time_max_yellow=60
+
+mdig() {
+    local domain=$1
+
+    if [[ -z $domain ]]; then
+        print -u2 "Usage: mdig <domain>"
+        return 1
+    fi
+
+    if ! whence -p dig &>/dev/null; then
+        print -u2 "Error: dig not found in PATH"
+        return 1
+    fi
+
+    # Header
+    printf "${b}%-28s %-14s %s${x}\n" "DNS" "Time (ms)" "Answer"
+    printf '%60s\n' | tr ' ' '-'
+
+    # Collect results
+    local name ip output time_ms answer tc
+    local -a results
+    for name ip in ${(kv)DNS_SERVERS}; do
+        output=$(dig @$ip $domain +noall +answer +stats 2>/dev/null)
+
+        time_ms=$(print -r -- "$output" | grep -oE 'Query time: [0-9]+' | grep -oE '[0-9]+')
+        [[ -z $time_ms ]] && time_ms=9999
+
+        answer=$(print -r -- "$output" | awk '$4 == "A" {print $5; exit}')
+        [[ -z $answer ]] && answer="(no A record)"
+
+        # Store: "time_ms:name:ip:answer"
+        results+=("${time_ms}:${name}:${ip}:${answer}")
+    done
+
+    # Sort numerically and print
+    local line sort_time
+    for line in ${(n)${(on)results}}; do
+        sort_time=${line%%:*}
+        line=${line#*:}
+        name=${line%%:*}
+        line=${line#*:}
+        ip=${line%%:*}
+        answer=${line#*:}
+
+        # Color based on response time
+        tc=$x
+        if (( sort_time < time_max_green )); then
+            tc=$g
+        elif (( sort_time < time_max_yellow )); then
+            tc=$y
+        elif (( sort_time < 9999 )); then
+            tc=$r
+        fi
+
+        [[ $sort_time == 9999 ]] && sort_time="--"
+
+        printf "%-28s ${tc}%-14s${x} %s\n" "$name ($ip)" "$sort_time" "$answer"
+    done
+}
+
+# Run if executed directly (not sourced)
+if [[ $zsh_eval_context == toplevel ]]; then
+    mdig "$@"
+fi
