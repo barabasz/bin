@@ -5,7 +5,6 @@ local i=0
 local fonts=(*.otf *.ttf .*.otf .*.ttf)
 for file in $fonts; do
     if [[ -f "$file" ]]; then
-        local g=$(ansi green) b=$(ansi purple) r=$(ansi reset) y=$(ansi yellow)
         local name=$(exiftool -fontname -S $file | sed 's/^[^:]*: //')
         if [[ $name = "" ]]; then
             name=$(exiftool $file | grep "Font Name" | head -1 | sed 's/^[^:]*: //')
