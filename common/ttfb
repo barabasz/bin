@@ -1,3 +1,0 @@
-#!/bin/zsh
-
-curl -s -w "%{time_starttransfer}\n" -o /dev/null https://$1
